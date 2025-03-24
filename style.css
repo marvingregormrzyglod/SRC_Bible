@@ -1,0 +1,51 @@
+body {
+  font-family: 'Courier New', monospace;
+  background: #1e1e1e;
+  color: #d4d4d4;
+}
+
+#menu-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+#book-select, #chapter-select {
+  padding: 10px;
+  font-size: 16px;
+  background: #2d2d2d;
+  color: #ffffff;
+  border: 2px solid #569cd6;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+#book-select:hover, #chapter-select:hover {
+  border-color: #ff79c6;
+}
+
+#book-select:focus, #chapter-select:focus {
+  border-color: #50fa7b;
+}
+
+#app {
+  margin-left: 20px;
+  margin-top: 80px; /* Space for fixed menu */
+}
+
+/* Style Docsify content */
+.markdown-section pre {
+  background: #2d2d2d;
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.markdown-section code {
+  color: #ff79c6; /* Pink for pseudo-code */
+}
