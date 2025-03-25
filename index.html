@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SRC Bible</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4.13.1/themes/vue.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    # Test Page
-    This is a hardcoded test to see if Docsify renders content.
-  </div>
+  <div id="menu-container"></div>
+  <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'SRC Bible',
-      el: '#app',
+      repo: 'marvingregormrzyglod/SRC_Bible',
+      homepage: 'intro.md',
+      basePath: '/',
       loadSidebar: false,
       noSidebar: true,
-      markdown: true,  // Ensure inline Markdown is processed
-      autoHeader: false,  // Prevent Docsify from fetching files
-      executeScript: false  // Disable script execution for now
+      auto2top: true,
+      subMaxLevel: 0
     };
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
+  <script src="menu.js"></script>
 </body>
 </html>
