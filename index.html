@@ -19,7 +19,22 @@
       loadSidebar: false,
       noSidebar: true,
       auto2top: true,
-      subMaxLevel: 0
+      subMaxLevel: 0,
+      plugins: [
+        function(hook) {
+          hook.beforeEach(function(content, next) {
+            console.log('Trying to load:', window.location.pathname + window.location.hash);
+            fetch(window.location.pathname + 'intro.md')
+              .then(response => {
+                console.log('Fetch response:', response);
+                return response.text();
+              })
+              .then(text => console.log('Fetched content:', text))
+              .catch(err => console.error('Fetch error:', err));
+            next(content);
+          });
+        }
+      ]
     };
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
