@@ -1,53 +1,60 @@
-// Define books and chapter counts (only Genesis for now)
 const books = {
   "genesis": 50
 };
 
-// Define chapter groupings for Genesis
 const genesisGroups = [
   { name: "Creation", start: 1, end: 11, class: "creation" },
-  { name: "Abraham", start: 12, end: 25, class: "abraham" }, // 25:18, but we'll use chapter 25 as the end
-  { name: "Jacob", start: 26, end: 36, class: "jacob" },     // 25:19–36
+  { name: "Abraham", start: 12, end: 25, class: "abraham" },
+  { name: "Jacob", start: 26, end: 36, class: "jacob" },
   { name: "Joseph", start: 37, end: 50, class: "joseph" }
 ];
 
-// Populate the navigation
 document.addEventListener('DOMContentLoaded', () => {
   const bookList = document.getElementById('book-list');
   const chapterList = document.getElementById('chapter-list');
 
-  // Create vertical stack of books
   Object.keys(books).forEach(book => {
     const bookButton = document.createElement('div');
     bookButton.className = 'book-button';
     bookButton.textContent = book.charAt(0).toUpperCase() + book.slice(1);
     bookButton.addEventListener('click', () => {
-      // Clear previous chapter list
+      document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+      bookButton.classList.add('active');
       chapterList.innerHTML = '';
-      // Show chapters for the selected book
       showChapters(book, chapterList);
     });
     bookList.appendChild(bookButton);
   });
 
-  // If there's a hash on load, show the corresponding chapters
   const hash = window.location.hash.replace('#/', '');
   if (hash) {
     const bookMatch = hash.match(/scripture\/([^\/]+)/);
+    const chapterMatch = hash.match(/scripture\/[^\/]+\/(\d+)/);
     if (bookMatch) {
       const book = bookMatch[1];
+      document.querySelectorAll('.book-button').forEach(btn => {
+        if (btn.textContent.toLowerCase() === book) {
+          btn.classList.add('active');
+        }
+      });
       showChapters(book, chapterList);
+      if (chapterMatch) {
+        const chapter = chapterMatch[1];
+        setTimeout(() => {
+          const chapterLink = document.querySelector(`a[href="#/scripture/${book}/${chapter}"]`);
+          if (chapterLink) {
+            chapterLink.classList.add('active');
+          }
+        }, 100);
+      }
     }
   }
 });
 
-// Function to show chapters for a book
 function showChapters(book, chapterList) {
-  // Create a container for chapter groups
   const groupsContainer = document.createElement('div');
   groupsContainer.className = 'chapter-groups-container';
 
-  // For Genesis, use the predefined groups
   if (book === 'genesis') {
     genesisGroups.forEach(group => {
       const groupDiv = document.createElement('div');
@@ -68,6 +75,8 @@ function showChapters(book, chapterList) {
         chapterLink.textContent = `Ch. ${i}`;
         chapterLink.addEventListener('click', (e) => {
           e.preventDefault();
+          document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
+          chapterLink.classList.add('active');
           window.location.hash = `#/scripture/${book}/${chapter}`;
         });
         chaptersDiv.appendChild(chapterLink);
