@@ -4,25 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SRC Bible</title>
-  <link rel="stylesheet" href="vue.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="menu-container"></div>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: 'SRC Bible',
-      repo: 'marvingregormrzyglod/SRC_Bible',
-      homepage: 'intro.md',
-      basePath: '/',
-      loadSidebar: false,
-      noSidebar: true,
-      auto2top: true,
-      subMaxLevel: 0
-    };
-  </script>
-  <script src="docsify.min.js"></script>
+  <div id="app" class="markdown-section"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="menu.js"></script>
+  <script>
+    // Function to fetch and render Markdown
+    async function loadMarkdown(path) {
+      try {
+        const response = await fetch(path);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const markdown = await response.text();
+        const html = marked.parse(markdown);
+        document.getElementById('app').innerHTML = html;
+      } catch (error) {
+        console.error('Error loading Markdown:', error);
+        document.getElementById('app').innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
+      }
+    }
+
+    // Load intro.md by default
+    window.addEventListener('DOMContentLoaded', () => {
+      loadMarkdown('intro.md');
+    });
+
+    // Listen for hash changes to load scripture content
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#/', '');
+      if (hash) {
+        loadMarkdown(`${hash}.md`);
+      } else {
+        loadMarkdown('intro.md');
+      }
+    });
+  </script>
 </body>
 </html>
