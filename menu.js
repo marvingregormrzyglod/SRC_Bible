@@ -1,14 +1,49 @@
+// Define books and chapter counts
 const books = {
-  "genesis": 50
+  "genesis": 50,
+  "exodus": 40,
+  "leviticus": 27,
+  "numbers": 36,
+  "deuteronomy": 34
 };
 
+// Define chapter groupings for each book with subtitles
 const genesisGroups = [
-  { name: "Creation", start: 1, end: 11, class: "creation" },
-  { name: "Abraham", start: 12, end: 25, class: "abraham" },
-  { name: "Jacob", start: 26, end: 36, class: "jacob" },
-  { name: "Joseph", start: 37, end: 50, class: "joseph" }
+  { name: "🌌 BEGINNINGS", start: 1, end: 11, class: "beginnings", subtitles: "Creation • Fall • Flood" },
+  { name: "🤝 PROMISE", start: 12, end: 26, class: "promise", subtitles: "Abraham • Isaac • Covenant" },
+  { name: "✋ STRUGGLE", start: 27, end: 36, class: "struggle", subtitles: "Jacob • Esau • Wrestling" },
+  { name: "👑 REDEMPTION", start: 37, end: 50, class: "redemption", subtitles: "Joseph • Betrayal • Salvation" }
 ];
 
+const exodusGroups = [
+  { name: "🔴 Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
+  { name: "🟠 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
+  { name: "🔵 Miracles", start: 14, end: 18, class: "miracles", subtitles: "Red Sea • Manna" },
+  { name: "🟣 Covenant", start: 19, end: 40, class: "covenant", subtitles: "Law • Tabernacle" }
+];
+
+const leviticusGroups = [
+  { name: "🟤 SACRIFICES", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
+  { name: "🟢 HOLINESS", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
+  { name: "🔵 FEASTS", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
+  { name: "⚠️ WARNINGS", start: 26, end: 27, class: "warnings", subtitles: "Blessings • Curses" }
+];
+
+const numbersGroups = [
+  { name: "🔢 COUNTING", start: 1, end: 4, class: "counting", subtitles: "Census • Tribe roles" },
+  { name: "🚦 WANDERING", start: 5, end: 21, class: "wandering", subtitles: "Rebellions • Miracles" },
+  { name: "⚔️ BATTLES", start: 22, end: 31, class: "battles", subtitles: "Balaam • Midian" },
+  { name: "🏠 INHERITANCE", start: 32, end: 36, class: "inheritance", subtitles: "Land • Daughters" }
+];
+
+const deuteronomyGroups = [
+  { name: "📜 REPEAT", start: 1, end: 4, class: "repeat", subtitles: "Moses reviews Exodus" },
+  { name: "⚖️ LAW", start: 5, end: 26, class: "law", subtitles: "10 Commandments • Rules" },
+  { name: "⚠️ WARNING", start: 27, end: 30, class: "warning", subtitles: "Blessings & Curses" },
+  { name: "🕊️ HANDOFF", start: 31, end: 34, class: "handoff", subtitles: "Joshua • Moses’ death" }
+];
+
+// Populate the navigation
 document.addEventListener('DOMContentLoaded', () => {
   const bookList = document.getElementById('book-list');
   const chapterList = document.getElementById('chapter-list');
@@ -55,14 +90,35 @@ function showChapters(book, chapterList) {
   const groupsContainer = document.createElement('div');
   groupsContainer.className = 'chapter-groups-container';
 
-  if (book === 'genesis') {
-    genesisGroups.forEach(group => {
+  let groups;
+  if (book === 'genesis') groups = genesisGroups;
+  else if (book === 'exodus') groups = exodusGroups;
+  else if (book === 'leviticus') groups = leviticusGroups;
+  else if (book === 'numbers') groups = numbersGroups;
+  else if (book === 'deuteronomy') groups = deuteronomyGroups;
+
+  if (groups) {
+    groups.forEach(group => {
       const groupDiv = document.createElement('div');
       groupDiv.className = `chapter-group ${group.class}`;
 
       const groupHeader = document.createElement('div');
       groupHeader.className = 'group-header';
-      groupHeader.textContent = group.name;
+
+      // Add the category name
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'group-name';
+      nameSpan.textContent = group.name;
+      groupHeader.appendChild(nameSpan);
+
+      // Add the subtitles
+      if (group.subtitles) {
+        const subtitleSpan = document.createElement('div');
+        subtitleSpan.className = 'group-subtitles';
+        subtitleSpan.textContent = group.subtitles;
+        groupHeader.appendChild(subtitleSpan);
+      }
+
       groupDiv.appendChild(groupHeader);
 
       const chaptersDiv = document.createElement('div');
