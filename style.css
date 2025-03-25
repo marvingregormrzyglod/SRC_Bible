@@ -2,43 +2,74 @@ body {
   font-family: 'Courier New', monospace;
   background: #1e1e1e;
   color: #d4d4d4;
-}
-
-#menu-container {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
+  margin: 0;
   display: flex;
-  gap: 10px;
 }
 
-#book-select, #chapter-select {
-  padding: 10px;
-  font-size: 16px;
-  background: #2d2d2d;
-  color: #ffffff;
-  border: 2px solid #569cd6;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  transition: border-color 0.3s;
-}
-
-#book-select:hover, #chapter-select:hover {
-  border-color: #ff79c6;
-}
-
-#book-select:focus, #chapter-select:focus {
-  border-color: #50fa7b;
+#navigation {
+  width: 250px;
+  height: 100vh;
+  background: #252526;
+  padding: 20px;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-right: 2px solid #569cd6;
 }
 
 #app {
-  margin-left: 20px;
-  margin-top: 80px; /* Space for fixed menu */
+  margin-left: 270px; /* Space for navigation */
+  padding: 20px;
+  flex: 1;
 }
 
-/* Style Markdown content */
+/* Navigation styles */
+.section {
+  margin-bottom: 20px;
+}
+
+.section-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #569cd6;
+  cursor: pointer;
+  padding: 5px 0;
+  border-bottom: 1px solid #3e3e3e;
+}
+
+.book-list {
+  margin-left: 10px;
+}
+
+.book {
+  margin: 10px 0;
+}
+
+.book-header {
+  font-size: 16px;
+  color: #ff79c6;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.chapter-list {
+  margin-left: 20px;
+}
+
+.chapter-link {
+  display: block;
+  font-size: 14px;
+  color: #d4d4d4;
+  text-decoration: none;
+  padding: 3px 0;
+}
+
+.chapter-link:hover {
+  color: #50fa7b;
+}
+
+/* Markdown content styles */
 .markdown-section pre {
   background: #2d2d2d;
   color: #d4d4d4;
