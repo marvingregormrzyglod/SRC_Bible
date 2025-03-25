@@ -49,3 +49,10 @@ body {
 .markdown-section code {
   color: #ff79c6; /* Pink for pseudo-code */
 }
+
+.sidebar {
+  display: none !important;
+}
+.content {
+  margin-left: 0 !important;
+}
