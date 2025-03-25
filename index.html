@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SRC Bible</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <h1>SRC Bible</h1>
+    <p>Scripture Reimagined as Code</p>
+  </header>
   <div class="container">
     <div id="book-stack">
       <div id="book-list"></div>
@@ -16,11 +21,15 @@
     </div>
     <div id="app" class="markdown-section"></div>
   </div>
+  <footer>
+    <p>Created by [Your Name] | <a href="https://github.com/marvingregormrzyglod/SRC_Bible">View on GitHub</a></p>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="menu.js"></script>
   <script>
-    // Function to fetch and render Markdown
     async function loadMarkdown(path) {
+      const appDiv = document.getElementById('app');
+      appDiv.innerHTML = '<div class="loading">Loading...</div>';
       try {
         const response = await fetch(path);
         if (!response.ok) {
@@ -28,19 +37,17 @@
         }
         const markdown = await response.text();
         const html = marked.parse(markdown);
-        document.getElementById('app').innerHTML = html;
+        appDiv.innerHTML = html;
       } catch (error) {
         console.error('Error loading Markdown:', error);
-        document.getElementById('app').innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
+        appDiv.innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
       }
     }
 
-    // Load intro.md by default
     window.addEventListener('DOMContentLoaded', () => {
       loadMarkdown('intro.md');
     });
 
-    // Listen for hash changes to load scripture content
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#/', '');
       if (hash) {
