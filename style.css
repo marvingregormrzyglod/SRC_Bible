@@ -38,7 +38,7 @@ body {
   margin-top: 80px; /* Space for fixed menu */
 }
 
-/* Style Docsify content */
+/* Style Markdown content */
 .markdown-section pre {
   background: #2d2d2d;
   color: #d4d4d4;
@@ -50,9 +50,17 @@ body {
   color: #ff79c6; /* Pink for pseudo-code */
 }
 
-.sidebar {
-  display: none !important;
+.markdown-section h1, .markdown-section h2, .markdown-section h3 {
+  color: #ffffff;
 }
-.content {
-  margin-left: 0 !important;
+
+.markdown-section blockquote {
+  border-left: 4px solid #569cd6;
+  padding-left: 10px;
+  color: #d4d4d4;
+}
+
+.markdown-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
 }
