@@ -6,13 +6,16 @@
   <title>SRC Bible</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
-<body>
+<body data-theme="dark">
   <header>
     <h1>SRC Bible</h1>
     <p>Scripture Reimagined as Code</p>
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
   <div class="container">
+    <div id="nav-toggle" class="nav-toggle">☰</div>
     <div id="book-stack">
       <div id="book-list"></div>
     </div>
@@ -27,6 +30,35 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="menu.js"></script>
   <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const bookStack = document.getElementById('book-stack');
+    const chapterGroups = document.getElementById('chapter-groups');
+
+    navToggle.addEventListener('click', () => {
+      bookStack.classList.toggle('active');
+      chapterGroups.classList.toggle('active');
+      navToggle.textContent = bookStack.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Function to fetch and render Markdown
     async function loadMarkdown(path) {
       const appDiv = document.getElementById('app');
       appDiv.innerHTML = '<div class="loading">Loading...</div>';
@@ -44,10 +76,12 @@
       }
     }
 
+    // Load intro.md by default
     window.addEventListener('DOMContentLoaded', () => {
       loadMarkdown('intro.md');
     });
 
+    // Listen for hash changes to load scripture content
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#/', '');
       if (hash) {
