@@ -166,76 +166,369 @@ body[data-theme="light"] #chapter-groups {
   transform: translateY(-2px);
 }
 
-.creation {
+/* Genesis Categories */
+.beginnings {
   background: rgba(86, 156, 214, 0.1);
   border-left: 3px solid #569cd6;
 }
 
-body[data-theme="light"] .creation {
+body[data-theme="light"] .beginnings {
   background: rgba(86, 156, 214, 0.2);
   border-left: 3px solid #0078d4;
 }
 
-.creation .group-header {
+.beginnings .group-header {
   color: #569cd6;
 }
 
-body[data-theme="light"] .creation .group-header {
+body[data-theme="light"] .beginnings .group-header {
   color: #0078d4;
 }
 
-.abraham {
+.promise {
   background: rgba(80, 250, 123, 0.1);
   border-left: 3px solid #50fa7b;
 }
 
-body[data-theme="light"] .abraham {
+body[data-theme="light"] .promise {
   background: rgba(80, 250, 123, 0.2);
   border-left: 3px solid #36b37e;
 }
 
-.abraham .group-header {
+.promise .group-header {
   color: #50fa7b;
 }
 
-body[data-theme="light"] .abraham .group-header {
+body[data-theme="light"] .promise .group-header {
   color: #36b37e;
 }
 
-.jacob {
+.struggle {
   background: rgba(255, 121, 198, 0.1);
   border-left: 3px solid #ff79c6;
 }
 
-body[data-theme="light"] .jacob {
+body[data-theme="light"] .struggle {
   background: rgba(255, 121, 198, 0.2);
   border-left: 3px solid #d73a49;
 }
 
-.jacob .group-header {
+.struggle .group-header {
   color: #ff79c6;
 }
 
-body[data-theme="light"] .jacob .group-header {
+body[data-theme="light"] .struggle .group-header {
   color: #d73a49;
 }
 
-.joseph {
+.redemption {
   background: rgba(255, 184, 108, 0.1);
   border-left: 3px solid #ffb86c;
 }
 
-body[data-theme="light"] .joseph {
+body[data-theme="light"] .redemption {
   background: rgba(255, 184, 108, 0.2);
   border-left: 3px solid #f5a623;
 }
 
-.joseph .group-header {
+.redemption .group-header {
   color: #ffb86c;
 }
 
-body[data-theme="light"] .joseph .group-header {
+body[data-theme="light"] .redemption .group-header {
   color: #f5a623;
+}
+
+/* Exodus Categories */
+.oppression {
+  background: rgba(255, 99, 71, 0.1); /* Tomato red */
+  border-left: 3px solid #ff6347;
+}
+
+body[data-theme="light"] .oppression {
+  background: rgba(255, 99, 71, 0.2);
+  border-left: 3px solid #d73a49;
+}
+
+.oppression .group-header {
+  color: #ff6347;
+}
+
+body[data-theme="light"] .oppression .group-header {
+  color: #d73a49;
+}
+
+.plagues {
+  background: rgba(255, 165, 0, 0.1); /* Orange */
+  border-left: 3px solid #ffa500;
+}
+
+body[data-theme="light"] .plagues {
+  background: rgba(255, 165, 0, 0.2);
+  border-left: 3px solid #f5a623;
+}
+
+.plagues .group-header {
+  color: #ffa500;
+}
+
+body[data-theme="light"] .plagues .group-header {
+  color: #f5a623;
+}
+
+.miracles {
+  background: rgba(86, 156, 214, 0.1); /* Blue */
+  border-left: 3px solid #569cd6;
+}
+
+body[data-theme="light"] .miracles {
+  background: rgba(86, 156, 214, 0.2);
+  border-left: 3px solid #0078d4;
+}
+
+.miracles .group-header {
+  color: #569cd6;
+}
+
+body[data-theme="light"] .miracles .group-header {
+  color: #0078d4;
+}
+
+.covenant {
+  background: rgba(147, 112, 219, 0.1); /* Purple */
+  border-left: 3px solid #9370db;
+}
+
+body[data-theme="light"] .covenant {
+  background: rgba(147, 112, 219, 0.2);
+  border-left: 3px solid #6f42c1;
+}
+
+.covenant .group-header {
+  color: #9370db;
+}
+
+body[data-theme="light"] .covenant .group-header {
+  color: #6f42c1;
+}
+
+/* Leviticus Categories */
+.sacrifices {
+  background: rgba(139, 69, 19, 0.1); /* Brown */
+  border-left: 3px solid #8b4513;
+}
+
+body[data-theme="light"] .sacrifices {
+  background: rgba(139, 69, 19, 0.2);
+  border-left: 3px solid #a0522d;
+}
+
+.sacrifices .group-header {
+  color: #8b4513;
+}
+
+body[data-theme="light"] .sacrifices .group-header {
+  color: #a0522d;
+}
+
+.holiness {
+  background: rgba(80, 250, 123, 0.1); /* Green */
+  border-left: 3px solid #50fa7b;
+}
+
+body[data-theme="light"] .holiness {
+  background: rgba(80, 250, 123, 0.2);
+  border-left: 3px solid #36b37e;
+}
+
+.holiness .group-header {
+  color: #50fa7b;
+}
+
+body[data-theme="light"] .holiness .group-header {
+  color: #36b37e;
+}
+
+.feasts {
+  background: rgba(86, 156, 214, 0.1); /* Blue */
+  border-left: 3px solid #569cd6;
+}
+
+body[data-theme="light"] .feasts {
+  background: rgba(86, 156, 214, 0.2);
+  border-left: 3px solid #0078d4;
+}
+
+.feasts .group-header {
+  color: #569cd6;
+}
+
+body[data-theme="light"] .feasts .group-header {
+  color: #0078d4;
+}
+
+.warnings {
+  background: rgba(255, 215, 0, 0.1); /* Gold */
+  border-left: 3px solid #ffd700;
+}
+
+body[data-theme="light"] .warnings {
+  background: rgba(255, 215, 0, 0.2);
+  border-left: 3px solid #f5a623;
+}
+
+.warnings .group-header {
+  color: #ffd700;
+}
+
+body[data-theme="light"] .warnings .group-header {
+  color: #f5a623;
+}
+
+/* Numbers Categories */
+.counting {
+  background: rgba(106, 90, 205, 0.1); /* Slate blue */
+  border-left: 3px solid #6a5acd;
+}
+
+body[data-theme="light"] .counting {
+  background: rgba(106, 90, 205, 0.2);
+  border-left: 3px solid #483d8b;
+}
+
+.counting .group-header {
+  color: #6a5acd;
+}
+
+body[data-theme="light"] .counting .group-header {
+  color: #483d8b;
+}
+
+.wandering {
+  background: rgba(255, 165, 0, 0.1); /* Orange */
+  border-left: 3px solid #ffa500;
+}
+
+body[data-theme="light"] .wandering {
+  background: rgba(255, 165, 0, 0.2);
+  border-left: 3px solid #f5a623;
+}
+
+.wandering .group-header {
+  color: #ffa500;
+}
+
+body[data-theme="light"] .wandering .group-header {
+  color: #f5a623;
+}
+
+.battles {
+  background: rgba(220, 20, 60, 0.1); /* Crimson */
+  border-left: 3px solid #dc143c;
+}
+
+body[data-theme="light"] .battles {
+  background: rgba(220, 20, 60, 0.2);
+  border-left: 3px solid #c82333;
+}
+
+.battles .group-header {
+  color: #dc143c;
+}
+
+body[data-theme="light"] .battles .group-header {
+  color: #c82333;
+}
+
+.inheritance {
+  background: rgba(154, 205, 50, 0.1); /* Yellow-green */
+  border-left: 3px solid #9acd32;
+}
+
+body[data-theme="light"] .inheritance {
+  background: rgba(154, 205, 50, 0.2);
+  border-left: 3px solid #7cb342;
+}
+
+.inheritance .group-header {
+  color: #9acd32;
+}
+
+body[data-theme="light"] .inheritance .group-header {
+  color: #7cb342;
+}
+
+/* Deuteronomy Categories */
+.repeat {
+  background: rgba(106, 90, 205, 0.1); /* Slate blue */
+  border-left: 3px solid #6a5acd;
+}
+
+body[data-theme="light"] .repeat {
+  background: rgba(106, 90, 205, 0.2);
+  border-left: 3px solid #483d8b;
+}
+
+.repeat .group-header {
+  color: #6a5acd;
+}
+
+body[data-theme="light"] .repeat .group-header {
+  color: #483d8b;
+}
+
+.law {
+  background: rgba(255, 215, 0, 0.1); /* Gold */
+  border-left: 3px solid #ffd700;
+}
+
+body[data-theme="light"] .law {
+  background: rgba(255, 215, 0, 0.2);
+  border-left: 3px solid #f5a623;
+}
+
+.law .group-header {
+  color: #ffd700;
+}
+
+body[data-theme="light"] .law .group-header {
+  color: #f5a623;
+}
+
+.warning {
+  background: rgba(255, 99, 71, 0.1); /* Tomato red */
+  border-left: 3px solid #ff6347;
+}
+
+body[data-theme="light"] .warning {
+  background: rgba(255, 99, 71, 0.2);
+  border-left: 3px solid #d73a49;
+}
+
+.warning .group-header {
+  color: #ff6347;
+}
+
+body[data-theme="light"] .warning .group-header {
+  color: #d73a49;
+}
+
+.handoff {
+  background: rgba(135, 206, 235, 0.1); /* Sky blue */
+  border-left: 3px solid #87ceeb;
+}
+
+body[data-theme="light"] .handoff {
+  background: rgba(135, 206, 235, 0.2);
+  border-left: 3px solid #4a90e2;
+}
+
+.handoff .group-header {
+  color: #87ceeb;
+}
+
+body[data-theme="light"] .handoff .group-header {
+  color: #4a90e2;
 }
 
 .group-header {
@@ -247,6 +540,21 @@ body[data-theme="light"] .joseph .group-header {
 
 .group-header:hover {
   opacity: 0.8;
+}
+
+.group-name {
+  display: block;
+}
+
+.group-subtitles {
+  font-size: 12px;
+  font-weight: normal;
+  color: #a9a9a9;
+  margin-top: 2px;
+}
+
+body[data-theme="light"] .group-subtitles {
+  color: #666666;
 }
 
 .chapters {
