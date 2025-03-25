@@ -3,31 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SRC Bible</title>  
+  <title>SRC Bible</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4.13.1/themes/vue.css">
-  <link rel="stylesheet" href="styles.css"> <!-- Custom styles -->
 </head>
 <body>
-  <div id="menu-container">
-    <!-- Custom menu will be injected here via JavaScript -->
-  </div>
   <div id="app"></div>
   <script>
-  window.$docsify = {
-    name: 'SRC Bible',
-    repo: 'marvingregormrzyglod/SRC_Bible',
-    loadSidebar: false,
-    subMaxLevel: 0,
-    auto2top: true,
-    homepage: 'intro.md || README.md',
-    basePath: '/',
-    notFoundPage: false,  // Disable Docsify’s 404 page to debug
-    coverpage: false,
-    loadNavbar: false,
-    noSidebar: true  // Explicitly hide sidebar
-  };
-</script>
+    window.$docsify = {
+      name: 'SRC Bible',
+      homepage: 'intro.md',
+      basePath: '/',
+      loadSidebar: false,
+      noSidebar: true
+    };
+  </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
-  <script src="menu.js"></script> <!-- Custom menu script -->
 </body>
 </html>
