@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4.13.1/themes/vue.css">
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+    # Test Page
+    This is a hardcoded test to see if Docsify renders content.
+  </div>
   <script>
     window.$docsify = {
       name: 'SRC Bible',
-      homepage: 'intro.md',
-      basePath: '/',
+      el: '#app',  // Render content from the #app div
       loadSidebar: false,
       noSidebar: true
     };
