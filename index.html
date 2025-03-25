@@ -14,9 +14,12 @@
   <script>
     window.$docsify = {
       name: 'SRC Bible',
-      el: '#app',  // Render content from the #app div
+      el: '#app',
       loadSidebar: false,
-      noSidebar: true
+      noSidebar: true,
+      markdown: true,  // Ensure inline Markdown is processed
+      autoHeader: false,  // Prevent Docsify from fetching files
+      executeScript: false  // Disable script execution for now
     };
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
