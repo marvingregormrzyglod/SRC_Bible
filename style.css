@@ -6,67 +6,106 @@ body {
   display: flex;
 }
 
-#navigation {
-  width: 250px;
+.container {
+  display: flex;
+  width: 100%;
   height: 100vh;
+}
+
+#book-stack {
+  width: 150px;
   background: #252526;
   padding: 20px;
-  overflow-y: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
   border-right: 2px solid #569cd6;
+  overflow-y: auto;
 }
 
-#app {
-  margin-left: 270px; /* Space for navigation */
-  padding: 20px;
-  flex: 1;
-}
-
-/* Navigation styles */
-.section {
-  margin-bottom: 20px;
-}
-
-.section-header {
-  font-size: 18px;
-  font-weight: bold;
-  color: #569cd6;
-  cursor: pointer;
-  padding: 5px 0;
-  border-bottom: 1px solid #3e3e3e;
-}
-
-.book-list {
-  margin-left: 10px;
-}
-
-.book {
-  margin: 10px 0;
-}
-
-.book-header {
-  font-size: 16px;
+.book-button {
+  background: #2d2d2d;
   color: #ff79c6;
+  padding: 10px;
+  margin: 5px 0;
+  text-align: center;
   cursor: pointer;
-  padding: 5px 0;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
-.chapter-list {
-  margin-left: 20px;
+.book-button:hover {
+  background: #3e3e3e;
+}
+
+#chapter-groups {
+  width: 300px;
+  background: #1e1e1e;
+  padding: 20px;
+  border-right: 2px solid #569cd6;
+  overflow-y: auto;
+}
+
+.chapter-groups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chapter-group {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.creation {
+  background: rgba(86, 156, 214, 0.1); /* Subtle blue for Creation */
+  border-left: 3px solid #569cd6;
+}
+
+.abraham {
+  background: rgba(80, 250, 123, 0.1); /* Subtle green for Abraham */
+  border-left: 3px solid #50fa7b;
+}
+
+.jacob {
+  background: rgba(255, 121, 198, 0.1); /* Subtle pink for Jacob */
+  border-left: 3px solid #ff79c6;
+}
+
+.joseph {
+  background: rgba(255, 184, 108, 0.1); /* Subtle orange for Joseph */
+  border-left: 3px solid #ffb86c;
+}
+
+.group-header {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d4d4d4;
+  margin-bottom: 10px;
+}
+
+.chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .chapter-link {
-  display: block;
-  font-size: 14px;
+  background: #2d2d2d;
   color: #d4d4d4;
+  padding: 5px 10px;
   text-decoration: none;
-  padding: 3px 0;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: background 0.3s;
 }
 
 .chapter-link:hover {
+  background: #3e3e3e;
   color: #50fa7b;
+}
+
+#app {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 /* Markdown content styles */
