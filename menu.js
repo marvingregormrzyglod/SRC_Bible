@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create chapter dropdown
   const chapterSelect = document.createElement('select');
   chapterSelect.id = 'chapter-select';
-  chapterSelect.disabled = true; // Disabled until book is selected
+  chapterSelect.disabled = true;
   
   // Append to container
   menuContainer.appendChild(bookSelect);
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const book = bookSelect.value;
     const chapter = e.target.value;
     if (book && chapter) {
-      // Navigate to the file using Docsify's routing
+      // Update the hash to trigger the hashchange event
       window.location.hash = `#/scripture/${book}/${chapter}`;
     }
   });
