@@ -61,10 +61,47 @@ body[data-theme="light"] #theme-toggle {
   color: #333333;
 }
 
+/* Search bar styles */
+.search-container {
+  padding: 10px 20px;
+  background: #252526;
+  border-bottom: 2px solid #569cd6;
+}
+
+body[data-theme="light"] .search-container {
+  background: #ffffff;
+  border-bottom: 2px solid #0078d4;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #569cd6;
+  border-radius: 5px;
+  background: #2d2d2d;
+  color: #d4d4d4;
+  outline: none;
+}
+
+body[data-theme="light"] #search-bar {
+  background: #f5f5f5;
+  color: #333333;
+  border: 1px solid #0078d4;
+}
+
+#search-bar::placeholder {
+  color: #a9a9a9;
+}
+
+body[data-theme="light"] #search-bar::placeholder {
+  color: #666666;
+}
+
 .container {
   display: flex;
   width: 100%;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 180px);
 }
 
 .nav-toggle {
@@ -103,7 +140,7 @@ body[data-theme="light"] #book-stack {
 
 .book-button {
   background: #2d2d2d;
-  color: #ff79c6;
+  color: #d4a017;
   padding: 10px;
   margin: 5px 0;
   text-align: center;
@@ -114,7 +151,7 @@ body[data-theme="light"] #book-stack {
 
 body[data-theme="light"] .book-button {
   background: #e0e0e0;
-  color: #d73a49;
+  color: #b38b15;
 }
 
 .book-button:hover {
@@ -241,7 +278,7 @@ body[data-theme="light"] .redemption .group-header {
 
 /* Exodus Categories */
 .oppression {
-  background: rgba(255, 99, 71, 0.1); /* Tomato red */
+  background: rgba(255, 99, 71, 0.1);
   border-left: 3px solid #ff6347;
 }
 
@@ -259,7 +296,7 @@ body[data-theme="light"] .oppression .group-header {
 }
 
 .plagues {
-  background: rgba(255, 165, 0, 0.1); /* Orange */
+  background: rgba(255, 165, 0, 0.1);
   border-left: 3px solid #ffa500;
 }
 
@@ -277,7 +314,7 @@ body[data-theme="light"] .plagues .group-header {
 }
 
 .miracles {
-  background: rgba(86, 156, 214, 0.1); /* Blue */
+  background: rgba(86, 156, 214, 0.1);
   border-left: 3px solid #569cd6;
 }
 
@@ -295,7 +332,7 @@ body[data-theme="light"] .miracles .group-header {
 }
 
 .covenant {
-  background: rgba(147, 112, 219, 0.1); /* Purple */
+  background: rgba(147, 112, 219, 0.1);
   border-left: 3px solid #9370db;
 }
 
@@ -314,7 +351,7 @@ body[data-theme="light"] .covenant .group-header {
 
 /* Leviticus Categories */
 .sacrifices {
-  background: rgba(139, 69, 19, 0.1); /* Brown */
+  background: rgba(139, 69, 19, 0.1);
   border-left: 3px solid #8b4513;
 }
 
@@ -332,7 +369,7 @@ body[data-theme="light"] .sacrifices .group-header {
 }
 
 .holiness {
-  background: rgba(80, 250, 123, 0.1); /* Green */
+  background: rgba(80, 250, 123, 0.1);
   border-left: 3px solid #50fa7b;
 }
 
@@ -350,7 +387,7 @@ body[data-theme="light"] .holiness .group-header {
 }
 
 .feasts {
-  background: rgba(86, 156, 214, 0.1); /* Blue */
+  background: rgba(86, 156, 214, 0.1);
   border-left: 3px solid #569cd6;
 }
 
@@ -368,7 +405,7 @@ body[data-theme="light"] .feasts .group-header {
 }
 
 .warnings {
-  background: rgba(255, 215, 0, 0.1); /* Gold */
+  background: rgba(255, 215, 0, 0.1);
   border-left: 3px solid #ffd700;
 }
 
@@ -387,7 +424,7 @@ body[data-theme="light"] .warnings .group-header {
 
 /* Numbers Categories */
 .counting {
-  background: rgba(106, 90, 205, 0.1); /* Slate blue */
+  background: rgba(106, 90, 205, 0.1);
   border-left: 3px solid #6a5acd;
 }
 
@@ -405,7 +442,7 @@ body[data-theme="light"] .counting .group-header {
 }
 
 .wandering {
-  background: rgba(255, 165, 0, 0.1); /* Orange */
+  background: rgba(255, 165, 0, 0.1);
   border-left: 3px solid #ffa500;
 }
 
@@ -423,7 +460,7 @@ body[data-theme="light"] .wandering .group-header {
 }
 
 .battles {
-  background: rgba(220, 20, 60, 0.1); /* Crimson */
+  background: rgba(220, 20, 60, 0.1);
   border-left: 3px solid #dc143c;
 }
 
@@ -441,7 +478,7 @@ body[data-theme="light"] .battles .group-header {
 }
 
 .inheritance {
-  background: rgba(154, 205, 50, 0.1); /* Yellow-green */
+  background: rgba(154, 205, 50, 0.1);
   border-left: 3px solid #9acd32;
 }
 
@@ -460,7 +497,7 @@ body[data-theme="light"] .inheritance .group-header {
 
 /* Deuteronomy Categories */
 .repeat {
-  background: rgba(106, 90, 205, 0.1); /* Slate blue */
+  background: rgba(106, 90, 205, 0.1);
   border-left: 3px solid #6a5acd;
 }
 
@@ -478,7 +515,7 @@ body[data-theme="light"] .repeat .group-header {
 }
 
 .law {
-  background: rgba(255, 215, 0, 0.1); /* Gold */
+  background: rgba(255, 215, 0, 0.1);
   border-left: 3px solid #ffd700;
 }
 
@@ -496,7 +533,7 @@ body[data-theme="light"] .law .group-header {
 }
 
 .warning {
-  background: rgba(255, 99, 71, 0.1); /* Tomato red */
+  background: rgba(255, 99, 71, 0.1);
   border-left: 3px solid #ff6347;
 }
 
@@ -514,7 +551,7 @@ body[data-theme="light"] .warning .group-header {
 }
 
 .handoff {
-  background: rgba(135, 206, 235, 0.1); /* Sky blue */
+  background: rgba(135, 206, 235, 0.1);
   border-left: 3px solid #87ceeb;
 }
 
@@ -560,17 +597,18 @@ body[data-theme="light"] .group-subtitles {
 .chapters {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
 }
 
 .chapter-link {
   background: #2d2d2d;
   color: #d4d4d4;
-  padding: 5px 10px;
+  padding: 8px 12px;
   text-decoration: none;
-  border-radius: 3px;
-  font-size: 14px;
-  transition: background 0.3s, transform 0.2s;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
 }
 
 body[data-theme="light"] .chapter-link {
@@ -581,12 +619,14 @@ body[data-theme="light"] .chapter-link {
 .chapter-link:hover {
   background: #3e3e3e;
   color: #50fa7b;
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 body[data-theme="light"] .chapter-link:hover {
   background: #d0d0d0;
   color: #36b37e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .chapter-link.active {
@@ -648,12 +688,6 @@ body[data-theme="light"] .markdown-section h3 {
 
 .markdown-section pre, .markdown-section code {
   font-family: 'Fira Code', monospace;
-  color: #ff79c6;
-}
-
-body[data-theme="light"] .markdown-section pre,
-body[data-theme="light"] .markdown-section code {
-  color: #d73a49;
 }
 
 .markdown-section pre {
@@ -665,6 +699,71 @@ body[data-theme="light"] .markdown-section code {
 
 body[data-theme="light"] .markdown-section pre {
   background: #f5f5f5;
+  color: #333333;
+}
+
+/* Custom Highlight.js styles for pseudo-code */
+.hljs {
+  background: #2d2d2d;
+  color: #d4d4d4;
+}
+
+body[data-theme="light"] .hljs {
+  background: #f5f5f5;
+  color: #333333;
+}
+
+/* Keywords (e.g., if, else, for) */
+.hljs-keyword {
+  color: #e67e22; /* Warm orange */
+}
+
+body[data-theme="light"] .hljs-keyword {
+  color: #d35400; /* Darker orange */
+}
+
+/* Strings (e.g., "text") */
+.hljs-string {
+  color: #2ecc71; /* Soft green */
+}
+
+body[data-theme="light"] .hljs-string {
+  color: #27ae60; /* Darker green */
+}
+
+/* Numbers */
+.hljs-number {
+  color: #3498db; /* Light blue */
+}
+
+body[data-theme="light"] .hljs-number {
+  color: #2980b9; /* Darker blue */
+}
+
+/* Comments (e.g., // comment) */
+.hljs-comment {
+  color: #7f8c8d; /* Muted gray */
+}
+
+body[data-theme="light"] .hljs-comment {
+  color: #7f8c8d;
+}
+
+/* Operators (e.g., +, -, =) */
+.hljs-operator {
+  color: #d4a017; /* Mustard brown */
+}
+
+body[data-theme="light"] .hljs-operator {
+  color: #b38b15; /* Darker mustard brown */
+}
+
+/* Punctuation (e.g., parentheses, braces) */
+.hljs-punctuation {
+  color: #d4d4d4;
+}
+
+body[data-theme="light"] .hljs-punctuation {
   color: #333333;
 }
 
@@ -781,7 +880,7 @@ footer a:hover {
   }
 
   .chapter-link {
-    padding: 8px 12px; /* Larger touch target */
+    padding: 10px 14px;
   }
 
   #app {

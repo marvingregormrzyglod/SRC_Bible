@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Add Highlight.js styles (using a default theme as a base, we'll override in style.css) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 </head>
 <body data-theme="dark">
   <header>
@@ -14,6 +16,9 @@
     <p>Scripture Reimagined as Code</p>
     <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search books or chapters (e.g., Genesis 1, Psalms Lament)">
+  </div>
   <div class="container">
     <div id="nav-toggle" class="nav-toggle">☰</div>
     <div id="book-stack">
@@ -25,9 +30,11 @@
     <div id="app" class="markdown-section"></div>
   </div>
   <footer>
-    <p>Provided by The Salty Friends | Developed by <a href="https://marvingregormrzyglod.github.io/">Marvin Gregor Mrzyglod</a</p>
+    <p>Created by [Your Name] | <a href="https://github.com/marvingregormrzyglod/SRC_Bible">View on GitHub</a></p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Add Highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="menu.js"></script>
   <script>
     // Theme toggle functionality
@@ -70,6 +77,10 @@
         const markdown = await response.text();
         const html = marked.parse(markdown);
         appDiv.innerHTML = html;
+        // Apply Highlight.js to code blocks after rendering Markdown
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
       } catch (error) {
         console.error('Error loading Markdown:', error);
         appDiv.innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
