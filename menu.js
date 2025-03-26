@@ -5,8 +5,8 @@ const books = {
   "leviticus": 27,
   "numbers": 36,
   "deuteronomy": 34,
-  "john": 21, // Gospel of John
-  "psalms": 150 // Book of Psalms
+  "john": 21,
+  "psalms": 150
 };
 
 // Define chapter groupings for each book with subtitles
@@ -59,22 +59,59 @@ const psalmsGroups = [
   { name: "🎉 PRAISE", start: 107, end: 150, class: "inheritance", subtitles: "Hallelujah • Pilgrim Songs • Final Chorus" }
 ];
 
+// Map books to their groups for easier lookup
+const bookGroups = {
+  "genesis": genesisGroups,
+  "exodus": exodusGroups,
+  "leviticus": leviticusGroups,
+  "numbers": numbersGroups,
+  "deuteronomy": deuteronomyGroups,
+  "john": johnGroups,
+  "psalms": psalmsGroups
+};
+
 // Populate the navigation
 document.addEventListener('DOMContentLoaded', () => {
   const bookList = document.getElementById('book-list');
   const chapterList = document.getElementById('chapter-list');
+  const searchBar = document.getElementById('search-bar');
 
-  Object.keys(books).forEach(book => {
-    const bookButton = document.createElement('div');
-    bookButton.className = 'book-button';
-    bookButton.textContent = book.charAt(0).toUpperCase() + book.slice(1);
-    bookButton.addEventListener('click', () => {
-      document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-      bookButton.classList.add('active');
-      chapterList.innerHTML = '';
-      showChapters(book, chapterList);
+  // Function to populate books
+  function populateBooks(filter = '') {
+    bookList.innerHTML = '';
+    Object.keys(books).forEach(book => {
+      const bookName = book.charAt(0).toUpperCase() + book.slice(1);
+      if (filter && !bookName.toLowerCase().includes(filter.toLowerCase())) {
+        return;
+      }
+      const bookButton = document.createElement('div');
+      bookButton.className = 'book-button';
+      bookButton.textContent = bookName;
+      bookButton.addEventListener('click', () => {
+        document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+        bookButton.classList.add('active');
+        chapterList.innerHTML = '';
+        showChapters(book, chapterList, filter);
+      });
+      bookList.appendChild(bookButton);
     });
-    bookList.appendChild(bookButton);
+  }
+
+  // Initial population of books
+  populateBooks();
+
+  // Search functionality
+  searchBar.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.trim();
+    populateBooks(searchTerm);
+    const activeBook = document.querySelector('.book-button.active');
+    if (activeBook) {
+      const book = activeBook.textContent.toLowerCase();
+      chapterList.innerHTML = '';
+      showChapters(book, chapterList, searchTerm);
+    } else {
+      chapterList.innerHTML = '';
+    }
   });
 
   const hash = window.location.hash.replace('#/', '');
@@ -102,21 +139,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function showChapters(book, chapterList) {
+function showChapters(book, chapterList, filter = '') {
   const groupsContainer = document.createElement('div');
   groupsContainer.className = 'chapter-groups-container';
 
-  let groups;
-  if (book === 'genesis') groups = genesisGroups;
-  else if (book === 'exodus') groups = exodusGroups;
-  else if (book === 'leviticus') groups = leviticusGroups;
-  else if (book === 'numbers') groups = numbersGroups;
-  else if (book === 'deuteronomy') groups = deuteronomyGroups;
-  else if (book === 'john') groups = johnGroups;
-  else if (book === 'psalms') groups = psalmsGroups;
-
+  const groups = bookGroups[book];
   if (groups) {
     groups.forEach(group => {
+      // Check if group matches the filter (by name, subtitle, or chapter range)
+      const searchTerm = filter.toLowerCase();
+      const groupNameMatch = group.name.toLowerCase().includes(searchTerm);
+      const subtitlesMatch = group.subtitles.toLowerCase().includes(searchTerm);
+      const chapterRangeMatch = Array.from({ length: group.end - group.start + 1 }, (_, i) => group.start + i)
+        .some(chapter => chapter.toString() === searchTerm);
+
+      if (filter && !groupNameMatch && !subtitlesMatch && !chapterRangeMatch) {
+        return;
+      }
+
       const groupDiv = document.createElement('div');
       groupDiv.className = `chapter-group ${group.class}`;
 
@@ -143,10 +183,13 @@ function showChapters(book, chapterList) {
       chaptersDiv.className = 'chapters';
       for (let i = group.start; i <= group.end; i++) {
         const chapter = i.toString().padStart(2, '0');
+        if (filter && !chapter.includes(filter) && !groupNameMatch && !subtitlesMatch) {
+          continue;
+        }
         const chapterLink = document.createElement('a');
         chapterLink.href = `#/scripture/${book}/${chapter}`;
         chapterLink.className = 'chapter-link';
-        chapterLink.textContent = `Ch. ${i}`;
+        chapterLink.textContent = i; // Updated for better UX (see improvement 4)
         chapterLink.addEventListener('click', (e) => {
           e.preventDefault();
           document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
@@ -155,8 +198,10 @@ function showChapters(book, chapterList) {
         });
         chaptersDiv.appendChild(chapterLink);
       }
-      groupDiv.appendChild(chaptersDiv);
-      groupsContainer.appendChild(groupDiv);
+      if (chaptersDiv.children.length > 0) {
+        groupDiv.appendChild(chaptersDiv);
+        groupsContainer.appendChild(groupDiv);
+      }
     });
   }
 
