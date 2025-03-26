@@ -4,7 +4,9 @@ const books = {
   "exodus": 40,
   "leviticus": 27,
   "numbers": 36,
-  "deuteronomy": 34
+  "deuteronomy": 34,
+  "john": 21, // Gospel of John
+  "psalms": 150 // Book of Psalms
 };
 
 // Define chapter groupings for each book with subtitles
@@ -16,16 +18,16 @@ const genesisGroups = [
 ];
 
 const exodusGroups = [
-  { name: "🔴 Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
-  { name: "🟠 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
-  { name: "🔵 Miracles", start: 14, end: 18, class: "miracles", subtitles: "Red Sea • Manna" },
-  { name: "🟣 Covenant", start: 19, end: 40, class: "covenant", subtitles: "Law • Tabernacle" }
+  { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
+  { name: "🐸 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
+  { name: "🌊 Miracles", start: 14, end: 18, class: "miracles", subtitles: "Red Sea • Manna" },
+  { name: "✋ Covenant", start: 19, end: 40, class: "covenant", subtitles: "Law • Tabernacle" }
 ];
 
 const leviticusGroups = [
-  { name: "🟤 SACRIFICES", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
-  { name: "🟢 HOLINESS", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
-  { name: "🔵 FEASTS", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
+  { name: "🩸 SACRIFICES", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
+  { name: "✨ HOLINESS", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
+  { name: "🎉 FEASTS", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
   { name: "⚠️ WARNINGS", start: 26, end: 27, class: "warnings", subtitles: "Blessings • Curses" }
 ];
 
@@ -41,6 +43,20 @@ const deuteronomyGroups = [
   { name: "⚖️ LAW", start: 5, end: 26, class: "law", subtitles: "10 Commandments • Rules" },
   { name: "⚠️ WARNING", start: 27, end: 30, class: "warning", subtitles: "Blessings & Curses" },
   { name: "🕊️ HANDOFF", start: 31, end: 34, class: "handoff", subtitles: "Joshua • Moses’ death" }
+];
+
+const johnGroups = [
+  { name: "🌟 REVELATION", start: 1, end: 4, class: "beginnings", subtitles: "Word • Wedding • Born Again" },
+  { name: "✨ SIGNS", start: 5, end: 12, class: "miracles", subtitles: "Miracles • 'I AM' • Lazarus" },
+  { name: "❤️ LOVE", start: 13, end: 17, class: "holiness", subtitles: "Footwashing • New Command • Vine" },
+  { name: "☀️ GLORY", start: 18, end: 21, class: "redemption", subtitles: "Cross • Resurrection • 'Feed My Sheep'" }
+];
+
+const psalmsGroups = [
+  { name: "🙏 LAMENT", start: 1, end: 41, class: "oppression", subtitles: "Cries • Trust • Messianic Hints" },
+  { name: "✝️ DELIVERANCE", start: 42, end: 89, class: "handoff", subtitles: "Exile • Temple • God’s Faithfulness" },
+  { name: "🌿 WISDOM", start: 90, end: 106, class: "promise", subtitles: "Moses • Creation • Consequences" },
+  { name: "🎉 PRAISE", start: 107, end: 150, class: "inheritance", subtitles: "Hallelujah • Pilgrim Songs • Final Chorus" }
 ];
 
 // Populate the navigation
@@ -96,6 +112,8 @@ function showChapters(book, chapterList) {
   else if (book === 'leviticus') groups = leviticusGroups;
   else if (book === 'numbers') groups = numbersGroups;
   else if (book === 'deuteronomy') groups = deuteronomyGroups;
+  else if (book === 'john') groups = johnGroups;
+  else if (book === 'psalms') groups = psalmsGroups;
 
   if (groups) {
     groups.forEach(group => {
