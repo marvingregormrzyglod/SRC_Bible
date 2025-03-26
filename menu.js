@@ -146,7 +146,6 @@ function showChapters(book, chapterList, filter = '') {
   const groups = bookGroups[book];
   if (groups) {
     groups.forEach(group => {
-      // Check if group matches the filter (by name, subtitle, or chapter range)
       const searchTerm = filter.toLowerCase();
       const groupNameMatch = group.name.toLowerCase().includes(searchTerm);
       const subtitlesMatch = group.subtitles.toLowerCase().includes(searchTerm);
@@ -163,13 +162,11 @@ function showChapters(book, chapterList, filter = '') {
       const groupHeader = document.createElement('div');
       groupHeader.className = 'group-header';
 
-      // Add the category name
       const nameSpan = document.createElement('span');
       nameSpan.className = 'group-name';
       nameSpan.textContent = group.name;
       groupHeader.appendChild(nameSpan);
 
-      // Add the subtitles
       if (group.subtitles) {
         const subtitleSpan = document.createElement('div');
         subtitleSpan.className = 'group-subtitles';
@@ -189,7 +186,7 @@ function showChapters(book, chapterList, filter = '') {
         const chapterLink = document.createElement('a');
         chapterLink.href = `#/scripture/${book}/${chapter}`;
         chapterLink.className = 'chapter-link';
-        chapterLink.textContent = i; // Updated for better UX (see improvement 4)
+        chapterLink.textContent = i;
         chapterLink.addEventListener('click', (e) => {
           e.preventDefault();
           document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
