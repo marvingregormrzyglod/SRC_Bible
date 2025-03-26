@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SRC Bible</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
-  <!-- Add Highlight.js styles (using a default theme as a base, we'll override in style.css) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 </head>
-<body data-theme="dark">
+<body>
   <header>
     <h1>SRC Bible</h1>
     <p>Scripture Reimagined as Code</p>
-    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
   <div class="search-container">
     <input type="text" id="search-bar" placeholder="Search books or chapters (e.g., Genesis 1, Psalms Lament)">
@@ -33,27 +31,9 @@
     <p>Created by [Your Name] | <a href="https://github.com/marvingregormrzyglod/SRC_Bible">View on GitHub</a></p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <!-- Add Highlight.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="menu.js"></script>
   <script>
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Load saved theme from localStorage
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
-
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      body.setAttribute('data-theme', newTheme);
-      themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
-      localStorage.setItem('theme', newTheme);
-    });
-
     // Mobile navigation toggle
     const navToggle = document.getElementById('nav-toggle');
     const bookStack = document.getElementById('book-stack');
@@ -64,6 +44,27 @@
       chapterGroups.classList.toggle('active');
       navToggle.textContent = bookStack.classList.contains('active') ? '✖' : '☰';
     });
+
+    // Function to post-process Highlight.js output
+    function highlightPseudoCode(block) {
+      let text = block.textContent;
+      const keywords = /\b(if|else|for|while|let)\b/g;
+      const variables = /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/g;
+      const functions = /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/g;
+      const strings = /"[^"]*"/g;
+      const operators = /(==|=|\.)/g;
+      const comments = /\/\/.*$/gm;
+
+      text = text
+        .replace(comments, '<span class="hljs-comment">$&</span>')
+        .replace(keywords, '<span class="hljs-keyword">$&</span>')
+        .replace(strings, '<span class="hljs-string">$&</span>')
+        .replace(functions, '<span class="hljs-function">$&</span>')
+        .replace(operators, '<span class="hljs-operator">$&</span>')
+        .replace(variables, '<span class="hljs-variable">$&</span>');
+
+      block.innerHTML = text;
+    }
 
     // Function to fetch and render Markdown
     async function loadMarkdown(path) {
@@ -77,9 +78,9 @@
         const markdown = await response.text();
         const html = marked.parse(markdown);
         appDiv.innerHTML = html;
-        // Apply Highlight.js to code blocks after rendering Markdown
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightElement(block);
+          highlightPseudoCode(block);
         });
       } catch (error) {
         console.error('Error loading Markdown:', error);
