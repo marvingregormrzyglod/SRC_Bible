@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SRC Bible</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Lora:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 </head>
 <body>
   <header>
-    <h1>SRC Bible</h1>
+    <div class="header-decor">
+      <span class="leaf-icon">🍂</span>
+      <h1>SRC Bible</h1>
+      <span class="leaf-icon">🍂</span>
+    </div>
     <p>Scripture Reimagined as Code</p>
   </header>
   <div class="search-container">
@@ -28,7 +32,11 @@
     <div id="app" class="markdown-section"></div>
   </div>
   <footer>
-    <p>Created by [Your Name] | <a href="https://github.com/marvingregormrzyglod/SRC_Bible">View on GitHub</a></p>
+    <div class="footer-decor">
+      <span class="leaf-icon">🍁</span>
+      <p>Created by [Your Name] | <a href="https://github.com/marvingregormrzyglod/SRC_Bible">View on GitHub</a></p>
+      <span class="leaf-icon">🍁</span>
+    </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -45,25 +53,66 @@
       navToggle.textContent = bookStack.classList.contains('active') ? '✖' : '☰';
     });
 
-    // Function to post-process Highlight.js output
+    // Function to highlight pseudo-code
     function highlightPseudoCode(block) {
       let text = block.textContent;
-      const keywords = /\b(if|else|for|while|let)\b/g;
-      const variables = /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/g;
-      const functions = /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/g;
-      const strings = /"[^"]*"/g;
-      const operators = /(==|=|\.)/g;
-      const comments = /\/\/.*$/gm;
+      // Tokenize the text into lines
+      const lines = text.split('\n');
+      const highlightedLines = lines.map(line => {
+        // Skip empty lines
+        if (!line.trim()) return line;
 
-      text = text
-        .replace(comments, '<span class="hljs-comment">$&</span>')
-        .replace(keywords, '<span class="hljs-keyword">$&</span>')
-        .replace(strings, '<span class="hljs-string">$&</span>')
-        .replace(functions, '<span class="hljs-function">$&</span>')
-        .replace(operators, '<span class="hljs-operator">$&</span>')
-        .replace(variables, '<span class="hljs-variable">$&</span>');
+        // Define patterns for tokens
+        const tokens = [];
+        let remaining = line;
 
-      block.innerHTML = text;
+        // Patterns for different token types
+        const patterns = [
+          { type: 'comment', regex: /\/\/.*$/ },
+          { type: 'keyword', regex: /\b(if|else|for|while|let|function)\b/ },
+          { type: 'string', regex: /"[^"]*"/ },
+          { type: 'function', regex: /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/ },
+          { type: 'variable', regex: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/ },
+          { type: 'operator', regex: /(==|=|\.)/ },
+          { type: 'punctuation', regex: /[\{\}\(\)\[\];,]/ }
+        ];
+
+        // Find all matches for each pattern
+        patterns.forEach(({ type, regex }) => {
+          let match;
+          while ((match = regex.exec(remaining)) !== null) {
+            const start = match.index;
+            const end = start + match[0].length;
+            tokens.push({ type, value: match[0], start, end });
+            // Replace the matched portion with spaces to avoid double-matching
+            remaining = remaining.substring(0, start) + ' '.repeat(end - start) + remaining.substring(end);
+          }
+        });
+
+        // Sort tokens by start position
+        tokens.sort((a, b) => a.start - b.start);
+
+        // Rebuild the line with highlighted tokens
+        let result = '';
+        let lastIndex = 0;
+        tokens.forEach(token => {
+          // Add any text before the token
+          if (lastIndex < token.start) {
+            result += line.substring(lastIndex, token.start);
+          }
+          // Add the highlighted token
+          result += `<span class="hljs-${token.type}">${token.value}</span>`;
+          lastIndex = token.end;
+        });
+        // Add any remaining text after the last token
+        if (lastIndex < line.length) {
+          result += line.substring(lastIndex);
+        }
+
+        return result;
+      });
+
+      block.innerHTML = highlightedLines.join('\n');
     }
 
     // Function to fetch and render Markdown
