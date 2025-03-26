@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SRC Bible</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Lora:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 </head>
 <body>
   <header>
-    <h1>SRC Bible</h1>
-    <p>Scripture Reimagined as Code</p>
+    <div class="hero">
+      <h1>SRC Bible</h1>
+      <p>Scripture Reimagined as Code</p>
+    </div>
   </header>
   <div class="search-container">
-    <input type="text" id="search-bar" placeholder="Search books or chapters (e.g., Genesis 1, Psalms Lament)">
+    <input type="text" id="search-bar" placeholder="Search books or chapters (e.g., Genesis 1, Psalms 23)">
   </div>
   <div class="container">
     <div id="nav-toggle" class="nav-toggle">☰</div>
@@ -34,6 +36,42 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="menu.js"></script>
   <script>
+    // Register custom Highlight.js language for pseudo-code
+    hljs.registerLanguage('pseudo', function(hljs) {
+      return {
+        keywords: 'if else for while let',
+        contains: [
+          hljs.COMMENT('//', '$'),
+          {
+            className: 'keyword',
+            begin: /\b(if|else|for|while|let)\b/
+          },
+          {
+            className: 'string',
+            begin: '"', end: '"',
+            contains: [{ begin: '\\\\"' }]
+          },
+          {
+            className: 'function',
+            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/
+          },
+          {
+            className: 'variable',
+            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/,
+            relevance: 0
+          },
+          {
+            className: 'operator',
+            begin: /(==|=|\.)/
+          },
+          {
+            className: 'punctuation',
+            begin: /[\(\)\{\}\[\]\.,;]/
+          }
+        ]
+      };
+    });
+
     // Mobile navigation toggle
     const navToggle = document.getElementById('nav-toggle');
     const bookStack = document.getElementById('book-stack');
@@ -44,27 +82,6 @@
       chapterGroups.classList.toggle('active');
       navToggle.textContent = bookStack.classList.contains('active') ? '✖' : '☰';
     });
-
-    // Function to post-process Highlight.js output
-    function highlightPseudoCode(block) {
-      let text = block.textContent;
-      const keywords = /\b(if|else|for|while|let)\b/g;
-      const variables = /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/g;
-      const functions = /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/g;
-      const strings = /"[^"]*"/g;
-      const operators = /(==|=|\.)/g;
-      const comments = /\/\/.*$/gm;
-
-      text = text
-        .replace(comments, '<span class="hljs-comment">$&</span>')
-        .replace(keywords, '<span class="hljs-keyword">$&</span>')
-        .replace(strings, '<span class="hljs-string">$&</span>')
-        .replace(functions, '<span class="hljs-function">$&</span>')
-        .replace(operators, '<span class="hljs-operator">$&</span>')
-        .replace(variables, '<span class="hljs-variable">$&</span>');
-
-      block.innerHTML = text;
-    }
 
     // Function to fetch and render Markdown
     async function loadMarkdown(path) {
@@ -79,8 +96,8 @@
         const html = marked.parse(markdown);
         appDiv.innerHTML = html;
         document.querySelectorAll('pre code').forEach((block) => {
+          block.classList.add('language-pseudo'); // Force pseudo-code language
           hljs.highlightElement(block);
-          highlightPseudoCode(block);
         });
       } catch (error) {
         console.error('Error loading Markdown:', error);
