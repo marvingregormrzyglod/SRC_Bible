@@ -16,16 +16,16 @@ const genesisGroups = [
 ];
 
 const exodusGroups = [
-  { name: "🔴 Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
-  { name: "🟠 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
-  { name: "🔵 Miracles", start: 14, end: 18, class: "miracles", subtitles: "Red Sea • Manna" },
-  { name: "🟣 Covenant", start: 19, end: 40, class: "covenant", subtitles: "Law • Tabernacle" }
+  { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
+  { name: "🐸 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
+  { name: "🌊 Miracles", start: 14, end: 18, class: "miracles", subtitles: "Red Sea • Manna" },
+  { name: "✋ Covenant", start: 19, end: 40, class: "covenant", subtitles: "Law • Tabernacle" }
 ];
 
 const leviticusGroups = [
-  { name: "🟤 SACRIFICES", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
-  { name: "🟢 HOLINESS", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
-  { name: "🔵 FEASTS", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
+  { name: "🩸 SACRIFICES", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
+  { name: "✨ HOLINESS", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
+  { name: "🎉 FEASTS", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
   { name: "⚠️ WARNINGS", start: 26, end: 27, class: "warnings", subtitles: "Blessings • Curses" }
 ];
 
@@ -39,7 +39,7 @@ const numbersGroups = [
 const deuteronomyGroups = [
   { name: "📜 REPEAT", start: 1, end: 4, class: "repeat", subtitles: "Moses reviews Exodus" },
   { name: "⚖️ LAW", start: 5, end: 26, class: "law", subtitles: "10 Commandments • Rules" },
-  { name: "⚠️ WARNING", start: 27, end: 30, class: "warning", subtitles: "Blessings & Curses" },
+  { name: "⚠️ WARNINGS", start: 27, end: 30, class: "warning", subtitles: "Blessings & Curses" },
   { name: "🕊️ HANDOFF", start: 31, end: 34, class: "handoff", subtitles: "Joshua • Moses’ death" }
 ];
 
