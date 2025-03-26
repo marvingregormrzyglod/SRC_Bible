@@ -41,7 +41,7 @@
       return {
         keywords: 'if else for while let',
         contains: [
-          hljs.COMMENT('//', '$'),
+          hljs.COMMENT('//', '$', { className: 'comment' }),
           {
             className: 'keyword',
             begin: /\b(if|else|for|while|let)\b/
@@ -53,7 +53,8 @@
           },
           {
             className: 'function',
-            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/
+            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*\s*\(\)/,
+            end: /\(\)/
           },
           {
             className: 'variable',
