@@ -40,12 +40,12 @@
     // Register custom Highlight.js language for pseudo-code
     hljs.registerLanguage('pseudo', function(hljs) {
       return {
-        keywords: 'if else for while let',
+        keywords: 'if else for while let function return true false', // Added true/false
         contains: [
           hljs.COMMENT('//', '$', { className: 'comment' }),
           {
             className: 'keyword',
-            begin: /\b(if|else|for|while|let)\b/
+            begin: /\b(if|else|for|while|let|function|return|true|false)\b/
           },
           {
             className: 'string',
