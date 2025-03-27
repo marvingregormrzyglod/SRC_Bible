@@ -18,19 +18,19 @@
   <div class="search-container">
     <input type="text" id="search-bar" placeholder="Search books or chapters (e.g., Genesis 1, Psalms 23)">
   </div>
-  <div class="minimize-toggle">⬅️</div>
   <div class="container">
-    <div id="nav-toggle" class="nav-toggle">☰</div>
-    <div id="book-stack">
-      <div id="book-list"></div>
-    </div>
-    <div id="chapter-groups">
-      <div id="chapter-list"></div>
+    <div class="nav-container">
+      <div id="book-stack">
+        <div id="book-list"></div>
+      </div>
+      <div id="chapter-groups">
+        <div id="chapter-list"></div>
+      </div>
     </div>
     <div id="app" class="markdown-section"></div>
   </div>
   <footer>
-    <p>Created by [Your Name] | <a href="https://github.com/marvingregormrzyglod/SRC_Bible">View on GitHub</a></p>
+    <p>Provided by The Salty Friends | Developed by <a href="https://marvingregormrzyglod.github.io/">Marvin Gregor Mrzyglod</a></p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -42,53 +42,16 @@
         keywords: 'if else for while let function return true false',
         contains: [
           hljs.COMMENT('//', '$', { className: 'comment' }),
-          {
-            className: 'keyword',
-            begin: /\b(if|else|for|while|let|function|return|true|false)\b/
+          { className: 'keyword', begin: /\b(if|else|for|while|let|function|return|true|false)\b/ },
+          { className: 'string', begin: '"', end: '"', contains: [{ begin: '\\\\"' }] },
+          { className: 'function', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/, end: /\s*\(/, returnBegin: true,
+            contains: [{ className: 'title', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*/ }]
           },
-          {
-            className: 'string',
-            begin: '"', end: '"',
-            contains: [{ begin: '\\\\"' }]
-          },
-          {
-            className: 'function',
-            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/,
-            end: /\s*\(/,
-            returnBegin: true,
-            contains: [
-              {
-                className: 'title',
-                begin: /\b[a-zA-Z_][a-zA-Z0-9_]*/
-              }
-            ]
-          },
-          {
-            className: 'variable',
-            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/,
-            relevance: 0
-          },
-          {
-            className: 'operator',
-            begin: /(==|=|\.)/
-          },
-          {
-            className: 'punctuation',
-            begin: /[\(\)\{\}\[\]\.,;]/
-          }
+          { className: 'variable', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/, relevance: 0 },
+          { className: 'operator', begin: /(==|=|\.)/ },
+          { className: 'punctuation', begin: /[\(\)\{\}\[\]\.,;]/ }
         ]
       };
-    });
-
-    // Mobile navigation toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const bookStack = document.getElementById('book-stack');
-    const chapterGroups = document.getElementById('chapter-groups');
-
-    navToggle.addEventListener('click', () => {
-      bookStack.classList.toggle('active');
-      chapterGroups.classList.toggle('active');
-      navToggle.textContent = bookStack.classList.contains('active') ? '✖' : '☰';
     });
 
     // Function to fetch and render Markdown
@@ -97,9 +60,7 @@
       appDiv.innerHTML = '<div class="loading">Loading...</div>';
       try {
         const response = await fetch(path);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const markdown = await response.text();
         const html = marked.parse(markdown);
         appDiv.innerHTML = html;
@@ -120,11 +81,8 @@
     // Listen for hash changes to load scripture content
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#/', '');
-      if (hash) {
-        loadMarkdown(`${hash}.md`);
-      } else {
-        loadMarkdown('intro.md');
-      }
+      if (hash) loadMarkdown(`${hash}.md`);
+      else loadMarkdown('intro.md');
     });
   </script>
 </body>

@@ -58,6 +58,7 @@ header {
   margin-bottom: 20px;
   width: 80%;
   max-width: 800px;
+  box-sizing: border-box;
 }
 
 #search-bar {
@@ -69,6 +70,7 @@ header {
   color: var(--text-primary);
   font-size: 16px;
   outline: none;
+  box-sizing: border-box;
 }
 
 #search-bar::placeholder {
@@ -77,39 +79,18 @@ header {
 
 .container {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
   width: 80%;
   max-width: 1200px;
 }
 
-.nav-toggle, .minimize-toggle {
-  background: var(--card-bg-start);
-  border: 1px solid var(--card-border);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+.nav-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  position: fixed;
-  top: 20px;
-  z-index: 1000;
-}
-
-.nav-toggle {
-  left: 20px;
-}
-
-.minimize-toggle {
-  left: 70px;
-}
-
-.nav-toggle:hover, .minimize-toggle:hover {
-  background: var(--card-bg-end);
+  gap: 20px;
+  width: 100%;
 }
 
 #book-stack, #chapter-groups {
@@ -122,52 +103,8 @@ header {
   overflow-y: auto;
 }
 
-/* Minimized book stack */
-#book-stack.minimized {
-  width: 50px;
-  padding: 20px 5px;
-}
-
-#book-stack.minimized .book-button {
-  font-size: 0.9em;
-  padding: 8px;
-  width: 40px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Minimized chapter groups */
-#chapter-groups.minimized {
-  width: 100px;
-  padding: 20px 10px;
-}
-
-#chapter-groups.minimized .group-header {
-  display: none;
-}
-
-#chapter-groups.minimized .chapter-groups-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-  gap: 8px;
-}
-
-#chapter-groups.minimized .chapter-group {
-  background: none;
-  padding: 0;
-  box-shadow: none;
-  border: none;
-  transition: none;
-}
-
-#chapter-groups.minimized .chapters {
-  display: contents;
-}
-
-#chapter-groups.minimized .chapter-link {
-  padding: 6px 8px;
-  font-size: 14px;
+#chapter-groups {
+  width: 300px;
 }
 
 .book-button {
@@ -197,9 +134,10 @@ header {
 }
 
 .chapter-group {
-  padding: 10px;
+  padding: 15px;
   background: var(--card-bg-start);
   border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 .group-header {
@@ -208,6 +146,8 @@ header {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--card-border);
 }
 
 .group-name {
@@ -225,6 +165,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 10px;
 }
 
 .chapter-link {
@@ -232,7 +173,6 @@ header {
   background: var(--card-bg-start);
   color: var(--text-primary);
   padding: 8px 12px;
-  margin: 5px;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease;
@@ -253,7 +193,8 @@ header {
   border-radius: 12px;
   box-shadow: 0 6px 12px var(--shadow);
   padding: 30px;
-  flex: 1;
+  width: 100%;
+  max-width: 800px;
   overflow-y: auto;
   min-height: 400px;
 }
@@ -290,37 +231,14 @@ header {
   font-family: 'Fira Code', monospace;
 }
 
-.markdown-section pre code .hljs-comment {
-  color: #a68b6b !important; /* Darker taupe */
-}
-
-.markdown-section pre code .hljs-keyword {
-  color: #ff4040 !important; /* Bright red */
-}
-
-.markdown-section pre code .hljs-variable {
-  color: #ffb07c !important; /* Bright peach */
-}
-
-.markdown-section pre code .hljs-function .hljs-title {
-  color: #00b7eb !important; /* Bright blue */
-}
-
-.markdown-section pre code .hljs-string {
-  color: #ffd700 !important; /* Bright yellow */
-}
-
-.markdown-section pre code .hljs-literal {
-  color: #ffd700 !important; /* Bright yellow */
-}
-
-.markdown-section pre code .hljs-operator {
-  color: #f5e8d3 !important; /* Soft cream */
-}
-
-.markdown-section pre code .hljs-punctuation {
-  color: #d1b899 !important; /* Soft taupe */
-}
+.markdown-section pre code .hljs-comment { color: #a68b6b !important; }
+.markdown-section pre code .hljs-keyword { color: #ff4040 !important; }
+.markdown-section pre code .hljs-variable { color: #ffb07c !important; }
+.markdown-section pre code .hljs-function .hljs-title { color: #00b7eb !important; }
+.markdown-section pre code .hljs-string { color: #ffd700 !important; }
+.markdown-section pre code .hljs-literal { color: #ffd700 !important; }
+.markdown-section pre code .hljs-operator { color: #f5e8d3 !important; }
+.markdown-section pre code .hljs-punctuation { color: #d1b899 !important; }
 
 .loading {
   text-align: center;
@@ -356,7 +274,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .container {
+  .nav-container {
     flex-direction: column;
     align-items: center;
   }
@@ -373,17 +291,5 @@ a:hover {
 
   header, .search-container, footer {
     width: 90%;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  #book-stack, #chapter-groups {
-    display: none;
-  }
-
-  #book-stack.active, #chapter-groups.active {
-    display: block;
   }
 }
