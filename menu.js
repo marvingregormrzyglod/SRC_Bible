@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
         bookButton.classList.add('active');
         chapterList.innerHTML = '';
-        showChapters(book, chapterList, ''); // Pass empty filter to show all chapters
+        showChapters(book, chapterList, '');
       });
       bookList.appendChild(bookButton);
     });
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update book names to 2 letters when minimized
     document.querySelectorAll('.book-button').forEach(btn => {
       const fullName = btn.dataset.fullName || btn.textContent;
-      btn.dataset.fullName = fullName; // Store full name
+      btn.dataset.fullName = fullName;
       btn.textContent = bookStack.classList.contains('minimized') 
         ? fullName.slice(0, 2) 
         : fullName;
