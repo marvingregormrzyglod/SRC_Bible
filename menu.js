@@ -1,3 +1,34 @@
+// In menu.js, add this near the top
+const bookGroups = [
+  { name: "Torah", books: ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"] },
+  { name: "Historical Books", books: ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"] },
+  { name: "Wisdom Literature", books: ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"] },
+  { name: "Major Prophets", books: ["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel"] },
+  { name: "Minor Prophets", books: ["hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"] },
+  { name: "Gospels", books: ["matthew", "mark", "luke", "john"] },
+  { name: "History", books: ["acts"] },
+  { name: "Pauline Epistles", books: ["romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon"] },
+  { name: "General Epistles", books: ["hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"] },
+  { name: "Apocalyptic", books: ["revelation"] }
+];
+
+// In menu.js, add this near the top
+const bookDisplayNames = {
+  "genesis": "Genesis", "exodus": "Exodus", "leviticus": "Leviticus", "numbers": "Numbers", "deuteronomy": "Deuteronomy",
+  "joshua": "Joshua", "judges": "Judges", "ruth": "Ruth", "1samuel": "1 Samuel", "2samuel": "2 Samuel", "1kings": "1 Kings",
+  "2kings": "2 Kings", "1chronicles": "1 Chronicles", "2chronicles": "2 Chronicles", "ezra": "Ezra", "nehemiah": "Nehemiah",
+  "esther": "Esther", "job": "Job", "psalms": "Psalms", "proverbs": "Proverbs", "ecclesiastes": "Ecclesiastes",
+  "songofsolomon": "Song of Solomon", "isaiah": "Isaiah", "jeremiah": "Jeremiah", "lamentations": "Lamentations",
+  "ezekiel": "Ezekiel", "daniel": "Daniel", "hosea": "Hosea", "joel": "Joel", "amos": "Amos", "obadiah": "Obadiah",
+  "jonah": "Jonah", "micah": "Micah", "nahum": "Nahum", "habakkuk": "Habakkuk", "zephaniah": "Zephaniah", "haggai": "Haggai",
+  "zechariah": "Zechariah", "malachi": "Malachi", "matthew": "Matthew", "mark": "Mark", "luke": "Luke", "john": "John",
+  "acts": "Acts", "romans": "Romans", "1corinthians": "1 Corinthians", "2corinthians": "2 Corinthians", "galatians": "Galatians",
+  "ephesians": "Ephesians", "philippians": "Philippians", "colossians": "Colossians", "1thessalonians": "1 Thessalonians",
+  "2thessalonians": "2 Thessalonians", "1timothy": "1 Timothy", "2timothy": "2 Timothy", "titus": "Titus", "philemon": "Philemon",
+  "hebrews": "Hebrews", "james": "James", "1peter": "1 Peter", "2peter": "2 Peter", "1john": "1 John", "2john": "2 John",
+  "3john": "3 John", "jude": "Jude", "revelation": "Revelation"
+};
+
 const books = {
   "genesis": 50,
   "exodus": 40,
@@ -91,23 +122,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const chapterList = document.getElementById('chapter-list');
   const searchBar = document.getElementById('search-bar');
 
-  function populateBooks(filter = '') {
-    bookList.innerHTML = '';
+  // Replace the existing populateBooks function
+function populateBooks(filter = '') {
+  bookList.innerHTML = ''; // Clear current content
+  if (filter) {
+    // If there's a filter, show matching books without groups
     Object.keys(books).forEach(book => {
-      const bookName = book.replace(/(\d)/, ' $1').replace(/([a-z])([A-Z])/g, '$1 $2');
-      if (filter && !bookName.toLowerCase().includes(filter.toLowerCase())) return;
-      const bookButton = document.createElement('div');
-      bookButton.className = 'book-button';
-      bookButton.textContent = bookName;
-      bookButton.addEventListener('click', () => {
-        document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-        bookButton.classList.add('active');
-        chapterList.innerHTML = '';
-        showChapters(book, chapterList, '');
+      const displayName = bookDisplayNames[book]; // Use display name (defined in step 3)
+      if (displayName.toLowerCase().includes(filter.toLowerCase())) {
+        const bookButton = document.createElement('div');
+        bookButton.className = 'book-button';
+        bookButton.textContent = displayName;
+        bookButton.addEventListener('click', () => {
+          document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+          bookButton.classList.add('active');
+          chapterList.innerHTML = '';
+          showChapters(book, chapterList, '');
+        });
+        bookList.appendChild(bookButton);
+      }
+    });
+  } else {
+    // No filter: show books in groups
+    bookGroups.forEach(group => {
+      const groupDiv = document.createElement('div');
+      groupDiv.className = 'book-group';
+      const groupHeader = document.createElement('h3');
+      groupHeader.textContent = group.name;
+      groupDiv.appendChild(groupHeader);
+      group.books.forEach(book => {
+        const displayName = bookDisplayNames[book];
+        const bookButton = document.createElement('div');
+        bookButton.className = 'book-button';
+        bookButton.textContent = displayName;
+        bookButton.addEventListener('click', () => {
+          document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+          bookButton.classList.add('active');
+          chapterList.innerHTML = '';
+          showChapters(book, chapterList, '');
+        });
+        groupDiv.appendChild(bookButton);
       });
-      bookList.appendChild(bookButton);
+      bookList.appendChild(groupDiv);
     });
   }
+}
 
   populateBooks();
 
