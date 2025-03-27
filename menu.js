@@ -32,19 +32,6 @@ const bookDisplayNames = {
   "revelation": "Revelation"
 };
 
-const bibleSections = [
-  { name: "Torah", books: ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"] },
-  { name: "Historical Books", books: ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"] },
-  { name: "Wisdom Literature", books: ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"] },
-  { name: "Major Prophets", books: ["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel"] },
-  { name: "Minor Prophets", books: ["hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"] },
-  { name: "Gospels", books: ["matthew", "mark", "luke", "john"] },
-  { name: "History", books: ["acts"] },
-  { name: "Pauline Epistles", books: ["romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon"] },
-  { name: "General Epistles", books: ["hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"] },
-  { name: "Apocalyptic", books: ["revelation"] }
-];
-
 const exodusGroups = [
   { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
   { name: "🐸 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
@@ -71,45 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function populateBooks(filter = '') {
     bookList.innerHTML = '';
-    if (filter) {
-      Object.keys(books).forEach(book => {
-        const displayName = bookDisplayNames[book];
-        if (displayName.toLowerCase().includes(filter.toLowerCase())) {
-          const bookButton = document.createElement('div');
-          bookButton.className = 'book-button';
-          bookButton.textContent = displayName;
-          bookButton.addEventListener('click', () => {
-            document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-            bookButton.classList.add('active');
-            chapterList.innerHTML = '';
-            showChapters(book, chapterList, '');
-          });
-          bookList.appendChild(bookButton);
-        }
+    const booksToShow = filter
+      ? Object.keys(books).filter(book => bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase()))
+      : Object.keys(books);
+    booksToShow.forEach(book => {
+      const displayName = bookDisplayNames[book];
+      const bookButton = document.createElement('div');
+      bookButton.className = 'book-button';
+      bookButton.textContent = displayName;
+      bookButton.addEventListener('click', () => {
+        document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+        bookButton.classList.add('active');
+        chapterList.innerHTML = '';
+        showChapters(book, chapterList, '');
       });
-    } else {
-      bibleSections.forEach(group => {
-        const groupDiv = document.createElement('div');
-        groupDiv.className = 'book-group';
-        const groupHeader = document.createElement('h3');
-        groupHeader.textContent = group.name;
-        groupDiv.appendChild(groupHeader);
-        group.books.forEach(book => {
-          const displayName = bookDisplayNames[book];
-          const bookButton = document.createElement('div');
-          bookButton.className = 'book-button';
-          bookButton.textContent = displayName;
-          bookButton.addEventListener('click', () => {
-            document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-            bookButton.classList.add('active');
-            chapterList.innerHTML = '';
-            showChapters(book, chapterList, '');
-          });
-          groupDiv.appendChild(bookButton);
-        });
-        bookList.appendChild(groupDiv);
-      });
-    }
+      bookList.appendChild(bookButton);
+    });
   }
 
   populateBooks();

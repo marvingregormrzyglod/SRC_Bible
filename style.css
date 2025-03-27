@@ -50,7 +50,7 @@ header {
   margin-bottom: 20px;
   width: 80%;
   max-width: 800px;
-  position: relative; /* For absolute positioning of toggle */
+  position: relative;
 }
 
 .hero h1 {
@@ -118,39 +118,44 @@ header {
   width: 100%;
 }
 
-#book-stack, #chapter-groups {
+#book-stack {
   background: linear-gradient(135deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
   border: 1px solid var(--card-border);
   border-radius: 12px;
   box-shadow: 0 6px 12px var(--shadow);
   padding: 20px;
   width: 100%;
-  max-width: 400px;
   overflow-y: auto;
 }
 
-.book-group {
-  margin-bottom: 20px;
+#chapter-groups {
+  background: linear-gradient(135deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px var(--shadow);
+  padding: 20px;
+  width: 100%;
+  overflow-y: auto;
 }
 
-.book-group h3 {
-  font-family: 'Lora', serif;
-  font-size: 1.2em;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--card-border);
+#book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
 }
 
 .book-button {
   background: var(--card-bg-start);
   color: var(--text-primary);
   padding: 10px;
-  margin: 5px 0;
   text-align: center;
   cursor: pointer;
   border-radius: 8px;
   transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
 }
 
 .book-button:hover {
@@ -197,20 +202,22 @@ header {
 }
 
 .chapters {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
   gap: 10px;
-  margin-top: 10px;
 }
 
 .chapter-link {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--card-bg-start);
   color: var(--text-primary);
-  padding: 8px 12px;
+  padding: 8px;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease;
+  min-height: 40px;
 }
 
 .chapter-link:hover {
@@ -316,7 +323,6 @@ a:hover {
 
   #book-stack, #chapter-groups {
     width: 100%;
-    max-width: 400px;
   }
 
   #app {
@@ -326,5 +332,13 @@ a:hover {
 
   header, .search-container, footer {
     width: 90%;
+  }
+
+  #book-list {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Smaller min width on mobile */
+  }
+
+  .chapters {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); /* Smaller min width on mobile */
   }
 }
