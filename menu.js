@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
         bookButton.classList.add('active');
         chapterList.innerHTML = '';
-        showChapters(book, chapterList, filter);
+        showChapters(book, chapterList, ''); // Pass empty filter to show all chapters
       });
       bookList.appendChild(bookButton);
     });
