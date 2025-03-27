@@ -127,6 +127,31 @@ header::after {
   box-shadow: 0 5px 12px rgba(47, 30, 18, 0.3);
 }
 
+/* Minimize button */
+.minimize-toggle {
+  position: fixed;
+  top: 20px;
+  left: 60px; /* Adjusted to sit next to nav-toggle */
+  font-size: 1.5em;
+  background: #c68e5b;
+  color: #f5e8d3;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(47, 30, 18, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.minimize-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 12px rgba(47, 30, 18, 0.3);
+}
+
+.minimize-toggle.active {
+  content: "➡️"; /* Switch to right arrow when minimized */
+}
+
 #book-stack {
   width: 180px;
   background: #3f2a1d; /* Deep walnut brown */
@@ -134,6 +159,21 @@ header::after {
   border-right: 2px solid #a14a2b;
   box-shadow: 2px 0 15px rgba(47, 30, 18, 0.2);
   overflow-y: auto;
+}
+
+/* Minimized book stack */
+#book-stack.minimized {
+  width: 50px;
+  padding: 30px 5px;
+}
+
+#book-stack.minimized .book-button {
+  font-size: 0.9em;
+  padding: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 40px;
 }
 
 .book-button {
@@ -169,6 +209,29 @@ header::after {
   overflow-y: auto;
 }
 
+/* Minimized chapter groups */
+#chapter-groups.minimized {
+  width: 100px;
+  padding: 30px 10px;
+}
+
+#chapter-groups.minimized .group-header {
+  display: none; /* Hide group name and subtitles */
+}
+
+#chapter-groups.minimized .chapters {
+  justify-content: center;
+}
+
+#chapter-groups.minimized .chapter-link {
+  padding: 8px 10px;
+}
+
+/* Adjust container layout when minimized */
+.container.minimized #app {
+  margin-left: 70px; /* Adjust for minimized book-stack and chapter-groups */
+}
+
 .chapter-groups-container {
   display: flex;
   flex-direction: column;
@@ -195,7 +258,7 @@ header::after {
 }
 
 .beginnings .group-header {
-  color: #a14a2b;
+  color:27a2b; /* Darker earthy rust */
 }
 
 .promise {
@@ -204,7 +267,7 @@ header::after {
 }
 
 .promise .group-header {
-  color: #6b7047;
+  color: #4a4f31; /* Darker muted olive */
 }
 
 .struggle {
@@ -213,7 +276,7 @@ header::after {
 }
 
 .struggle .group-header {
-  color: #c68e5b;
+  color: #8c5e2f; /* Darker warm caramel */
 }
 
 .redemption {
@@ -222,7 +285,7 @@ header::after {
 }
 
 .redemption .group-header {
-  color: #d1b899;
+  color: #8a7459; /* Darker soft taupe */
 }
 
 /* Exodus Categories */
@@ -232,7 +295,7 @@ header::after {
 }
 
 .oppression .group-header {
-  color: #a14a2b;
+  color: #7a2e15; /* Darker earthy rust */
 }
 
 .plagues {
@@ -241,7 +304,7 @@ header::after {
 }
 
 .plagues .group-header {
-  color: #c68e5b;
+  color: #8c5e2f; /* Darker warm caramel */
 }
 
 .miracles {
@@ -250,7 +313,7 @@ header::after {
 }
 
 .miracles .group-header {
-  color: #6b7047;
+  color: #4a4f31; /* Darker muted olive */
 }
 
 .covenant {
@@ -259,7 +322,7 @@ header::after {
 }
 
 .covenant .group-header {
-  color: #d1b899;
+  color: #8a7459; /* Darker soft taupe */
 }
 
 /* Leviticus Categories */
@@ -269,7 +332,7 @@ header::after {
 }
 
 .sacrifices .group-header {
-  color: #a14a2b;
+  color: #7a2e15; /* Darker earthy rust */
 }
 
 .holiness {
@@ -278,7 +341,7 @@ header::after {
 }
 
 .holiness .group-header {
-  color: #6b7047;
+  color: #4a4f31; /* Darker muted olive */
 }
 
 .feasts {
@@ -287,7 +350,7 @@ header::after {
 }
 
 .feasts .group-header {
-  color: #d1b899;
+  color: #8a7459; /* Darker soft taupe */
 }
 
 .warnings {
@@ -296,7 +359,7 @@ header::after {
 }
 
 .warnings .group-header {
-  color: #c68e5b;
+  color: #8c5e2f; /* Darker warm caramel */
 }
 
 /* Numbers Categories */
@@ -306,7 +369,7 @@ header::after {
 }
 
 .counting .group-header {
-  color: #a14a2b;
+  color: #7a2e15; /* Darker earthy rust */
 }
 
 .wandering {
@@ -315,7 +378,7 @@ header::after {
 }
 
 .wandering .group-header {
-  color: #c68e5b;
+  color: #8c5e2f; /* Darker warm caramel */
 }
 
 .battles {
@@ -324,7 +387,7 @@ header::after {
 }
 
 .battles .group-header {
-  color: #d1b899;
+  color: #8a7459; /* Darker soft taupe */
 }
 
 .inheritance {
@@ -333,7 +396,7 @@ header::after {
 }
 
 .inheritance .group-header {
-  color: #6b7047;
+  color: #4a4f31; /* Darker muted olive */
 }
 
 /* Deuteronomy Categories */
@@ -343,7 +406,7 @@ header::after {
 }
 
 .repeat .group-header {
-  color: #a14a2b;
+  color: #7a2e15; /* Darker earthy rust */
 }
 
 .law {
@@ -352,7 +415,7 @@ header::after {
 }
 
 .law .group-header {
-  color: #c68e5b;
+  color: #8c5e2f; /* Darker warm caramel */
 }
 
 .warning {
@@ -361,7 +424,7 @@ header::after {
 }
 
 .warning .group-header {
-  color: #d1b899;
+  color: #8a7459; /* Darker soft taupe */
 }
 
 .handoff {
@@ -370,7 +433,7 @@ header::after {
 }
 
 .handoff .group-header {
-  color: #6b7047;
+  color: #4a4f31; /* Darker muted olive */
 }
 
 .group-header {
@@ -379,6 +442,7 @@ header::after {
   font-weight: 700;
   margin-bottom: 15px;
   transition: color 0.3s ease;
+  color: #2f1e12; /* Deep charcoal for better contrast */
 }
 
 .group-header:hover {
@@ -392,7 +456,7 @@ header::after {
 .group-subtitles {
   font-size: 12px;
   font-weight: normal;
-  color: #a68b6b; /* Darker taupe for better readability */
+  color: #5c4033; /* Rich brown, darker than before */
   margin-top: 5px;
 }
 
@@ -471,53 +535,53 @@ header::after {
 }
 
 .markdown-section pre {
-  background: #d1b899; /* Soft taupe */
-  color: #2f1e12;
+  background: #2f1e12; /* Deep charcoal brown for dark background */
+  color: #f5e8d3; /* Soft cream as base text color for contrast */
   padding: 20px;
   border-radius: 15px;
-  box-shadow: inset 0 2px 5px rgba(47, 30, 18, 0.1);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
   margin: 20px 0;
 }
 
 /* Custom Highlight.js styles for pseudo-code */
 .hljs {
-  background: #d1b899 !important;
-  color: #2f1e12 !important;
+  background: #2f1e12 !important; /* Match the dark background */
+  color: #f5e8d3 !important; /* Bright base color */
 }
 
 /* Comments (e.g., // Verse 4) */
 .hljs-comment {
-  color: #7a8051 !important; /* Lighter muted olive */
+  color: #a68b6b !important; /* Darker taupe, readable against dark bg */
 }
 
 /* Keywords (e.g., if) */
 .hljs-keyword {
-  color: #a14a2b !important; /* Earthy rust */
+  color: #ff8c5a !important; /* Bright earthy orange for contrast */
 }
 
 /* Variables/Identifiers (e.g., valley, fear, is_present) */
 .hljs-variable {
-  color: #c68e5b !important; /* Warm caramel */
+  color: #ffb07c !important; /* Bright warm peach */
 }
 
 /* Functions/Methods (e.g., encounter(), stays_with_me()) */
 .hljs-function {
-  color: #8b5a2b !important; /* Muted rust */
+  color: #ffcc99 !important; /* Bright soft peach */
 }
 
 /* Strings (e.g., "rod_and_staff") */
 .hljs-string {
-  color: #d97706 !important; /* Deep amber */
+  color: #ffd700 !important; /* Bright golden yellow */
 }
 
 /* Operators (e.g., =, .) */
 .hljs-operator {
-  color: #d1b899 !important; /* Soft taupe */
+  color: #f5e8d3 !important; /* Soft cream, matching base text */
 }
 
 /* Punctuation (e.g., parentheses, braces) */
 .hljs-punctuation {
-  color: #a68b6b !important; /* Darker taupe */
+  color: #d1b899 !important; /* Soft taupe, still bright */
 }
 
 .markdown-section blockquote {
@@ -588,6 +652,10 @@ footer a:hover {
     display: block;
   }
 
+  .minimize-toggle {
+    left: 60px; /* Keep aligned with nav-toggle */
+  }
+
   #book-stack, #chapter-groups {
     width: 100%;
     height: auto;
@@ -599,6 +667,14 @@ footer a:hover {
   }
 
   #book-stack.active, #chapter-groups.active {
+    display: block;
+  }
+
+  #book-stack.minimized, #chapter-groups.minimized {
+    display: none; /* Respect mobile nav toggle */
+  }
+
+  #book-stack.minimized.active, #chapter-groups.minimized.active {
     display: block;
   }
 
