@@ -1,5 +1,38 @@
-// In menu.js, add this near the top
-const bookGroups = [
+const books = {
+  "genesis": 50, "exodus": 40, "leviticus": 27, "numbers": 36, "deuteronomy": 34,
+  "joshua": 24, "judges": 21, "ruth": 4, "1samuel": 31, "2samuel": 24,
+  "1kings": 22, "2kings": 25, "1chronicles": 29, "2chronicles": 36, "ezra": 10,
+  "nehemiah": 13, "esther": 10, "job": 42, "psalms": 150, "proverbs": 31,
+  "ecclesiastes": 12, "songofsolomon": 8, "isaiah": 66, "jeremiah": 52, "lamentations": 5,
+  "ezekiel": 48, "daniel": 12, "hosea": 14, "joel": 3, "amos": 9,
+  "obadiah": 1, "jonah": 4, "micah": 7, "nahum": 3, "habakkuk": 3,
+  "zephaniah": 3, "haggai": 2, "zechariah": 14, "malachi": 4, "matthew": 28,
+  "mark": 16, "luke": 24, "john": 21, "acts": 28, "romans": 16,
+  "1corinthians": 16, "2corinthians": 13, "galatians": 6, "ephesians": 6, "philippians": 4,
+  "colossians": 4, "1thessalonians": 5, "2thessalonians": 3, "1timothy": 6, "2timothy": 4,
+  "titus": 3, "philemon": 1, "hebrews": 13, "james": 5, "1peter": 5,
+  "2peter": 3, "1john": 5, "2john": 1, "3john": 1, "jude": 1,
+  "revelation": 22
+};
+
+const bookDisplayNames = {
+  "genesis": "Genesis", "exodus": "Exodus", "leviticus": "Leviticus", "numbers": "Numbers", "deuteronomy": "Deuteronomy",
+  "joshua": "Joshua", "judges": "Judges", "ruth": "Ruth", "1samuel": "1 Samuel", "2samuel": "2 Samuel",
+  "1kings": "1 Kings", "2kings": "2 Kings", "1chronicles": "1 Chronicles", "2chronicles": "2 Chronicles", "ezra": "Ezra",
+  "nehemiah": "Nehemiah", "esther": "Esther", "job": "Job", "psalms": "Psalms", "proverbs": "Proverbs",
+  "ecclesiastes": "Ecclesiastes", "songofsolomon": "Song of Solomon", "isaiah": "Isaiah", "jeremiah": "Jeremiah", "lamentations": "Lamentations",
+  "ezekiel": "Ezekiel", "daniel": "Daniel", "hosea": "Hosea", "joel": "Joel", "amos": "Amos",
+  "obadiah": "Obadiah", "jonah": "Jonah", "micah": "Micah", "nahum": "Nahum", "habakkuk": "Habakkuk",
+  "zephaniah": "Zephaniah", "haggai": "Haggai", "zechariah": "Zechariah", "malachi": "Malachi", "matthew": "Matthew",
+  "mark": "Mark", "luke": "Luke", "john": "John", "acts": "Acts", "romans": "Romans",
+  "1corinthians": "1 Corinthians", "2corinthians": "2 Corinthians", "galatians": "Galatians", "ephesians": "Ephesians", "philippians": "Philippians",
+  "colossians": "Colossians", "1thessalonians": "1 Thessalonians", "2thessalonians": "2 Thessalonians", "1timothy": "1 Timothy", "2timothy": "2 Timothy",
+  "titus": "Titus", "philemon": "Philemon", "hebrews": "Hebrews", "james": "James", "1peter": "1 Peter",
+  "2peter": "2 Peter", "1john": "1 John", "2john": "2 John", "3john": "3 John", "jude": "Jude",
+  "revelation": "Revelation"
+};
+
+const bibleSections = [
   { name: "Torah", books: ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"] },
   { name: "Historical Books", books: ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"] },
   { name: "Wisdom Literature", books: ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"] },
@@ -11,92 +44,6 @@ const bookGroups = [
   { name: "General Epistles", books: ["hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"] },
   { name: "Apocalyptic", books: ["revelation"] }
 ];
-
-// In menu.js, add this near the top
-const bookDisplayNames = {
-  "genesis": "Genesis", "exodus": "Exodus", "leviticus": "Leviticus", "numbers": "Numbers", "deuteronomy": "Deuteronomy",
-  "joshua": "Joshua", "judges": "Judges", "ruth": "Ruth", "1samuel": "1 Samuel", "2samuel": "2 Samuel", "1kings": "1 Kings",
-  "2kings": "2 Kings", "1chronicles": "1 Chronicles", "2chronicles": "2 Chronicles", "ezra": "Ezra", "nehemiah": "Nehemiah",
-  "esther": "Esther", "job": "Job", "psalms": "Psalms", "proverbs": "Proverbs", "ecclesiastes": "Ecclesiastes",
-  "songofsolomon": "Song of Solomon", "isaiah": "Isaiah", "jeremiah": "Jeremiah", "lamentations": "Lamentations",
-  "ezekiel": "Ezekiel", "daniel": "Daniel", "hosea": "Hosea", "joel": "Joel", "amos": "Amos", "obadiah": "Obadiah",
-  "jonah": "Jonah", "micah": "Micah", "nahum": "Nahum", "habakkuk": "Habakkuk", "zephaniah": "Zephaniah", "haggai": "Haggai",
-  "zechariah": "Zechariah", "malachi": "Malachi", "matthew": "Matthew", "mark": "Mark", "luke": "Luke", "john": "John",
-  "acts": "Acts", "romans": "Romans", "1corinthians": "1 Corinthians", "2corinthians": "2 Corinthians", "galatians": "Galatians",
-  "ephesians": "Ephesians", "philippians": "Philippians", "colossians": "Colossians", "1thessalonians": "1 Thessalonians",
-  "2thessalonians": "2 Thessalonians", "1timothy": "1 Timothy", "2timothy": "2 Timothy", "titus": "Titus", "philemon": "Philemon",
-  "hebrews": "Hebrews", "james": "James", "1peter": "1 Peter", "2peter": "2 Peter", "1john": "1 John", "2john": "2 John",
-  "3john": "3 John", "jude": "Jude", "revelation": "Revelation"
-};
-
-const books = {
-  "genesis": 50,
-  "exodus": 40,
-  "leviticus": 27,
-  "numbers": 36,
-  "deuteronomy": 34,
-  "joshua": 24,
-  "judges": 21,
-  "ruth": 4,
-  "1samuel": 31,
-  "2samuel": 24,
-  "1kings": 22,
-  "2kings": 25,
-  "1chronicles": 29,
-  "2chronicles": 36,
-  "ezra": 10,
-  "nehemiah": 13,
-  "esther": 10,
-  "job": 42,
-  "psalms": 150,
-  "proverbs": 31,
-  "ecclesiastes": 12,
-  "songofsolomon": 8,
-  "isaiah": 66,
-  "jeremiah": 52,
-  "lamentations": 5,
-  "ezekiel": 48,
-  "daniel": 12,
-  "hosea": 14,
-  "joel": 3,
-  "amos": 9,
-  "obadiah": 1,
-  "jonah": 4,
-  "micah": 7,
-  "nahum": 3,
-  "habakkuk": 3,
-  "zephaniah": 3,
-  "haggai": 2,
-  "zechariah": 14,
-  "malachi": 4,
-  "matthew": 28,
-  "mark": 16,
-  "luke": 24,
-  "john": 21,
-  "acts": 28,
-  "romans": 16,
-  "1corinthians": 16,
-  "2corinthians": 13,
-  "galatians": 6,
-  "ephesians": 6,
-  "philippians": 4,
-  "colossians": 4,
-  "1thessalonians": 5,
-  "2thessalonians": 3,
-  "1timothy": 6,
-  "2timothy": 4,
-  "titus": 3,
-  "philemon": 1,
-  "hebrews": 13,
-  "james": 5,
-  "1peter": 5,
-  "2peter": 3,
-  "1john": 5,
-  "2john": 1,
-  "3john": 1,
-  "jude": 1,
-  "revelation": 22
-};
 
 const exodusGroups = [
   { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
@@ -122,51 +69,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const chapterList = document.getElementById('chapter-list');
   const searchBar = document.getElementById('search-bar');
 
-  // Replace the existing populateBooks function
-function populateBooks(filter = '') {
-  bookList.innerHTML = ''; // Clear current content
-  if (filter) {
-    // If there's a filter, show matching books without groups
-    Object.keys(books).forEach(book => {
-      const displayName = bookDisplayNames[book]; // Use display name (defined in step 3)
-      if (displayName.toLowerCase().includes(filter.toLowerCase())) {
-        const bookButton = document.createElement('div');
-        bookButton.className = 'book-button';
-        bookButton.textContent = displayName;
-        bookButton.addEventListener('click', () => {
-          document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-          bookButton.classList.add('active');
-          chapterList.innerHTML = '';
-          showChapters(book, chapterList, '');
-        });
-        bookList.appendChild(bookButton);
-      }
-    });
-  } else {
-    // No filter: show books in groups
-    bookGroups.forEach(group => {
-      const groupDiv = document.createElement('div');
-      groupDiv.className = 'book-group';
-      const groupHeader = document.createElement('h3');
-      groupHeader.textContent = group.name;
-      groupDiv.appendChild(groupHeader);
-      group.books.forEach(book => {
+  function populateBooks(filter = '') {
+    bookList.innerHTML = '';
+    if (filter) {
+      Object.keys(books).forEach(book => {
         const displayName = bookDisplayNames[book];
-        const bookButton = document.createElement('div');
-        bookButton.className = 'book-button';
-        bookButton.textContent = displayName;
-        bookButton.addEventListener('click', () => {
-          document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-          bookButton.classList.add('active');
-          chapterList.innerHTML = '';
-          showChapters(book, chapterList, '');
-        });
-        groupDiv.appendChild(bookButton);
+        if (displayName.toLowerCase().includes(filter.toLowerCase())) {
+          const bookButton = document.createElement('div');
+          bookButton.className = 'book-button';
+          bookButton.textContent = displayName;
+          bookButton.addEventListener('click', () => {
+            document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+            bookButton.classList.add('active');
+            chapterList.innerHTML = '';
+            showChapters(book, chapterList, '');
+          });
+          bookList.appendChild(bookButton);
+        }
       });
-      bookList.appendChild(groupDiv);
-    });
+    } else {
+      bibleSections.forEach(group => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'book-group';
+        const groupHeader = document.createElement('h3');
+        groupHeader.textContent = group.name;
+        groupDiv.appendChild(groupHeader);
+        group.books.forEach(book => {
+          const displayName = bookDisplayNames[book];
+          const bookButton = document.createElement('div');
+          bookButton.className = 'book-button';
+          bookButton.textContent = displayName;
+          bookButton.addEventListener('click', () => {
+            document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
+            bookButton.classList.add('active');
+            chapterList.innerHTML = '';
+            showChapters(book, chapterList, '');
+          });
+          groupDiv.appendChild(bookButton);
+        });
+        bookList.appendChild(groupDiv);
+      });
+    }
   }
-}
 
   populateBooks();
 
@@ -175,13 +119,13 @@ function populateBooks(filter = '') {
     populateBooks(searchTerm);
 
     const [bookSearch, chapterSearch] = searchTerm.split(' ');
-    const activeBook = document.querySelector('.book-button.active');
-
     if (bookSearch) {
-      const book = activeBook ? activeBook.textContent.toLowerCase().replace(/\s/g, '') : bookSearch;
-      if (books[book]) {
+      const bookKey = Object.keys(bookDisplayNames).find(key => 
+        bookDisplayNames[key].toLowerCase() === bookSearch.toLowerCase()
+      );
+      if (bookKey && books[bookKey]) {
         chapterList.innerHTML = '';
-        showChapters(book, chapterList, chapterSearch || '');
+        showChapters(bookKey, chapterList, chapterSearch || '');
       } else {
         chapterList.innerHTML = '';
       }
