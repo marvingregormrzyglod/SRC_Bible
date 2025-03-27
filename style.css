@@ -1,14 +1,12 @@
 /* Base styles for wood cabin Christian Girl Autumn theme */
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #5c4033 0%, #d1b899 100%); /* Rich brown to soft taupe */
+  background: #3f2a1d; /* Match header background, replacing white */
   color: #2f1e12; /* Deep charcoal for text */
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Crect width="200" height="200" fill="none"/%3E%3Cpath d="M0 0L200 200M200 0L0 200" stroke="%23d1b899" stroke-width="1" opacity="0.05"/%3E%3C/svg%3E'); /* Subtle wood grain texture */
-  background-size: 200px 200px;
 }
 
 header {
@@ -165,6 +163,7 @@ header::after {
 #book-stack.minimized {
   width: 50px;
   padding: 30px 5px;
+  margin-right: 10px; /* Add margin to prevent overlap */
 }
 
 #book-stack.minimized .book-button {
@@ -202,7 +201,7 @@ header::after {
 
 #chapter-groups {
   width: 320px;
-  background: #c68e5b;
+  background: #3f2a1d; /* Dark walnut brown, matching header */
   padding: 30px 20px;
   border-right: 2px solid #a14a2b;
   box-shadow: 2px 0 15px rgba(47, 30, 18, 0.2);
@@ -219,12 +218,26 @@ header::after {
   display: none; /* Hide group name and subtitles */
 }
 
+#chapter-groups.minimized .chapter-groups-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr)); /* Tight grid */
+  gap: 8px; /* Not too tight */
+}
+
+#chapter-groups.minimized .chapter-group {
+  background: none; /* Remove card background */
+  padding: 0; /* Remove padding */
+  box-shadow: none; /* Remove shadow */
+  border: none; /* Remove border */
+}
+
 #chapter-groups.minimized .chapters {
-  justify-content: center;
+  display: contents; /* Flatten chapter links into grid */
 }
 
 #chapter-groups.minimized .chapter-link {
-  padding: 8px 10px;
+  padding: 6px 8px; /* Smaller padding for tight grid */
+  font-size: 14px; /* Slightly smaller text */
 }
 
 /* Adjust container layout when minimized */
@@ -253,12 +266,14 @@ header::after {
 
 /* Genesis Categories */
 .beginnings {
+  background: rgba(161, 74/* Genesis Categories */
+.beginnings {
   background: rgba(161, 74, 43, 0.1); /* Earthy rust tint */
   border-left: 4px solid #a14a2b;
 }
 
 .beginnings .group-header {
-  color:27a2b; /* Darker earthy rust */
+  color: #7a2e15; /* Darker earthy rust */
 }
 
 .promise {
@@ -498,8 +513,6 @@ header::after {
   margin: 30px;
   overflow-y: auto;
   animation: fadeIn 0.8s ease-in;
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="none"/%3E%3Cpath d="M0 0L100 100M100 0L0 100" stroke="%23d1b899" stroke-width="0.5" opacity="0.1"/%3E%3C/svg%3E');
-  background-size: 100px 100px;
 }
 
 @keyframes fadeIn {
@@ -554,9 +567,9 @@ header::after {
   color: #a68b6b !important; /* Darker taupe, readable against dark bg */
 }
 
-/* Keywords (e.g., if) */
+/* Keywords (e.g., function, return, if, else) */
 .hljs-keyword {
-  color: #ff8c5a !important; /* Bright earthy orange for contrast */
+  color: #ff4040 !important; /* Bright red */
 }
 
 /* Variables/Identifiers (e.g., valley, fear, is_present) */
@@ -564,14 +577,19 @@ header::after {
   color: #ffb07c !important; /* Bright warm peach */
 }
 
-/* Functions/Methods (e.g., encounter(), stays_with_me()) */
+/* Functions/Methods (e.g., describe_the_lord_as_shepherd, leads_me_to) */
 .hljs-function {
-  color: #ffcc99 !important; /* Bright soft peach */
+  color: #00b7eb !important; /* Bright blue */
 }
 
-/* Strings (e.g., "rod_and_staff") */
+/* Strings (e.g., "green_pastures") */
 .hljs-string {
-  color: #ffd700 !important; /* Bright golden yellow */
+  color: #ffd700 !important; /* Bright yellow */
+}
+
+/* Booleans (e.g., true, false) */
+.hljs-literal {
+  color: #ffd700 !important; /* Bright yellow */
 }
 
 /* Operators (e.g., =, .) */
