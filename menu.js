@@ -102,16 +102,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Search functionality
   searchBar.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.trim();
+    const searchTerm = e.target.value.trim().toLowerCase();
     populateBooks(searchTerm);
+
+    const [bookSearch, chapterSearch] = searchTerm.split(' ');
     const activeBook = document.querySelector('.book-button.active');
-    if (activeBook) {
-      const book = activeBook.textContent.toLowerCase();
-      chapterList.innerHTML = '';
-      showChapters(book, chapterList, searchTerm);
+
+    if (bookSearch) {
+      const book = activeBook ? activeBook.textContent.toLowerCase() : bookSearch;
+      if (books[book]) {
+        chapterList.innerHTML = '';
+        showChapters(book, chapterList, chapterSearch || '');
+      } else {
+        chapterList.innerHTML = '';
+      }
     } else {
       chapterList.innerHTML = '';
     }
+  });
+
+  // Minimize toggle
+  const minimizeToggle = document.querySelector('.minimize-toggle');
+  const bookStack = document.getElementById('book-stack');
+  const chapterGroups = document.getElementById('chapter-groups');
+  const container = document.querySelector('.container');
+
+  minimizeToggle.addEventListener('click', () => {
+    bookStack.classList.toggle('minimized');
+    chapterGroups.classList.toggle('minimized');
+    container.classList.toggle('minimized');
+    minimizeToggle.classList.toggle('active');
+    minimizeToggle.textContent = bookStack.classList.contains('minimized') ? '➡️' : '⬅️';
+
+    // Update book names to 2 letters when minimized
+    document.querySelectorAll('.book-button').forEach(btn => {
+      const fullName = btn.dataset.fullName || btn.textContent;
+      btn.dataset.fullName = fullName; // Store full name
+      btn.textContent = bookStack.classList.contains('minimized') 
+        ? fullName.slice(0, 2) 
+        : fullName;
+    });
   });
 
   const hash = window.location.hash.replace('#/', '');
