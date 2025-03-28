@@ -126,7 +126,13 @@ header {
   padding: 20px;
   width: 100%;
   overflow-y: auto;
-  max-height: 400px; /* Optional: limit height for scrolling */
+  max-height: 400px;
+}
+
+#book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .book-group {
@@ -347,5 +353,13 @@ a:hover {
 
   .chapters {
     grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  }
+}
+
+@media (min-width: 769px) {
+  #book-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 }
