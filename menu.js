@@ -32,18 +32,7 @@ const bookDisplayNames = {
   "revelation": "Revelation"
 };
 
-const bibleSections = [
-  { name: "Torah", books: ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"] },
-  { name: "Historical Books", books: ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"] },
-  { name: "Wisdom Literature", books: ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"] },
-  { name: "Major Prophets", books: ["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel"] },
-  { name: "Minor Prophets", books: ["hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"] },
-  { name: "Gospels", books: ["matthew", "mark", "luke", "john"] },
-  { name: "History", books: ["acts"] },
-  { name: "Pauline Epistles", books: ["romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon"] },
-  { name: "General Epistles", books: ["hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"] },
-  { name: "Apocalyptic", books: ["revelation"] }
-];
+const allBooks = Object.keys(books);
 
 const exodusGroups = [
   { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
@@ -70,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentMode = 'books'; // 'books' or 'chapters'
   let selectedBook = null;
 
-  // Display books with categorization or filtered results
+  // Display books with OT and NT sections or filtered results
   function displayBooks(filter = '') {
     bookList.innerHTML = '';
     if (filter) {
-      const filteredBooks = Object.keys(books).filter(book =>
+      const filteredBooks = allBooks.filter(book =>
         bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase())
       );
       const grid = document.createElement('div');
@@ -85,21 +74,37 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       bookList.appendChild(grid);
     } else {
-      bibleSections.forEach(section => {
-        const groupDiv = document.createElement('div');
-        groupDiv.className = 'book-group';
-        const header = document.createElement('h3');
-        header.textContent = section.name;
-        groupDiv.appendChild(header);
-        const grid = document.createElement('div');
-        grid.className = 'book-grid';
-        section.books.forEach(book => {
-          const bookButton = createBookButton(book);
-          grid.appendChild(bookButton);
-        });
-        groupDiv.appendChild(grid);
-        bookList.appendChild(groupDiv);
+      // Old Testament Section
+      const otBooks = allBooks.slice(0, 39); // Genesis to Malachi
+      const otDiv = document.createElement('div');
+      otDiv.className = 'book-group';
+      const otHeader = document.createElement('h3');
+      otHeader.textContent = 'Old Testament';
+      otDiv.appendChild(otHeader);
+      const otGrid = document.createElement('div');
+      otGrid.className = 'book-grid';
+      otBooks.forEach(book => {
+        const bookButton = createBookButton(book);
+        otGrid.appendChild(bookButton);
       });
+      otDiv.appendChild(otGrid);
+      bookList.appendChild(otDiv);
+
+      // New Testament Section
+      const ntBooks = allBooks.slice(39); // Matthew to Revelation
+      const ntDiv = document.createElement('div');
+      ntDiv.className = 'book-group';
+      const ntHeader = document.createElement('h3');
+      ntHeader.textContent = 'New Testament';
+      ntDiv.appendChild(ntHeader);
+      const ntGrid = document.createElement('div');
+      ntGrid.className = 'book-grid';
+      ntBooks.forEach(book => {
+        const bookButton = createBookButton(book);
+        ntGrid.appendChild(bookButton);
+      });
+      ntDiv.appendChild(ntGrid);
+      bookList.appendChild(ntDiv);
     }
   }
 
