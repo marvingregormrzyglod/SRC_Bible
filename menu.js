@@ -32,6 +32,19 @@ const bookDisplayNames = {
   "revelation": "Revelation"
 };
 
+const bibleSections = [
+  { name: "Torah", books: ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"] },
+  { name: "Historical Books", books: ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"] },
+  { name: "Wisdom Literature", books: ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"] },
+  { name: "Major Prophets", books: ["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel"] },
+  { name: "Minor Prophets", books: ["hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"] },
+  { name: "Gospels", books: ["matthew", "mark", "luke", "john"] },
+  { name: "History", books: ["acts"] },
+  { name: "Pauline Epistles", books: ["romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon"] },
+  { name: "General Epistles", books: ["hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"] },
+  { name: "Apocalyptic", books: ["revelation"] }
+];
+
 const exodusGroups = [
   { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
   { name: "🐸 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
@@ -40,10 +53,10 @@ const exodusGroups = [
 ];
 
 const leviticusGroups = [
-  { name: "🩸 SACRIFICES", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
-  { name: "✨ HOLINESS", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
-  { name: "🎉 FEASTS", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
-  { name: "⚠️ WARNINGS", start: 26, end: 27, class: "warnings", subtitles: "Blessings • Curses" }
+  { name: "🩸 Sacrifices", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
+  { name: "✨ Holiness", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
+  { name: "🎉 Feasts", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
+  { name: "⚠️ Warnings", start: 26, end: 27, class: "warnings", subtitles: "Blessings • Curses" }
 ];
 
 const bookGroups = {
@@ -53,148 +66,165 @@ const bookGroups = {
 
 document.addEventListener('DOMContentLoaded', () => {
   const bookList = document.getElementById('book-list');
-  const chapterList = document.getElementById('chapter-list');
   const searchBar = document.getElementById('search-bar');
+  let currentMode = 'books'; // 'books' or 'chapters'
+  let selectedBook = null;
 
-  function populateBooks(filter = '') {
+  // Display books with categorization or filtered results
+  function displayBooks(filter = '') {
     bookList.innerHTML = '';
-    const booksToShow = filter
-      ? Object.keys(books).filter(book => bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase()))
-      : Object.keys(books);
-    booksToShow.forEach(book => {
-      const displayName = bookDisplayNames[book];
-      const bookButton = document.createElement('div');
-      bookButton.className = 'book-button';
-      bookButton.textContent = displayName;
-      bookButton.addEventListener('click', () => {
-        document.querySelectorAll('.book-button').forEach(btn => btn.classList.remove('active'));
-        bookButton.classList.add('active');
-        chapterList.innerHTML = '';
-        showChapters(book, chapterList, '');
+    if (filter) {
+      const filteredBooks = Object.keys(books).filter(book =>
+        bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase())
+      );
+      const grid = document.createElement('div');
+      grid.className = 'book-grid';
+      filteredBooks.forEach(book => {
+        const bookButton = createBookButton(book);
+        grid.appendChild(bookButton);
       });
-      bookList.appendChild(bookButton);
-    });
+      bookList.appendChild(grid);
+    } else {
+      bibleSections.forEach(section => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'book-group';
+        const header = document.createElement('h3');
+        header.textContent = section.name;
+        groupDiv.appendChild(header);
+        const grid = document.createElement('div');
+        grid.className = 'book-grid';
+        section.books.forEach(book => {
+          const bookButton = createBookButton(book);
+          grid.appendChild(bookButton);
+        });
+        groupDiv.appendChild(grid);
+        bookList.appendChild(groupDiv);
+      });
+    }
   }
 
-  populateBooks();
+  // Create a book button
+  function createBookButton(book) {
+    const displayName = bookDisplayNames[book];
+    const bookButton = document.createElement('div');
+    bookButton.className = 'book-button';
+    bookButton.textContent = displayName;
+    bookButton.addEventListener('click', () => {
+      selectedBook = book;
+      currentMode = 'chapters';
+      displayChapters(book);
+    });
+    return bookButton;
+  }
 
+  // Display chapters for a selected book
+  function displayChapters(book, filter = '') {
+    bookList.innerHTML = '';
+    const backButton = document.createElement('button');
+    backButton.className = 'back-button';
+    backButton.textContent = 'Back to Books';
+    backButton.addEventListener('click', () => {
+      currentMode = 'books';
+      selectedBook = null;
+      displayBooks();
+    });
+    bookList.appendChild(backButton);
+
+    const groups = bookGroups[book];
+    if (groups) {
+      groups.forEach(group => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = `chapter-group ${group.class}`;
+        const groupHeader = document.createElement('div');
+        groupHeader.className = 'group-header';
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'group-name';
+        nameSpan.textContent = group.name;
+        groupHeader.appendChild(nameSpan);
+        if (group.subtitles) {
+          const subtitleSpan = document.createElement('div');
+          subtitleSpan.className = 'group-subtitles';
+          subtitleSpan.textContent = group.subtitles;
+          groupHeader.appendChild(subtitleSpan);
+        }
+        groupDiv.appendChild(groupHeader);
+        const chaptersDiv = document.createElement('div');
+        chaptersDiv.className = 'chapters';
+        for (let i = group.start; i <= group.end; i++) {
+          const chapterStr = i.toString().padStart(2, '0');
+          if (filter && !chapterStr.includes(filter)) continue;
+          const chapterLink = createChapterLink(book, chapterStr, i);
+          chaptersDiv.appendChild(chapterLink);
+        }
+        groupDiv.appendChild(chaptersDiv);
+        bookList.appendChild(groupDiv);
+      });
+    } else {
+      const chaptersDiv = document.createElement('div');
+      chaptersDiv.className = 'chapters';
+      for (let i = 1; i <= books[book]; i++) {
+        const chapterStr = i.toString().padStart(2, '0');
+        if (filter && !chapterStr.includes(filter)) continue;
+        const chapterLink = createChapterLink(book, chapterStr, i);
+        chaptersDiv.appendChild(chapterLink);
+      }
+      bookList.appendChild(chaptersDiv);
+    }
+  }
+
+  // Create a chapter link
+  function createChapterLink(book, chapterStr, chapterNum) {
+    const chapterLink = document.createElement('a');
+    chapterLink.href = `#/scripture/${book}/${chapterStr}`;
+    chapterLink.className = 'chapter-link';
+    chapterLink.textContent = chapterNum;
+    chapterLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
+      chapterLink.classList.add('active');
+      window.location.hash = `#/scripture/${book}/${chapterStr}`;
+    });
+    return chapterLink;
+  }
+
+  // Search bar functionality
   searchBar.addEventListener('input', (e) => {
     const searchTerm = e.target.value.trim().toLowerCase();
-    populateBooks(searchTerm);
-
     const [bookSearch, chapterSearch] = searchTerm.split(' ');
-    if (bookSearch) {
-      const bookKey = Object.keys(bookDisplayNames).find(key => 
-        bookDisplayNames[key].toLowerCase() === bookSearch.toLowerCase()
-      );
-      if (bookKey && books[bookKey]) {
-        chapterList.innerHTML = '';
-        showChapters(bookKey, chapterList, chapterSearch || '');
-      } else {
-        chapterList.innerHTML = '';
-      }
+    const bookKey = Object.keys(bookDisplayNames).find(key =>
+      bookDisplayNames[key].toLowerCase().startsWith(bookSearch)
+    );
+    if (bookKey && books[bookKey]) {
+      selectedBook = bookKey;
+      currentMode = 'chapters';
+      displayChapters(bookKey, chapterSearch || '');
     } else {
-      chapterList.innerHTML = '';
+      currentMode = 'books';
+      displayBooks(searchTerm);
     }
   });
 
+  // Initial load and hash handling
   const hash = window.location.hash.replace('#/', '');
   if (hash) {
-    const bookMatch = hash.match(/scripture\/([^\/]+)/);
-    const chapterMatch = hash.match(/scripture\/[^\/]+\/(\d+)/);
-    if (bookMatch) {
-      const book = bookMatch[1];
-      document.querySelectorAll('.book-button').forEach(btn => {
-        if (btn.textContent.toLowerCase().replace(/\s/g, '') === book) btn.classList.add('active');
-      });
-      showChapters(book, chapterList);
-      if (chapterMatch) {
-        const chapter = chapterMatch[1];
+    const parts = hash.split('/');
+    if (parts[0] === 'scripture' && parts[1] && parts[2]) {
+      const book = parts[1];
+      const chapter = parts[2];
+      if (books[book]) {
+        selectedBook = book;
+        currentMode = 'chapters';
+        displayChapters(book);
         setTimeout(() => {
           const chapterLink = document.querySelector(`a[href="#/scripture/${book}/${chapter}"]`);
-          if (chapterLink) chapterLink.classList.add('active');
+          if (chapterLink) {
+            chapterLink.classList.add('active');
+            chapterLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         }, 100);
       }
     }
+  } else {
+    displayBooks();
   }
 });
-
-function showChapters(book, chapterList, filter = '') {
-  const groupsContainer = document.createElement('div');
-  groupsContainer.className = 'chapter-groups-container';
-
-  const groups = bookGroups[book];
-  if (groups) {
-    groups.forEach(group => {
-      const searchTerm = filter.toLowerCase();
-      const groupNameMatch = group.name.toLowerCase().includes(searchTerm);
-      const subtitlesMatch = group.subtitles.toLowerCase().includes(searchTerm);
-      const chapterRangeMatch = Array.from({ length: group.end - group.start + 1 }, (_, i) => group.start + i)
-        .some(chapter => chapter.toString() === searchTerm);
-
-      if (filter && !groupNameMatch && !subtitlesMatch && !chapterRangeMatch) return;
-
-      const groupDiv = document.createElement('div');
-      groupDiv.className = `chapter-group ${group.class}`;
-
-      const groupHeader = document.createElement('div');
-      groupHeader.className = 'group-header';
-
-      const nameSpan = document.createElement('span');
-      nameSpan.className = 'group-name';
-      nameSpan.textContent = group.name;
-      groupHeader.appendChild(nameSpan);
-
-      if (group.subtitles) {
-        const subtitleSpan = document.createElement('div');
-        subtitleSpan.className = 'group-subtitles';
-        subtitleSpan.textContent = group.subtitles;
-        groupHeader.appendChild(subtitleSpan);
-      }
-
-      groupDiv.appendChild(groupHeader);
-
-      const chaptersDiv = document.createElement('div');
-      chaptersDiv.className = 'chapters';
-      for (let i = group.start; i <= group.end; i++) {
-        const chapter = i.toString().padStart(2, '0');
-        if (filter && !chapter.includes(filter) && !groupNameMatch && !subtitlesMatch) continue;
-        const chapterLink = document.createElement('a');
-        chapterLink.href = `#/scripture/${book}/${chapter}`;
-        chapterLink.className = 'chapter-link';
-        chapterLink.textContent = i;
-        chapterLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
-          chapterLink.classList.add('active');
-          window.location.hash = `#/scripture/${book}/${chapter}`;
-        });
-        chaptersDiv.appendChild(chapterLink);
-      }
-      if (chaptersDiv.children.length > 0) {
-        groupDiv.appendChild(chaptersDiv);
-        groupsContainer.appendChild(groupDiv);
-      }
-    });
-  } else {
-    const chaptersDiv = document.createElement('div');
-    chaptersDiv.className = 'chapters';
-    for (let i = 1; i <= books[book]; i++) {
-      const chapter = i.toString().padStart(2, '0');
-      if (filter && !chapter.includes(filter)) continue;
-      const chapterLink = document.createElement('a');
-      chapterLink.href = `#/scripture/${book}/${chapter}`;
-      chapterLink.className = 'chapter-link';
-      chapterLink.textContent = i;
-      chapterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
-        chapterLink.classList.add('active');
-        window.location.hash = `#/scripture/${book}/${chapter}`;
-      });
-      chaptersDiv.appendChild(chapterLink);
-    }
-    groupsContainer.appendChild(chaptersDiv);
-  }
-  chapterList.appendChild(groupsContainer);
-}

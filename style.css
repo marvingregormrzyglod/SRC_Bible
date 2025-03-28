@@ -126,19 +126,23 @@ header {
   padding: 20px;
   width: 100%;
   overflow-y: auto;
+  max-height: 400px; /* Optional: limit height for scrolling */
 }
 
-#chapter-groups {
-  background: linear-gradient(135deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  box-shadow: 0 6px 12px var(--shadow);
-  padding: 20px;
-  width: 100%;
-  overflow-y: auto;
+.book-group {
+  margin-bottom: 20px;
 }
 
-#book-list {
+.book-group h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.2em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.book-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 10px;
@@ -162,28 +166,13 @@ header {
   background: var(--card-bg-end);
 }
 
-.book-button.active {
-  background: var(--card-bg-end);
-  box-shadow: 0 2px 4px var(--shadow-hover);
-}
-
-.chapter-groups-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 .chapter-group {
-  padding: 15px;
-  background: var(--card-bg-start);
-  border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .group-header {
   font-family: 'Lora', serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 1.2em;
   color: var(--text-primary);
   margin-bottom: 10px;
   padding-bottom: 5px;
@@ -195,8 +184,7 @@ header {
 }
 
 .group-subtitles {
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 0.9em;
   color: var(--text-secondary);
   margin-top: 5px;
 }
@@ -225,8 +213,27 @@ header {
 }
 
 .chapter-link.active {
+  background: var(--link-color);
+  color: #fff;
+}
+
+.back-button {
   background: var(--card-bg-end);
-  box-shadow: 0 2px 4px var(--shadow-hover);
+  color: var(--text-primary);
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: var(--link-color);
+  color: #fff;
 }
 
 #app {
@@ -321,7 +328,7 @@ a:hover {
     align-items: center;
   }
 
-  #book-stack, #chapter-groups {
+  #book-stack {
     width: 100%;
   }
 
@@ -334,11 +341,11 @@ a:hover {
     width: 90%;
   }
 
-  #book-list {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Smaller min width on mobile */
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   }
 
   .chapters {
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); /* Smaller min width on mobile */
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
   }
 }
