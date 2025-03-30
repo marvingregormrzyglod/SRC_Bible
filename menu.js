@@ -32,6 +32,20 @@ const bookDisplayNames = {
   "revelation": "Rev"
 };
 
+const bookCategories = {
+  "Old Testament": {
+    "Beginnings": ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"],
+    "History": ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"],
+    "Wisdom": ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"],
+    "Prophets": ["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel", "hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"]
+  },
+  "New Testament": {
+    "Gospels": ["matthew", "mark", "luke", "john", "acts"],
+    "Letters": ["romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon", "hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"],
+    "Apocalypse": ["revelation"]
+  }
+};
+
 const allBooks = Object.keys(books);
 
 const exodusGroups = [
@@ -61,52 +75,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Display books with OT and NT sections or filtered results
   function displayBooks(filter = '') {
-    bookList.innerHTML = '';
-    if (filter) {
-      const filteredBooks = allBooks.filter(book =>
-        bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase())
-      );
-      const grid = document.createElement('div');
-      grid.className = 'book-grid';
-      filteredBooks.forEach(book => {
-        const bookButton = createBookButton(book);
-        grid.appendChild(bookButton);
-      });
-      bookList.appendChild(grid);
-    } else {
-      // Old Testament Section
-      const otBooks = allBooks.slice(0, 39); // Genesis to Malachi
-      const otDiv = document.createElement('div');
-      otDiv.className = 'book-group';
-      const otHeader = document.createElement('h3');
-      otHeader.textContent = 'Old Testament';
-      otDiv.appendChild(otHeader);
-      const otGrid = document.createElement('div');
-      otGrid.className = 'book-grid';
-      otBooks.forEach(book => {
-        const bookButton = createBookButton(book);
-        otGrid.appendChild(bookButton);
-      });
-      otDiv.appendChild(otGrid);
-      bookList.appendChild(otDiv);
-
-      // New Testament Section
-      const ntBooks = allBooks.slice(39); // Matthew to Revelation
-      const ntDiv = document.createElement('div');
-      ntDiv.className = 'book-group';
-      const ntHeader = document.createElement('h3');
-      ntHeader.textContent = 'New Testament';
-      ntDiv.appendChild(ntHeader);
-      const ntGrid = document.createElement('div');
-      ntGrid.className = 'book-grid';
-      ntBooks.forEach(book => {
-        const bookButton = createBookButton(book);
-        ntGrid.appendChild(bookButton);
-      });
-      ntDiv.appendChild(ntGrid);
-      bookList.appendChild(ntDiv);
+  bookList.innerHTML = '';
+  
+  if (filter) {
+    const filteredBooks = allBooks.filter(book =>
+      bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase())
+    );
+    const grid = document.createElement('div');
+    grid.className = 'book-grid';
+    filteredBooks.forEach(book => {
+      const bookButton = createBookButton(book);
+      grid.appendChild(bookButton);
+    });
+    bookList.appendChild(grid);
+  } else {
+    // Display categorized books
+    for (const [testament, categories] of Object.entries(bookCategories)) {
+      const testamentDiv = document.createElement('div');
+      testamentDiv.className = 'book-group';
+      
+      const testamentHeader = document.createElement('h3');
+      testamentHeader.textContent = testament;
+      testamentDiv.appendChild(testamentHeader);
+      
+      for (const [category, booksInCategory] of Object.entries(categories)) {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'category-group';
+        
+        const categoryHeader = document.createElement('h4');
+        categoryHeader.textContent = category;
+        categoryDiv.appendChild(categoryHeader);
+        
+        const grid = document.createElement('div');
+        grid.className = 'book-grid';
+        
+        booksInCategory.forEach(book => {
+          const bookButton = createBookButton(book);
+          grid.appendChild(bookButton);
+        });
+        
+        categoryDiv.appendChild(grid);
+        testamentDiv.appendChild(categoryDiv);
+      }
+      
+      bookList.appendChild(testamentDiv);
     }
   }
+}
 
   // Create a book button
   function createBookButton(book) {
