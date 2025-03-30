@@ -139,36 +139,43 @@ header {
   margin-bottom: 20px;
 }
 
+.category-group h4 {
+  font-size: 0.9em;
+  margin: 8px 0 5px 0;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
 .book-group h3 {
   font-family: 'Lora', serif;
   font-size: 1em;
   color: var(--text-primary);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   padding-bottom: 3px;
   border-bottom: 1px solid var(--card-border);
 }
 
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 5px;
   padding: 2px;
 }
 
-.book-button {
+.book-button, .chapter-link {
   background: var(--card-bg-start);
   color: var(--text-primary);
-  padding: 6px 4px;
-  font-size: 0.8em;
+  padding: 5px 3px;
+  font-size: 0.75rem;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 4px;
   transition: all 0.2s ease;
-  min-height: 30px;
+  min-height: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: -0.05em;
 }
 
@@ -230,14 +237,15 @@ header {
 .back-button {
   background: var(--card-bg-end);
   color: var(--text-primary);
-  padding: 10px;
+  padding: 5px 10px;
   text-align: center;
   cursor: pointer;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: bold;
   border: none;
-  width: 100%;
+  width: auto;
+  display: inline-block;
   transition: background 0.3s ease;
 }
 
@@ -352,13 +360,13 @@ a:hover {
   }
 
   .book-grid {
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
   }
 
-  .book-button {
-    font-size: 0.75em;
-    padding: 5px 3px;
-    min-height: 28px;
+  .book-button, .chapter-link {
+    font-size: 0.7rem;
+    padding: 4px 2px;
+    min-height: 24px;
   }
 
   .chapters {
