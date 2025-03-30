@@ -125,8 +125,6 @@ header {
   box-shadow: 0 6px 12px var(--shadow);
   padding: 20px;
   width: 100%;
-  overflow-y: auto;
-  max-height: 400px;
 }
 
 #book-list {
@@ -189,27 +187,32 @@ header {
 
 .group-header {
   font-family: 'Lora', serif;
-  font-size: 1.2em;
+  font-size: 0.9em;
   color: var(--text-primary);
+  grid-column: 1 / -1;
+  margin: 10px 0 5px;
   margin-bottom: 10px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 3px;
+  border-bottom: 2px solid var(--link-color);
 }
 
 .group-name {
   display: block;
+  font-weight: bold;
+  color: var(--text-primary);
 }
 
 .group-subtitles {
-  font-size: 0.9em;
   color: var(--text-secondary);
+  font-size: 0.8em;
+  margin-left: 10px;
   margin-top: 5px;
 }
 
 .chapters {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 6px;
 }
 
 .chapter-link {
@@ -218,11 +221,12 @@ header {
   align-items: center;
   background: var(--card-bg-start);
   color: var(--text-primary);
-  padding: 8px;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease;
-  min-height: 40px;
+  font-size: 0.75rem;
+  padding: 5px;
+  min-height: 30px;
 }
 
 .chapter-link:hover {
@@ -237,14 +241,15 @@ header {
 .back-button {
   background: var(--card-bg-end);
   color: var(--text-primary);
-  padding: 5px 10px;
+  padding: 5px 10px !important;
+  margin: 0 !important;
   text-align: center;
   cursor: pointer;
   border-radius: 8px;
   margin-bottom: 10px;
   font-weight: bold;
   border: none;
-  width: auto;
+  width: auto !important;
   display: inline-block;
   transition: background 0.3s ease;
 }

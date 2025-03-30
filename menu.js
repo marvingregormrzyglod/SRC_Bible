@@ -139,58 +139,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Display chapters for a selected book
   function displayChapters(book, filter = '') {
-    bookList.innerHTML = '';
-    const backButton = document.createElement('button');
-    backButton.className = 'back-button';
-    backButton.textContent = 'Back to Books';
-    backButton.addEventListener('click', () => {
-      currentMode = 'books';
-      selectedBook = null;
-      displayBooks();
-    });
-    bookList.appendChild(backButton);
+  bookList.innerHTML = '';
+  
+  // Create header container
+  const headerDiv = document.createElement('div');
+  headerDiv.style.display = 'flex';
+  headerDiv.style.justifyContent = 'space-between';
+  headerDiv.style.alignItems = 'center';
+  headerDiv.style.marginBottom = '15px';
 
-    const groups = bookGroups[book];
-    if (groups) {
-      groups.forEach(group => {
-        const groupDiv = document.createElement('div');
-        groupDiv.className = `chapter-group ${group.class}`;
-        const groupHeader = document.createElement('div');
-        groupHeader.className = 'group-header';
-        const nameSpan = document.createElement('span');
-        nameSpan.className = 'group-name';
-        nameSpan.textContent = group.name;
-        groupHeader.appendChild(nameSpan);
-        if (group.subtitles) {
-          const subtitleSpan = document.createElement('div');
-          subtitleSpan.className = 'group-subtitles';
-          subtitleSpan.textContent = group.subtitles;
-          groupHeader.appendChild(subtitleSpan);
-        }
-        groupDiv.appendChild(groupHeader);
-        const chaptersDiv = document.createElement('div');
-        chaptersDiv.className = 'chapters';
-        for (let i = group.start; i <= group.end; i++) {
-          const chapterStr = i.toString().padStart(2, '0');
-          if (filter && !chapterStr.includes(filter)) continue;
-          const chapterLink = createChapterLink(book, chapterStr, i);
-          chaptersDiv.appendChild(chapterLink);
-        }
-        groupDiv.appendChild(chaptersDiv);
-        bookList.appendChild(groupDiv);
-      });
-    } else {
-      const chaptersDiv = document.createElement('div');
-      chaptersDiv.className = 'chapters';
-      for (let i = 1; i <= books[book]; i++) {
+  // Book title
+  const title = document.createElement('h3');
+  title.textContent = bookDisplayNames[book];
+  title.style.margin = '0';
+  title.style.fontSize = '1.2em';
+
+  // Back button
+  const backButton = document.createElement('button');
+  backButton.className = 'back-button';
+  backButton.textContent = 'Back to Books';
+  backButton.style.width = 'auto';
+  backButton.style.padding = '5px 10px';
+
+  headerDiv.appendChild(title);
+  headerDiv.appendChild(backButton);
+  bookList.appendChild(headerDiv);
+
+  // Create chapters container
+  const chaptersDiv = document.createElement('div');
+  chaptersDiv.className = 'chapters';
+
+  const groups = bookGroups[book];
+  if (groups) {
+    groups.forEach(group => {
+      // Add group header
+      const groupHeader = document.createElement('div');
+      groupHeader.className = 'group-header';
+      groupHeader.innerHTML = `
+        <span class="group-name">${group.name}</span>
+        <span class="group-subtitles">${group.subtitles}</span>
+      `;
+      chaptersDiv.appendChild(groupHeader);
+
+      // Add chapters
+      for (let i = group.start; i <= group.end; i++) {
         const chapterStr = i.toString().padStart(2, '0');
         if (filter && !chapterStr.includes(filter)) continue;
         const chapterLink = createChapterLink(book, chapterStr, i);
         chaptersDiv.appendChild(chapterLink);
       }
-      bookList.appendChild(chaptersDiv);
+    });
+  } else {
+    // Regular chapter display
+    for (let i = 1; i <= books[book]; i++) {
+      const chapterStr = i.toString().padStart(2, '0');
+      if (filter && !chapterStr.includes(filter)) continue;
+      const chapterLink = createChapterLink(book, chapterStr, i);
+      chaptersDiv.appendChild(chapterLink);
     }
   }
+
+  bookList.appendChild(chaptersDiv);
+
+  // Add back button functionality
+  backButton.addEventListener('click', () => {
+    currentMode = 'books';
+    selectedBook = null;
+    displayBooks();
+  });
+}
 
   // Create a chapter link
   function createChapterLink(book, chapterStr, chapterNum) {
