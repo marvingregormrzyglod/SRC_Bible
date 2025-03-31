@@ -32,236 +32,101 @@ const bookDisplayNames = {
   "revelation": "Rev"
 };
 
-const bookCategories = {
-  "Old Testament": {
-    "Beginnings": ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"],
-    "History": ["joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther"],
-    "Wisdom": ["job", "psalms", "proverbs", "ecclesiastes", "songofsolomon"],
-    "Prophets": ["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel", "hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"]
-  },
-  "New Testament": {
-    "Gospels": ["matthew", "mark", "luke", "john", "acts"],
-    "Letters": ["romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon", "hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude"],
-    "Apocalypse": ["revelation"]
-  }
-};
+let currentBook = 'genesis';
+let currentChapter = 1;
 
-const allBooks = Object.keys(books);
-
-const exodusGroups = [
-  { name: "⛓️ Oppression", start: 1, end: 6, class: "oppression", subtitles: "Slavery • Moses’ call" },
-  { name: "🐸 Plagues", start: 7, end: 13, class: "plagues", subtitles: "Judgment • Passover" },
-  { name: "🌊 Miracles", start: 14, end: 18, class: "miracles", subtitles: "Red Sea • Manna" },
-  { name: "✋ Covenant", start: 19, end: 40, class: "covenant", subtitles: "Law • Tabernacle" }
-];
-
-const leviticusGroups = [
-  { name: "🩸 Sacrifices", start: 1, end: 7, class: "sacrifices", subtitles: "Offerings • Atonement" },
-  { name: "✨ Holiness", start: 8, end: 22, class: "holiness", subtitles: "Priests • Purity Laws" },
-  { name: "🎉 Feasts", start: 23, end: 25, class: "feasts", subtitles: "Sabbaths • Jubilee" },
-  { name: "⚠️ Warnings", start: 26, end: 27, class: "warnings", subtitles: "Blessings • Curses" }
-];
-
-const bookGroups = {
-  "exodus": exodusGroups,
-  "leviticus": leviticusGroups
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  const bookList = document.getElementById('book-list');
-  const searchBar = document.getElementById('search-bar');
-  let currentMode = 'books'; // 'books' or 'chapters'
-  let selectedBook = null;
-
-  // Display books with OT and NT sections or filtered results
-  function displayBooks(filter = '') {
-  bookList.innerHTML = '';
-  
-  if (filter) {
-    const filteredBooks = allBooks.filter(book =>
-      bookDisplayNames[book].toLowerCase().includes(filter.toLowerCase())
-    );
-    const grid = document.createElement('div');
-    grid.className = 'book-grid';
-    filteredBooks.forEach(book => {
-      const bookButton = createBookButton(book);
-      grid.appendChild(bookButton);
-    });
-    bookList.appendChild(grid);
-  } else {
-    // Display categorized books
-    for (const [testament, categories] of Object.entries(bookCategories)) {
-      const testamentDiv = document.createElement('div');
-      testamentDiv.className = 'book-group';
-      
-      const testamentHeader = document.createElement('h3');
-      testamentHeader.textContent = testament;
-      testamentDiv.appendChild(testamentHeader);
-      
-      for (const [category, booksInCategory] of Object.entries(categories)) {
-        const categoryDiv = document.createElement('div');
-        categoryDiv.className = 'category-group';
-        
-        const categoryHeader = document.createElement('h4');
-        categoryHeader.textContent = category;
-        categoryDiv.appendChild(categoryHeader);
-        
-        const grid = document.createElement('div');
-        grid.className = 'book-grid';
-        
-        booksInCategory.forEach(book => {
-          const bookButton = createBookButton(book);
-          grid.appendChild(bookButton);
-        });
-        
-        categoryDiv.appendChild(grid);
-        testamentDiv.appendChild(categoryDiv);
-      }
-      
-      bookList.appendChild(testamentDiv);
-    }
-  }
-}
-
-  // Create a book button
-  function createBookButton(book) {
-    const displayName = bookDisplayNames[book];
-    const bookButton = document.createElement('div');
-    bookButton.className = 'book-button';
-    bookButton.textContent = displayName;
-    bookButton.addEventListener('click', () => {
-      selectedBook = book;
-      currentMode = 'chapters';
-      displayChapters(book);
-    });
-    return bookButton;
-  }
-
-  // Display chapters for a selected book
-  function displayChapters(book, filter = '') {
-  bookList.innerHTML = '';
-  
-  // Create header container
-  const headerDiv = document.createElement('div');
-  headerDiv.style.display = 'flex';
-  headerDiv.style.justifyContent = 'space-between';
-  headerDiv.style.alignItems = 'center';
-  headerDiv.style.marginBottom = '15px';
-
-  // Book title
-  const title = document.createElement('h3');
-  title.textContent = bookDisplayNames[book];
-  title.style.margin = '0';
-  title.style.fontSize = '1.2em';
-
-  // Back button
-  const backButton = document.createElement('button');
-  backButton.className = 'back-button';
-  backButton.textContent = 'Back to Books';
-  backButton.style.width = 'auto';
-  backButton.style.padding = '5px 10px';
-
-  headerDiv.appendChild(title);
-  headerDiv.appendChild(backButton);
-  bookList.appendChild(headerDiv);
-
-  // Create chapters container
-  const chaptersDiv = document.createElement('div');
-  chaptersDiv.className = 'chapters';
-
-  const groups = bookGroups[book];
-  if (groups) {
-    groups.forEach(group => {
-      // Add group header
-      const groupHeader = document.createElement('div');
-      groupHeader.className = 'group-header';
-      groupHeader.innerHTML = `
-        <span class="group-name">${group.name}</span>
-        <span class="group-subtitles">${group.subtitles}</span>
-      `;
-      chaptersDiv.appendChild(groupHeader);
-
-      // Add chapters
-      for (let i = group.start; i <= group.end; i++) {
-        const chapterStr = i.toString().padStart(2, '0');
-        if (filter && !chapterStr.includes(filter)) continue;
-        const chapterLink = createChapterLink(book, chapterStr, i);
-        chaptersDiv.appendChild(chapterLink);
-      }
-    });
-  } else {
-    // Regular chapter display
-    for (let i = 1; i <= books[book]; i++) {
-      const chapterStr = i.toString().padStart(2, '0');
-      if (filter && !chapterStr.includes(filter)) continue;
-      const chapterLink = createChapterLink(book, chapterStr, i);
-      chaptersDiv.appendChild(chapterLink);
-    }
-  }
-
-  bookList.appendChild(chaptersDiv);
-
-  // Add back button functionality
-  backButton.addEventListener('click', () => {
-    currentMode = 'books';
-    selectedBook = null;
-    displayBooks();
+function populateBookSelect() {
+  const select = document.getElementById('book-select');
+  Object.entries(bookDisplayNames).forEach(([key, name]) => {
+    const option = document.createElement('option');
+    option.value = key;
+    option.textContent = name;
+    select.appendChild(option);
   });
 }
 
-  // Create a chapter link
-  function createChapterLink(book, chapterStr, chapterNum) {
-    const chapterLink = document.createElement('a');
-    chapterLink.href = `#/scripture/${book}/${chapterStr}`;
-    chapterLink.className = 'chapter-link';
-    chapterLink.textContent = chapterNum;
-    chapterLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.querySelectorAll('.chapter-link').forEach(link => link.classList.remove('active'));
-      chapterLink.classList.add('active');
-      window.location.hash = `#/scripture/${book}/${chapterStr}`;
-    });
-    return chapterLink;
+function updateChapterSelect() {
+  const select = document.getElementById('chapter-select');
+  select.innerHTML = '';
+  const chapterCount = books[currentBook];
+  
+  for (let i = 1; i <= chapterCount; i++) {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = i;
+    option.selected = i === currentChapter;
+    select.appendChild(option);
   }
+}
 
-  // Search bar functionality
-  searchBar.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.trim().toLowerCase();
-    const [bookSearch, chapterSearch] = searchTerm.split(' ');
-    const bookKey = Object.keys(bookDisplayNames).find(key =>
-      bookDisplayNames[key].toLowerCase().startsWith(bookSearch)
-    );
-    if (bookKey && books[bookKey]) {
-      selectedBook = bookKey;
-      currentMode = 'chapters';
-      displayChapters(bookKey, chapterSearch || '');
-    } else {
-      currentMode = 'books';
-      displayBooks(searchTerm);
-    }
-  });
+function loadScripture(book, chapter) {
+  currentBook = book;
+  currentChapter = Math.max(1, Math.min(chapter, books[book]));
+  
+  document.getElementById('book-select').value = book;
+  updateChapterSelect();
+  window.location.hash = `#/scripture/${book}/${currentChapter.toString().padStart(2, '0')}`;
+  
+  const appDiv = document.getElementById('app');
+  appDiv.innerHTML = '<div class="loading">Loading...</div>';
+  
+  fetch(`scripture/${book}/${currentChapter.toString().padStart(2, '0')}.md`)
+    .then(response => response.text())
+    .then(markdown => {
+      const html = marked.parse(markdown);
+      appDiv.innerHTML = html;
+      document.querySelectorAll('pre code').forEach(block => {
+        hljs.highlightElement(block, { language: 'pseudo' });
+      });
+    })
+    .catch(() => {
+      appDiv.innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
+    });
+}
 
-  // Initial load and hash handling
-  const hash = window.location.hash.replace('#/', '');
-  if (hash) {
-    const parts = hash.split('/');
-    if (parts[0] === 'scripture' && parts[1] && parts[2]) {
-      const book = parts[1];
-      const chapter = parts[2];
-      if (books[book]) {
-        selectedBook = book;
-        currentMode = 'chapters';
-        displayChapters(book);
-        setTimeout(() => {
-          const chapterLink = document.querySelector(`a[href="#/scripture/${book}/${chapter}"]`);
-          if (chapterLink) {
-            chapterLink.classList.add('active');
-            chapterLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }, 100);
-      }
-    }
+document.getElementById('book-select').addEventListener('change', (e) => {
+  currentBook = e.target.value;
+  currentChapter = 1;
+  loadScripture(currentBook, 1);
+});
+
+document.getElementById('chapter-select').addEventListener('change', (e) => {
+  loadScripture(currentBook, parseInt(e.target.value));
+});
+
+document.getElementById('prev-chapter').addEventListener('click', () => {
+  if (currentChapter > 1) {
+    loadScripture(currentBook, currentChapter - 1);
   } else {
-    displayBooks();
+    const bookKeys = Object.keys(books);
+    const currentIndex = bookKeys.indexOf(currentBook);
+    if (currentIndex > 0) {
+      const prevBook = bookKeys[currentIndex - 1];
+      loadScripture(prevBook, books[prevBook]);
+    }
+  }
+});
+
+document.getElementById('next-chapter').addEventListener('click', () => {
+  if (currentChapter < books[currentBook]) {
+    loadScripture(currentBook, currentChapter + 1);
+  } else {
+    const bookKeys = Object.keys(books);
+    const currentIndex = bookKeys.indexOf(currentBook);
+    if (currentIndex < bookKeys.length - 1) {
+      loadScripture(bookKeys[currentIndex + 1], 1);
+    }
+  }
+});
+
+// Handle hash changes
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#/scripture/', '').split('/');
+  if (hash.length === 2) {
+    const book = hash[0];
+    const chapter = parseInt(hash[1]);
+    if (books[book] && chapter <= books[book]) {
+      loadScripture(book, chapter);
+    }
   }
 });
