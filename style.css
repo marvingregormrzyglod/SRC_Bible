@@ -211,18 +211,20 @@ datalist {
   background: transparent !important;
 }
 
-.markdown-section pre .hljs-title { color: #00b7eb !important; }
-.markdown-section pre .hljs-comment { color: #a68b6b !important; }
-.markdown-section pre .hljs-keyword { color: #ff4040 !important; }
-.markdown-section pre .hljs-variable { color: #ffb07c !important; }
-.markdown-section pre .hljs-function { color: #ff4040 !important; }
-.markdown-section pre .hljs-string { color: #ffd700 !important; }
-.markdown-section pre .hljs-literal { color: #ffd700 !important; }
-.markdown-section pre .hljs-operator { color: #f5e8d3 !important; }
-.markdown-section pre .hljs-punctuation { color: #d1b899 !important; }
-.markdown-section pre .hljs-property { color: #00b7eb !important; }
-.markdown-section pre .hljs-property-access { color: #00b7eb !important; }
-.markdown-section pre .hljs-method-name { color: #f5e8d3 !important; }
+/* Syntax Highlighting Rules */
+.markdown-section pre .hljs-keyword { color: #ff4040 !important; } /* Red for function/control keywords */
+.markdown-section pre .hljs-title { color: #00b7eb !important; } /* Bright blue for function names */
+.markdown-section pre .hljs-object { color: #00b7eb !important; } /* Blue for object before dot */
+.markdown-section pre .hljs-dot { color: #00b7eb !important; } /* Blue for dot operator */
+.markdown-section pre .hljs-method-name { color: #f5e8d3 !important; } /* White for method names */
+
+/* Base colors */
+.markdown-section pre .hljs-comment { color: #a68b6b !important; } /* Comment color */
+.markdown-section pre .hljs-string { color: #ffd700 !important; } /* Gold for strings */
+.markdown-section pre .hljs-literal { color: #ffd700 !important; } /* Gold for literals */
+.markdown-section pre .hljs-number { color: #ffd700 !important; } /* Gold for numbers */
+.markdown-section pre .hljs-operator { color: #f5e8d3 !important; } /* White for operators */
+.markdown-section pre .hljs-punctuation { color: #d1b899 !important; } /* Beige for punctuation */
 
 .loading {
   text-align: center;
