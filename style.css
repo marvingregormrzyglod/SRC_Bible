@@ -199,7 +199,7 @@ datalist {
 
 .markdown-section pre {
   background: #2f1e12;
-  color: #f5e8d3;
+  color: #f5e8d3; /* Base text color */
   padding: 20px;
   border-radius: 15px;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -208,17 +208,17 @@ datalist {
 }
 
 .markdown-section pre code {
-  color: #f5e8d3 !important; /* Force base text color */
+  background: transparent !important;
 }
 
-.markdown-section pre code .hljs-comment { color: #a68b6b !important; }
-.markdown-section pre code .hljs-keyword { color: #ff4040 !important; }
-.markdown-section pre code .hljs-variable { color: #ffb07c !important; }
-.markdown-section pre code .hljs-function .hljs-title { color: #00b7eb !important; }
-.markdown-section pre code .hljs-string { color: #ffd700 !important; }
-.markdown-section pre code .hljs-literal { color: #ffd700 !important; }
-.markdown-section pre code .hljs-operator { color: #f5e8d3 !important; }
-.markdown-section pre code .hljs-punctuation { color: #d1b899 !important; }
+.markdown-section pre .hljs-comment { color: #a68b6b !important; }
+.markdown-section pre .hljs-keyword { color: #ff4040 !important; }
+.markdown-section pre .hljs-variable { color: #ffb07c !important; }
+.markdown-section pre .hljs-function .hljs-title { color: #00b7eb !important; }
+.markdown-section pre .hljs-string { color: #ffd700 !important; }
+.markdown-section pre .hljs-literal { color: #ffd700 !important; }
+.markdown-section pre .hljs-operator { color: #f5e8d3 !important; }
+.markdown-section pre .hljs-punctuation { color: #d1b899 !important; }
 
 .loading {
   text-align: center;
