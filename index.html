@@ -17,16 +17,16 @@
     <div id="dark-mode-toggle">🌙</div>
   </header>
   <div class="search-container">
-    <input type="text" id="search-bar" placeholder="Search books or chapters (e.g., Genesis 1, Psalms 23)">
+    <input type="text" id="search-bar" placeholder="Search (e.g., Genesis 1, John 3:16)">
+    <button id="search-button">🔍</button>
   </div>
-  <div class="container">
-    <div class="nav-container">
-      <div id="book-stack">
-        <div id="book-list"></div>
-      </div>
-    </div>
-    <div id="app" class="markdown-section"></div>
+  <div class="nav-controls">
+    <button id="prev-chapter">◀</button>
+    <select id="book-select"></select>
+    <select id="chapter-select"></select>
+    <button id="next-chapter">▶</button>
   </div>
+  <div id="app" class="markdown-section"></div>
   <footer>
     <p>Provided by The Salty Friends | Developed by <a href="https://marvingregormrzyglod.github.io/">Marvin Gregor Mrzyglod</a></p>
   </footer>
@@ -34,24 +34,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="menu.js"></script>
   <script>
-    // Register custom Highlight.js language for pseudo-code
-    hljs.registerLanguage('pseudo', function(hljs) {
-      return {
-        keywords: 'if else for while let function return true false',
-        contains: [
-          hljs.COMMENT('//', '$', { className: 'comment' }),
-          { className: 'keyword', begin: /\b(if|else|for|while|let|function|return|true|false)\b/ },
-          { className: 'string', begin: '"', end: '"', contains: [{ begin: '\\\\"' }] },
-          { className: 'function', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/, end: /\s*\(/, returnBegin: true,
-            contains: [{ className: 'title', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*/ }]
-          },
-          { className: 'variable', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/, relevance: 0 },
-          { className: 'operator', begin: /(==|=|\.)/ },
-          { className: 'punctuation', begin: /[\(\)\{\}\[\]\.,;]/ }
-        ]
-      };
-    });
-
     // Dark mode toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     darkModeToggle.addEventListener('click', () => {
@@ -59,35 +41,29 @@
       darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
 
-    // Function to fetch and render Markdown
-    async function loadMarkdown(path) {
-      const appDiv = document.getElementById('app');
-      appDiv.innerHTML = '<div class="loading">Loading...</div>';
-      try {
-        const response = await fetch(path);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const markdown = await response.text();
-        const html = marked.parse(markdown);
-        appDiv.innerHTML = html;
-        document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightElement(block, { language: 'pseudo' });
-        });
-      } catch (error) {
-        console.error('Error loading Markdown:', error);
-        appDiv.innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
+    // Search functionality
+    document.getElementById('search-button').addEventListener('click', performSearch);
+    document.getElementById('search-bar').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') performSearch();
+    });
+
+    function performSearch() {
+      const query = document.getElementById('search-bar').value.trim();
+      const [bookPart, chapterPart] = query.split(/[\s:]+/);
+      const bookKey = Object.keys(bookDisplayNames).find(key => 
+        bookDisplayNames[key].toLowerCase() === bookPart.toLowerCase()
+      );
+      
+      if (bookKey && books[bookKey]) {
+        const chapter = parseInt(chapterPart) || 1;
+        loadScripture(bookKey, Math.min(chapter, books[bookKey]));
       }
     }
 
-    // Load intro.md by default
+    // Initial load
     window.addEventListener('DOMContentLoaded', () => {
-      loadMarkdown('intro.md');
-    });
-
-    // Listen for hash changes to load scripture content
-    window.addEventListener('hashchange', () => {
-      const hash = window.location.hash.replace('#/', '');
-      if (hash) loadMarkdown(`${hash}.md`);
-      else loadMarkdown('intro.md');
+      populateBookSelect();
+      loadScripture('genesis', 1);
     });
   </script>
 </body>
