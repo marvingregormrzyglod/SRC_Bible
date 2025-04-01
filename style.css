@@ -211,15 +211,17 @@ datalist {
   background: transparent !important;
 }
 
+.markdown-section pre .hljs-title { color: #00b7eb !important; }
 .markdown-section pre .hljs-comment { color: #a68b6b !important; }
 .markdown-section pre .hljs-keyword { color: #ff4040 !important; }
 .markdown-section pre .hljs-variable { color: #ffb07c !important; }
-.markdown-section pre .hljs-function .hljs-title { color: #ff4040 !important; }
+.markdown-section pre .hljs-function { color: #ff4040 !important; }
 .markdown-section pre .hljs-string { color: #ffd700 !important; }
 .markdown-section pre .hljs-literal { color: #ffd700 !important; }
 .markdown-section pre .hljs-operator { color: #f5e8d3 !important; }
 .markdown-section pre .hljs-punctuation { color: #d1b899 !important; }
 .markdown-section pre .hljs-property { color: #00b7eb !important; }
+.markdown-section pre .hljs-method-name { color: #f5e8d3 !important; }
 
 .loading {
   text-align: center;
