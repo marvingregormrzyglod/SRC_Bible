@@ -83,19 +83,19 @@ header {
   width: 80%;
   max-width: 800px;
   box-sizing: border-box;
-  position: relative;
+  display: flex;
+  gap: 10px;
 }
 
 #search-bar {
-  width: 100%;
-  padding: 10px 40px 10px 10px;
+  flex: 1;
+  padding: 10px;
   border: none;
   border-radius: 8px;
   background: var(--bg-color);
   color: var(--text-primary);
   font-size: 16px;
   outline: none;
-  box-sizing: border-box;
 }
 
 #search-bar::placeholder {
@@ -107,15 +107,16 @@ datalist {
 }
 
 #search-button {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
+  background: var(--card-bg-end);
   border: none;
-  color: var(--icon-color);
+  border-radius: 8px;
+  padding: 0 15px;
   cursor: pointer;
-  padding: 0;
+  transition: background 0.2s ease;
+}
+
+#search-button:hover {
+  background: var(--link-color);
 }
 
 .nav-controls {
@@ -204,6 +205,10 @@ datalist {
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
   margin: 20px 0;
   font-family: 'Fira Code', monospace;
+}
+
+.markdown-section pre code {
+  color: #f5e8d3 !important; /* Force base text color */
 }
 
 .markdown-section pre code .hljs-comment { color: #a68b6b !important; }
