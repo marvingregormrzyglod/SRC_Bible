@@ -117,9 +117,22 @@
             begin: /\bfunction\s+/,
             end: /(?=\()/,
             contains: [{
-            className: 'title',
-            begin: /[a-zA-Z_][a-zA-Z0-9_]*/
+              className: 'title',
+              begin: /[a-zA-Z_][a-zA-Z0-9_]*/
             }]
+          },
+          {
+            className: 'property-access',
+            begin: /\b([a-zA-Z_][a-zA-Z0-9_]*)\./,
+            relevance: 0,
+            contains: [
+              {className: 'property-dot', begin: /\./}
+            ]
+          },
+          {
+            className: 'method-name',
+            begin: /\.([a-zA-Z_][a-zA-Z0-9_]*)/,
+            relevance: 0
           },
           {
             className: 'property',
