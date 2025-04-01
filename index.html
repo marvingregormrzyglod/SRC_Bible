@@ -102,12 +102,72 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="menu.js"></script>
   <script>
-    // Dark mode toggle
+    // Register custom Highlight.js language for pseudo-code with new rules
+    hljs.registerLanguage('pseudo', function(hljs) {
+      return {
+        keywords: 'function return if else for while let true false future',
+        contains: [
+          hljs.COMMENT('//', '$', { className: 'comment' }),
+          { 
+            className: 'keyword',
+            begin: /\b(function|return|if|else|for|while|let|true|false|future)\b/ 
+          },
+          {
+            className: 'property',
+            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*\./,
+            relevance: 0
+          },
+          { 
+            className: 'string',
+            begin: '"',
+            end: '"',
+            contains: [{ begin: '\\\\"' }]
+          },
+          {
+            className: 'function',
+            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/,
+            end: /\s*\(/,
+            returnBegin: true,
+            contains: [{ className: 'title', begin: /\b[a-zA-Z_][a-zA-Z0-9_]*/ }]
+          },
+          {
+            className: 'variable',
+            begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/,
+            relevance: 0
+          },
+          { className: 'operator', begin: /(==|=|\.)/ },
+          { className: 'punctuation', begin: /[\(\)\{\}\[\]\.,;]/ }
+        ]
+      };
+    });
+
+    // Dark mode toggle (existing)
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
+
+    // Updated loadScripture function with proper highlighting
+    async function loadScripture(book, chapter) {
+      const appDiv = document.getElementById('app');
+      appDiv.innerHTML = '<div class="loading">Loading...</div>';
+      
+      try {
+        const response = await fetch(`scripture/${book}/${chapter.toString().padStart(2, '0')}.md`);
+        const markdown = await response.text();
+        const html = marked.parse(markdown);
+        appDiv.innerHTML = html;
+        
+        // Highlight all pre blocks with our pseudo-code rules
+        document.querySelectorAll('pre').forEach((block) => {
+          hljs.highlightElement(block, { language: 'pseudo' });
+        });
+      } catch (error) {
+        console.error('Error loading content:', error);
+        appDiv.innerHTML = '<div class="error">Error loading content</div>';
+      }
+    }
 
     // Search functionality
     document.getElementById('search-button').addEventListener('click', performSearch);
