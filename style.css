@@ -221,6 +221,7 @@ datalist {
 .markdown-section pre .hljs-operator { color: #f5e8d3 !important; }
 .markdown-section pre .hljs-punctuation { color: #d1b899 !important; }
 .markdown-section pre .hljs-property { color: #00b7eb !important; }
+.markdown-section pre .hljs-property-access { color: #00b7eb !important; }
 .markdown-section pre .hljs-method-name { color: #f5e8d3 !important; }
 
 .loading {
