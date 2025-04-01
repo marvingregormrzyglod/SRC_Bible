@@ -16,20 +16,89 @@ const books = {
 };
 
 const bookDisplayNames = {
-  "genesis": "Gen", "exodus": "Ex", "leviticus": "Lev", "numbers": "Num", "deuteronomy": "Deut",
-  "joshua": "Josh", "judges": "Judg", "ruth": "Ruth", "1samuel": "1 Sam", "2samuel": "2 Sam",
-  "1kings": "1 Kgs", "2kings": "2 Kgs", "1chronicles": "1 Chr", "2chronicles": "2 Chr", "ezra": "Ezra",
-  "nehemiah": "Neh", "esther": "Esth", "job": "Job", "psalms": "Ps", "proverbs": "Prov",
-  "ecclesiastes": "Eccl", "songofsolomon": "Song", "isaiah": "Isa", "jeremiah": "Jer", "lamentations": "Lam",
-  "ezekiel": "Ezek", "daniel": "Dan", "hosea": "Hos", "joel": "Joel", "amos": "Amos",
-  "obadiah": "Obad", "jonah": "Jonah", "micah": "Mic", "nahum": "Nah", "habakkuk": "Hab",
-  "zephaniah": "Zeph", "haggai": "Hag", "zechariah": "Zech", "malachi": "Mal", "matthew": "Matt",
-  "mark": "Mark", "luke": "Luke", "john": "John", "acts": "Acts", "romans": "Rom",
-  "1corinthians": "1 Cor", "2corinthians": "2 Cor", "galatians": "Gal", "ephesians": "Eph", "philippians": "Phil",
-  "colossians": "Col", "1thessalonians": "1 Thess", "2thessalonians": "2 Thess", "1timothy": "1 Tim", "2timothy": "2 Tim",
-  "titus": "Titus", "philemon": "Phlm", "hebrews": "Heb", "james": "Jas", "1peter": "1 Pet",
-  "2peter": "2 Pet", "1john": "1 Jn", "2john": "2 Jn", "3john": "3 Jn", "jude": "Jude",
-  "revelation": "Rev"
+  "genesis": "Genesis", "exodus": "Exodus", "leviticus": "Leviticus", "numbers": "Numbers", "deuteronomy": "Deuteronomy",
+  "joshua": "Joshua", "judges": "Judges", "ruth": "Ruth", "1samuel": "1 Samuel", "2samuel": "2 Samuel",
+  "1kings": "1 Kings", "2kings": "2 Kings", "1chronicles": "1 Chronicles", "2chronicles": "2 Chronicles", "ezra": "Ezra",
+  "nehemiah": "Nehemiah", "esther": "Esther", "job": "Job", "psalms": "Psalms", "proverbs": "Proverbs",
+  "ecclesiastes": "Ecclesiastes", "songofsolomon": "Song of Solomon", "isaiah": "Isaiah", "jeremiah": "Jeremiah", "lamentations": "Lamentations",
+  "ezekiel": "Ezekiel", "daniel": "Daniel", "hosea": "Hosea", "joel": "Joel", "amos": "Amos",
+  "obadiah": "Obadiah", "jonah": "Jonah", "micah": "Micah", "nahum": "Nahum", "habakkuk": "Habakkuk",
+  "zephaniah": "Zephaniah", "haggai": "Haggai", "zechariah": "Zechariah", "malachi": "Malachi", "matthew": "Matthew",
+  "mark": "Mark", "luke": "Luke", "john": "John", "acts": "Acts", "romans": "Romans",
+  "1corinthians": "1 Corinthians", "2corinthians": "2 Corinthians", "galatians": "Galatians", "ephesians": "Ephesians", "philippians": "Philippians",
+  "colossians": "Colossians", "1thessalonians": "1 Thessalonians", "2thessalonians": "2 Thessalonians", "1timothy": "1 Timothy", "2timothy": "2 Timothy",
+  "titus": "Titus", "philemon": "Philemon", "hebrews": "Hebrews", "james": "James", "1peter": "1 Peter",
+  "2peter": "2 Peter", "1john": "1 John", "2john": "2 John", "3john": "3 John", "jude": "Jude",
+  "revelation": "Revelation"
+};
+
+const bookAliases = {
+  "genesis": ["genesis", "gen", "ge"],
+  "exodus": ["exodus", "exod", "ex"],
+  "leviticus": ["leviticus", "lev", "le"],
+  "numbers": ["numbers", "num", "nu", "nm"],
+  "deuteronomy": ["deuteronomy", "deut", "dt"],
+  "joshua": ["joshua", "josh", "jos", "jsh"],
+  "judges": ["judges", "judg", "jdg", "jg"],
+  "ruth": ["ruth", "rth", "ru"],
+  "1samuel": ["1samuel", "1sam", "1sa", "1sm", "1s"],
+  "2samuel": ["2samuel", "2sam", "2sa", "2sm", "2s"],
+  "1kings": ["1kings", "1kgs", "1ki", "1k"],
+  "2kings": ["2kings", "2kgs", "2ki", "2k"],
+  "1chronicles": ["1chronicles", "1chron", "1chr", "1ch"],
+  "2chronicles": ["2chronicles", "2chron", "2chr", "2ch"],
+  "ezra": ["ezra", "ezr", "ez"],
+  "nehemiah": ["nehemiah", "neh", "ne"],
+  "esther": ["esther", "esth", "es"],
+  "job": ["job", "jb"],
+  "psalms": ["psalms", "psalm", "ps", "psa", "pss"],
+  "proverbs": ["proverbs", "prov", "pr", "prv"],
+  "ecclesiastes": ["ecclesiastes", "eccles", "ecc", "ec"],
+  "songofsolomon": ["songofsolomon", "song", "sos", "so", "solomon"],
+  "isaiah": ["isaiah", "isa", "is"],
+  "jeremiah": ["jeremiah", "jer", "je", "jerm"],
+  "lamentations": ["lamentations", "lam", "la"],
+  "ezekiel": ["ezekiel", "ezek", "eze", "ezk"],
+  "daniel": ["daniel", "dan", "da", "dn"],
+  "hosea": ["hosea", "hos", "ho"],
+  "joel": ["joel", "joe", "jl"],
+  "amos": ["amos", "am"],
+  "obadiah": ["obadiah", "obad", "ob"],
+  "jonah": ["jonah", "jnh", "jon"],
+  "micah": ["micah", "mic", "mi"],
+  "nahum": ["nahum", "nah", "na"],
+  "habakkuk": ["habakkuk", "hab", "hb"],
+  "zephaniah": ["zephaniah", "zeph", "zep", "zp"],
+  "haggai": ["haggai", "hag", "hg"],
+  "zechariah": ["zechariah", "zech", "zec", "zc"],
+  "malachi": ["malachi", "mal", "ml"],
+  "matthew": ["matthew", "matt", "mt"],
+  "mark": ["mark", "mrk", "mar", "mk"],
+  "luke": ["luke", "luk", "lk"],
+  "john": ["john", "joh", "jhn", "jn"],
+  "acts": ["acts", "act", "ac"],
+  "romans": ["romans", "rom", "ro", "rm"],
+  "1corinthians": ["1corinthians", "1cor", "1co", "1c"],
+  "2corinthians": ["2corinthians", "2cor", "2co", "2c"],
+  "galatians": ["galatians", "gal", "ga"],
+  "ephesians": ["ephesians", "eph", "ephes"],
+  "philippians": ["philippians", "phil", "php", "pp"],
+  "colossians": ["colossians", "col", "co"],
+  "1thessalonians": ["1thessalonians", "1thess", "1th", "1thes"],
+  "2thessalonians": ["2thessalonians", "2thess", "2th", "2thes"],
+  "1timothy": ["1timothy", "1tim", "1ti", "1tm"],
+  "2timothy": ["2timothy", "2tim", "2ti", "2tm"],
+  "titus": ["titus", "tit", "ti"],
+  "philemon": ["philemon", "philem", "phm", "pm"],
+  "hebrews": ["hebrews", "heb"],
+  "james": ["james", "jas", "jm"],
+  "1peter": ["1peter", "1pet", "1pe", "1pt", "1p"],
+  "2peter": ["2peter", "2pet", "2pe", "2pt", "2p"],
+  "1john": ["1john", "1joh", "1jhn", "1jn", "1j"],
+  "2john": ["2john", "2joh", "2jhn", "2jn", "2j"],
+  "3john": ["3john", "3joh", "3jhn", "3jn", "3j"],
+  "jude": ["jude", "jud", "jd"],
+  "revelation": ["revelation", "rev", "re", "rv"]
 };
 
 let currentBook = 'genesis';
@@ -130,3 +199,19 @@ window.addEventListener('hashchange', () => {
     }
   }
 });
+
+// Update performSearch function
+function performSearch() {
+  const query = document.getElementById('search-bar').value.trim();
+  const [bookPart, chapterPart] = query.split(/[\s:]+/);
+  
+  // Find book key using aliases
+  const bookKey = Object.keys(bookAliases).find(key => 
+    bookAliases[key].some(alias => alias === bookPart.toLowerCase())
+  );
+  
+  if (bookKey && books[bookKey]) {
+    const chapter = parseInt(chapterPart) || 1;
+    loadScripture(bookKey, Math.min(chapter, books[bookKey]));
+  }
+}
