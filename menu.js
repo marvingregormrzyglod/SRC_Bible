@@ -144,7 +144,7 @@ function loadScripture(book, chapter) {
     .then(markdown => {
       const html = marked.parse(markdown);
       appDiv.innerHTML = html;
-      document.querySelectorAll('pre code').forEach(block => {
+      document.querySelectorAll('pre').forEach(block => {
         hljs.highlightElement(block, { language: 'pseudo' });
       });
     })
