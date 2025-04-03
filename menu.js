@@ -103,7 +103,27 @@ const bookAliases = {
 
 let currentBook = 'genesis';
 let currentChapter = 1;
-let isNavigating = false;
+
+// Initialize the page
+function initializePage() {
+  // Populate book dropdown
+  const bookSelect = document.getElementById('book-select');
+  bookSelect.innerHTML = '';
+  Object.entries(bookDisplayNames).forEach(([key, name]) => {
+    const option = document.createElement('option');
+    option.value = key;
+    option.textContent = name;
+    if (key === currentBook) option.selected = true;
+    bookSelect.appendChild(option);
+  });
+
+  // Populate chapter dropdown
+  updateChapterSelect();
+
+  // Load initial scripture
+  loadScripture(currentBook, currentChapter);
+}
+
 
 function populateBookSelect() {
   const select = document.getElementById('book-select');
@@ -118,16 +138,16 @@ function populateBookSelect() {
 }
 
 function updateChapterSelect() {
-  const select = document.getElementById('chapter-select');
-  select.innerHTML = '';
+  const chapterSelect = document.getElementById('chapter-select');
+  chapterSelect.innerHTML = '';
   const chapterCount = books[currentBook];
   
   for (let i = 1; i <= chapterCount; i++) {
     const option = document.createElement('option');
     option.value = i;
     option.textContent = i;
-    option.selected = i === currentChapter;
-    select.appendChild(option);
+    if (i === currentChapter) option.selected = true;
+    chapterSelect.appendChild(option);
   }
 }
 
@@ -239,15 +259,12 @@ function performSearch() {
 
 // Initialize
 window.addEventListener('DOMContentLoaded', () => {
-  populateBookSelect();
-  
-  // Set initial state from URL if available
+  // Check for hash URL first
   const hash = window.location.hash.replace('#/scripture/', '').split('/');
   if (hash.length === 2 && books[hash[0]] && hash[1] <= books[hash[0]]) {
     currentBook = hash[0];
     currentChapter = parseInt(hash[1]);
   }
-  
-  updateChapterSelect();
-  loadScripture(currentBook, currentChapter);
+
+  initializePage(); // Initialize the page after setting initial book/chapter
 });
