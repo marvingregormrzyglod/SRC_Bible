@@ -190,50 +190,10 @@
       darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
 
-    // Updated loadScripture function with proper highlighting
-    async function loadScripture(book, chapter) {
-      const appDiv = document.getElementById('app');
-      appDiv.innerHTML = '<div class="loading">Loading...</div>';
-      
-      try {
-        const response = await fetch(`scripture/${book}/${chapter.toString().padStart(2, '0')}.md`);
-        const markdown = await response.text();
-        const html = marked.parse(markdown);
-        appDiv.innerHTML = html;
-        
-        // Highlight all pre blocks with our pseudo-code rules
-        document.querySelectorAll('pre').forEach((block) => {
-          hljs.highlightElement(block, { language: 'pseudo' });
-        });
-      } catch (error) {
-        console.error('Error loading content:', error);
-        appDiv.innerHTML = '<div class="error">Error loading content</div>';
-      }
-    }
-
     // Search functionality
     document.getElementById('search-button').addEventListener('click', performSearch);
     document.getElementById('search-bar').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') performSearch();
-    });
-
-    function performSearch() {
-      const query = document.getElementById('search-bar').value.trim();
-      const [bookPart, chapterPart] = query.split(/[\s:]+/);
-      const bookKey = Object.keys(bookDisplayNames).find(key => 
-        bookDisplayNames[key].toLowerCase() === bookPart.toLowerCase()
-      );
-      
-      if (bookKey && books[bookKey]) {
-        const chapter = parseInt(chapterPart) || 1;
-        loadScripture(bookKey, Math.min(chapter, books[bookKey]));
-      }
-    }
-
-    // Initial load
-    window.addEventListener('DOMContentLoaded', () => {
-      populateBookSelect();
-      loadScripture('genesis', 1);
     });
   </script>
 </body>
