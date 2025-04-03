@@ -103,27 +103,19 @@ const bookAliases = {
 
 let currentBook = 'genesis';
 let currentChapter = 1;
+let isNavigating = false;
 
 // Initialize the page
 function initializePage() {
   // Populate book dropdown
-  const bookSelect = document.getElementById('book-select');
-  bookSelect.innerHTML = '';
-  Object.entries(bookDisplayNames).forEach(([key, name]) => {
-    const option = document.createElement('option');
-    option.value = key;
-    option.textContent = name;
-    if (key === currentBook) option.selected = true;
-    bookSelect.appendChild(option);
-  });
-
+  populateBookSelect();
+  
   // Populate chapter dropdown
   updateChapterSelect();
 
   // Load initial scripture
   loadScripture(currentBook, currentChapter);
 }
-
 
 function populateBookSelect() {
   const select = document.getElementById('book-select');
@@ -151,8 +143,8 @@ function updateChapterSelect() {
   }
 }
 
-function loadScripture(book, chapter) {
-   // Validate chapter range
+async function loadScripture(book, chapter) {
+  // Validate chapter range
   chapter = Math.max(1, Math.min(chapter, books[book]));
   
   // Update state before loading
@@ -163,9 +155,6 @@ function loadScripture(book, chapter) {
   isNavigating = true;
   
   try {
-    currentBook = book;
-    currentChapter = Math.max(1, Math.min(chapter, books[book]));
-    
     // Update UI controls
     document.getElementById('book-select').value = book;
     updateChapterSelect();
@@ -203,7 +192,7 @@ document.getElementById('book-select').addEventListener('change', (e) => {
 });
 
 document.getElementById('chapter-select').addEventListener('change', (e) => {
-  currentChapter = parseInt(e.target.value); // Explicitly update currentChapter
+  currentChapter = parseInt(e.target.value);
   loadScripture(currentBook, currentChapter);
 });
 
@@ -215,7 +204,8 @@ document.getElementById('prev-chapter').addEventListener('click', () => {
     const bookKeys = Object.keys(books);
     const currentIndex = bookKeys.indexOf(currentBook);
     if (currentIndex > 0) {
-      loadScripture(bookKeys[currentIndex - 1], books[bookKeys[currentIndex - 1]]);
+      const prevBook = bookKeys[currentIndex - 1];
+      loadScripture(prevBook, books[prevBook]);
     }
   }
 });
@@ -246,10 +236,29 @@ window.addEventListener('hashchange', () => {
 
 function performSearch() {
   const query = document.getElementById('search-bar').value.trim();
-  const [bookPart, chapterPart] = query.split(/[\s:]+/);
-  const bookKey = Object.keys(bookAliases).find(key => 
-    bookAliases[key].some(alias => alias === bookPart.toLowerCase())
-  );
+  if (!query) return;
+  
+  // Try to match book and chapter
+  const parts = query.split(/[\s:]+/);
+  let bookPart = parts[0].toLowerCase();
+  let chapterPart = parts.length > 1 ? parts[1] : '1';
+  
+  // Find the book key
+  let bookKey = null;
+  
+  // First try direct match with display name
+  Object.entries(bookDisplayNames).forEach(([key, name]) => {
+    if (name.toLowerCase() === bookPart) {
+      bookKey = key;
+    }
+  });
+  
+  // If not found, try with aliases
+  if (!bookKey) {
+    bookKey = Object.keys(bookAliases).find(key => 
+      bookAliases[key].some(alias => alias === bookPart)
+    );
+  }
   
   if (bookKey && books[bookKey]) {
     const chapter = parseInt(chapterPart) || 1;
@@ -261,10 +270,10 @@ function performSearch() {
 window.addEventListener('DOMContentLoaded', () => {
   // Check for hash URL first
   const hash = window.location.hash.replace('#/scripture/', '').split('/');
-  if (hash.length === 2 && books[hash[0]] && hash[1] <= books[hash[0]]) {
+  if (hash.length === 2 && books[hash[0]] && parseInt(hash[1]) <= books[hash[0]]) {
     currentBook = hash[0];
     currentChapter = parseInt(hash[1]);
   }
 
-  initializePage(); // Initialize the page after setting initial book/chapter
+  initializePage();
 });
