@@ -106,10 +106,12 @@ let currentChapter = 1;
 
 function populateBookSelect() {
   const select = document.getElementById('book-select');
+  select.innerHTML = '';
   Object.entries(bookDisplayNames).forEach(([key, name]) => {
     const option = document.createElement('option');
     option.value = key;
     option.textContent = name;
+    if (key === currentBook) option.selected = true;
     select.appendChild(option);
   });
 }
@@ -183,12 +185,12 @@ document.getElementById('next-chapter').addEventListener('click', () => {
     const bookKeys = Object.keys(books);
     const currentIndex = bookKeys.indexOf(currentBook);
     if (currentIndex < bookKeys.length - 1) {
-      loadScripture(bookKeys[currentIndex + 1], 1);
+      const nextBook = bookKeys[currentIndex + 1];
+      loadScripture(nextBook, 1);
     }
   }
 });
 
-// Handle hash changes
 window.addEventListener('hashchange', () => {
   const hash = window.location.hash.replace('#/scripture/', '').split('/');
   if (hash.length === 2) {
@@ -200,12 +202,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// Update performSearch function
 function performSearch() {
   const query = document.getElementById('search-bar').value.trim();
   const [bookPart, chapterPart] = query.split(/[\s:]+/);
-  
-  // Find book key using aliases
   const bookKey = Object.keys(bookAliases).find(key => 
     bookAliases[key].some(alias => alias === bookPart.toLowerCase())
   );
@@ -215,3 +214,10 @@ function performSearch() {
     loadScripture(bookKey, Math.min(chapter, books[bookKey]));
   }
 }
+
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+  populateBookSelect();
+  updateChapterSelect();
+  loadScripture('genesis', 1);
+});
