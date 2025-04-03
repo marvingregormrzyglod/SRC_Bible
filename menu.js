@@ -131,7 +131,14 @@ function updateChapterSelect() {
   }
 }
 
-async function loadScripture(book, chapter) {
+function loadScripture(book, chapter) {
+   // Validate chapter range
+  chapter = Math.max(1, Math.min(chapter, books[book]));
+  
+  // Update state before loading
+  currentBook = book;
+  currentChapter = chapter;
+  
   if (isNavigating) return;
   isNavigating = true;
   
@@ -176,31 +183,32 @@ document.getElementById('book-select').addEventListener('change', (e) => {
 });
 
 document.getElementById('chapter-select').addEventListener('change', (e) => {
-  loadScripture(currentBook, parseInt(e.target.value));
+  currentChapter = parseInt(e.target.value); // Explicitly update currentChapter
+  loadScripture(currentBook, currentChapter);
 });
 
 document.getElementById('prev-chapter').addEventListener('click', () => {
-  if (currentChapter > 1) {
-    loadScripture(currentBook, currentChapter - 1);
+  const prevChapter = currentChapter - 1;
+  if (prevChapter >= 1) {
+    loadScripture(currentBook, prevChapter);
   } else {
     const bookKeys = Object.keys(books);
     const currentIndex = bookKeys.indexOf(currentBook);
     if (currentIndex > 0) {
-      const prevBook = bookKeys[currentIndex - 1];
-      loadScripture(prevBook, books[prevBook]);
+      loadScripture(bookKeys[currentIndex - 1], books[bookKeys[currentIndex - 1]]);
     }
   }
 });
 
 document.getElementById('next-chapter').addEventListener('click', () => {
-  if (currentChapter < books[currentBook]) {
-    loadScripture(currentBook, currentChapter + 1);
+  const nextChapter = currentChapter + 1;
+  if (nextChapter <= books[currentBook]) {
+    loadScripture(currentBook, nextChapter);
   } else {
     const bookKeys = Object.keys(books);
     const currentIndex = bookKeys.indexOf(currentBook);
     if (currentIndex < bookKeys.length - 1) {
-      const nextBook = bookKeys[currentIndex + 1];
-      loadScripture(nextBook, 1);
+      loadScripture(bookKeys[currentIndex + 1], 1);
     }
   }
 });
@@ -232,6 +240,14 @@ function performSearch() {
 // Initialize
 window.addEventListener('DOMContentLoaded', () => {
   populateBookSelect();
+  
+  // Set initial state from URL if available
+  const hash = window.location.hash.replace('#/scripture/', '').split('/');
+  if (hash.length === 2 && books[hash[0]] && hash[1] <= books[hash[0]]) {
+    currentBook = hash[0];
+    currentChapter = parseInt(hash[1]);
+  }
+  
   updateChapterSelect();
-  loadScripture('genesis', 1);
+  loadScripture(currentBook, currentChapter);
 });
