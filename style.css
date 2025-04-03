@@ -51,13 +51,26 @@ header {
   width: 80%;
   max-width: 800px;
   position: relative;
+  isolation: isolate;
 }
 
 .hero h1 {
-  font-family: 'Lora', serif;
+  font-family: 'Lora', serif !important;
   font-size: 2.5em;
+  font-weight: 700 !important;
+  text-align: center !important;
   color: var(--text-primary);
-  margin: 0;
+  margin: 0 auto !important;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 0 40px;
+  text-align: center !important;
 }
 
 .hero p {
@@ -72,6 +85,12 @@ header {
   right: 20px;
   cursor: pointer;
   font-size: 1.5em;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+#dark-mode-toggle:active {
+  transform: scale(0.9);
 }
 
 .search-container {
@@ -282,5 +301,17 @@ a:hover {
 @media (min-width: 769px) {
   .nav-controls {
     max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2em;
+    padding: 0 30px;
+  }
+  
+  #dark-mode-toggle {
+    right: 10px;
+    top: 10px;
   }
 }

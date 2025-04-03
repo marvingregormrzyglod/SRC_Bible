@@ -103,6 +103,7 @@ const bookAliases = {
 
 let currentBook = 'genesis';
 let currentChapter = 1;
+let isNavigating = false;
 
 function populateBookSelect() {
   const select = document.getElementById('book-select');
@@ -130,29 +131,42 @@ function updateChapterSelect() {
   }
 }
 
-function loadScripture(book, chapter) {
-  currentBook = book;
-  currentChapter = Math.max(1, Math.min(chapter, books[book]));
+async function loadScripture(book, chapter) {
+  if (isNavigating) return;
+  isNavigating = true;
   
-  document.getElementById('book-select').value = book;
-  updateChapterSelect();
-  window.location.hash = `#/scripture/${book}/${currentChapter.toString().padStart(2, '0')}`;
-  
-  const appDiv = document.getElementById('app');
-  appDiv.innerHTML = '<div class="loading">Loading...</div>';
-  
-  fetch(`scripture/${book}/${currentChapter.toString().padStart(2, '0')}.md`)
-    .then(response => response.text())
-    .then(markdown => {
-      const html = marked.parse(markdown);
-      appDiv.innerHTML = html;
-      document.querySelectorAll('pre').forEach(block => {
-        hljs.highlightElement(block, { language: 'pseudo' });
-      });
-    })
-    .catch(() => {
-      appDiv.innerHTML = '<h1>Error</h1><p>Could not load content.</p>';
+  try {
+    currentBook = book;
+    currentChapter = Math.max(1, Math.min(chapter, books[book]));
+    
+    // Update UI controls
+    document.getElementById('book-select').value = book;
+    updateChapterSelect();
+    
+    // Update URL
+    const newHash = `#/scripture/${book}/${currentChapter.toString().padStart(2, '0')}`;
+    if (window.location.hash !== newHash) {
+      window.history.replaceState(null, '', newHash);
+    }
+
+    // Load content
+    const appDiv = document.getElementById('app');
+    appDiv.innerHTML = '<div class="loading">Loading...</div>';
+    
+    const response = await fetch(`scripture/${book}/${currentChapter.toString().padStart(2, '0')}.md`);
+    const markdown = await response.text();
+    const html = marked.parse(markdown);
+    appDiv.innerHTML = html;
+    
+    document.querySelectorAll('pre').forEach(block => {
+      hljs.highlightElement(block, { language: 'pseudo' });
     });
+  } catch (error) {
+    console.error('Error loading content:', error);
+    document.getElementById('app').innerHTML = '<div class="error">Error loading content</div>';
+  } finally {
+    isNavigating = false;
+  }
 }
 
 document.getElementById('book-select').addEventListener('change', (e) => {
