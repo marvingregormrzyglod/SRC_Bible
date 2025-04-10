@@ -1,6 +1,7 @@
 # Contribution Guidelines
 
 Thanks for wanting to improve SRC! 
+
 You’re helping build a unique resource for the Church—see the LICENSE for how we protect that mission.
 
 By contributing to SRC (via pull requests, edits, or feedback), you agree to:
