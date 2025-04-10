@@ -1,34 +1,40 @@
-YumYum Bible (YUM) Copyright License
+Scripture Reimagined as Code (SRC) – Copyright License
+
 Copyright © Marvin Gregor Mrzyglod 2025. All rights reserved.
 
-YumYum Bible (YUM) is a proprietary work protected under international copyright laws. The text of the YumYum Bible (YUM) may not be reproduced, distributed, modified, or used in derivative works except as expressly permitted under the terms below or with written permission from Marvin Gregor Mrzyglod, the copyright holder.
-Permissions for Use
-Limited Quotation:
-You may quote up to 500 verses of the YumYum Bible (YUM), or 25% of the total content of your work (whichever is less), without obtaining written permission, provided that:
-The use is non-commercial (e.g., personal study, church bulletins, sermons, or educational materials not sold for profit).
+Thank you for your interest in Scripture Reimagined as Code (SRC)! 
 
-The quoted material does not constitute an entire book of the YumYum Bible (YUM) (e.g., the Gospel of John).
+This project is a labor of love, dedicated to making God’s Word accessible in a fresh way. To protect the integrity of this work while encouraging community participation, please review these terms:
 
-Proper attribution is included: “Scripture quotations are taken from the YumYum Bible (YUM), © Marvin Gregor Mrzyglod 2025. Used by permission.”
+## For Everyone (General Use)
+### You are welcome to:
+- Quote up to 500 verses (or 25% of your work, whichever is less) for non-commercial purposes like sermons, studies, or church materials—just include this attribution: “From Scripture Reimagined as Code (SRC), Used by permission.”
+- Display SRC in worship services or small groups (e.g., projections, handouts) with the same attribution.
 
-Non-Commercial Display:
-The YumYum Bible (YUM) text may be displayed in non-commercial settings (e.g., worship services via projection or handouts) under the same limits as above, with attribution.
+### You must ask first if you’d like to:
+- Use SRC in products for sale (books, apps, etc.).
+- Reprint large portions (over 500 verses) or entire books.
+- Modify or adapt the text (e.g., translations, paraphrases).
 
-Restrictions
-Commercial Use:
-Any use of the YumYum Bible (YUM) in a product or service sold for profit (e.g., books, apps, merchandise) requires prior written permission from Marvin Gregor Mrzyglod.
+(Email requests to marvingregor@yandex.com—I’m happy to discuss!)
 
-Excessive Quotation:
-Quoting beyond 500 verses or 25% of a work, or reproducing an entire book, requires written permission.
+## For Contributors (Collaborators on GitHub)
+By contributing to SRC (via pull requests, edits, or feedback):
+- You gift your work to this project, transferring copyright to me (Marvin Gregor Mrzyglod) so I can steward SRC as a unified whole.
+- You agree your contributions will remain freely available online for others to read and discuss—but not to redistribute separately (e.g., as a standalone book or app).
+- You waive legal claims to your edits (this protects the project from disputes).
 
-Modification and Derivative Works:
-No alterations, translations, or adaptations of the YumYum Bible (YUM) text are permitted without explicit written consent from the copyright holder.
+## What’s Not Allowed (To Protect the Project)
+- No redistributing SRC in full (digitally or in print) without permission.
+- No reproducing, modifying or use in derivative works unless approved.
+- No commercial use without prior agreement.
 
-Distribution:
-Redistribution of the YumYum Bible (YUM) text in full or substantial part (e.g., as a standalone Bible or digital file) is prohibited without permission.
+## Why These Terms?
+This license ensures:
+- Community can engage—your ideas improve SRC for everyone.
+- Integrity is preserved—no fragmented or misrepresented versions.
+- Generosity is balanced with care—like the parable of the talents (Matt. 25:14–30), we steward this work responsibly.
 
-Requesting Permission
-To request permission for uses not covered above, contact Marvin Gregor Mrzyglod at [email address pending]. Include details of your intended use, including scope, purpose, and distribution method. Permission, if granted, will be provided in writing and may include additional terms or fees at the discretion of the copyright holder.
-Enforcement
-Unauthorized use of the YumYum Bible (YUM) beyond these terms may result in legal action to protect the integrity and rights of this translation. The copyright holder reserves the right to update these terms at any time, with changes posted at https://github.com/marvingregormrzyglod/YUM.
+Questions? Reach out at marvingregor@yandex.com. I’d love to hear how you’re using SRC!
 
+(Terms may be updated occasionally; the latest version will always be at https://github.com/marvingregormrzyglod/SRC_Bible.)
