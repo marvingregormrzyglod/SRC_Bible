@@ -2,7 +2,9 @@ Scripture Reimagined as Code (SRC) – Copyright License
 
 Copyright © Marvin Gregor Mrzyglod 2025. All rights reserved.
 
-Thank you for your interest in Scripture Reimagined as Code (SRC)! This project is a labor of love, dedicated to making God’s Word accessible in a fresh way. To protect the integrity of this work while encouraging community participation, please review these terms:
+Thank you for your interest in Scripture Reimagined as Code (SRC)! 
+
+This project is a labor of love, dedicated to making God’s Word accessible in a fresh way. To protect the integrity of this work while encouraging community participation, please review these terms:
 
 ## For Everyone (General Use)
 ### You are welcome to:
