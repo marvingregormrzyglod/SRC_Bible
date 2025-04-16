@@ -9,13 +9,6 @@
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <h1>SRC Bible</h1>
-      <p>Scripture Reimagined as Code</p>
-    </div>
-    <div id="dark-mode-toggle">🌙</div>
-  </header>
     <div class="hero-image">
     <img src="topofpage.jpeg" alt="SRC Bible Concept" class="full-width">
   </div>
@@ -243,16 +236,6 @@
       ]
     };
   });
-
-    // Dark mode toggle update
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    // Set the initial icon for dark mode (sun icon since we're in dark mode by default)
-    darkModeToggle.textContent = '☀️';
-    
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      darkModeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
-    });
 
     // Search functionality
     document.getElementById('search-button').addEventListener('click', performSearch);
