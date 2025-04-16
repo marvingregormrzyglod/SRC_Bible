@@ -277,3 +277,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
   initializePage();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle the signup form submission
+  const signupForm = document.querySelector('.signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      
+      // Here you would normally send the email to your server
+      // For now, we'll just show a success message
+      this.innerHTML = `<p class="success">Thanks! We'll notify ${email} when printed copies are available.</p>`;
+    });
+  }
+});
