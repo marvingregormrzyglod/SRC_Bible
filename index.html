@@ -133,5 +133,95 @@
   <footer>
     <p>Provided by The Salty Friends | Developed by <a href="https://marvingregormrzyglod.github.io/">Marvin Gregor Mrzyglod</a></p>
   </footer>
+
+<script>
+  // Register custom Highlight.js language for pseudo-code
+  hljs.registerLanguage('pseudo', function(hljs) {
+    return {
+      name: 'PseudoScripture',
+      keywords: {
+        keyword: 'function return if else for while let true false future',
+        literal: 'true false'
+      },
+      contains: [
+        hljs.COMMENT('//', '$', {
+          className: 'comment',
+          relevance: 0
+        }),
+        {
+          className: 'keyword',
+          begin: /\bfunction\b/
+        },
+        {
+          className: 'function-title',
+          begin: /\bfunction\s+/,
+          end: /(?=\()/,
+          contains: [{
+            className: 'title',
+            begin: /[a-zA-Z_][a-zA-Z0-9_]*/
+          }]
+        },
+        {
+          className: 'property-access',
+          begin: /\b([a-zA-Z_][a-zA-Z0-9_]*)(\.)/,
+          relevance: 0,
+          contains: [
+            {
+              className: 'object',
+              begin: /\b[a-zA-Z_][a-zA-Z0-9_]*/
+            },
+            {
+              className: 'dot',
+              begin: /\./
+            }
+          ]
+        },
+        {
+          className: 'method-call',
+          begin: /\.([a-zA-Z_][a-zA-Z0-9_]*)/,
+          relevance: 0,
+          contains: [
+            {
+              className: 'method-name',
+              begin: /[a-zA-Z_][a-zA-Z0-9_]*/
+            }
+          ]
+        },
+        {
+          className: 'string',
+          begin: '"',
+          end: '"',
+          contains: [{
+            begin: '\\\\"'
+          }]
+        },
+        {
+          className: 'number',
+          begin: /\b\d+(\.\d+)?\b/
+        },
+        {
+          className: 'operator',
+          begin: /(==|=|!|!=|<=|>=|<|>|\+|-|\*|\/|%)/
+        },
+        {
+          className: 'punctuation',
+          begin: /[\(\)\{\}\[\]\.,;]/
+        },
+        {
+          className: 'variable',
+          begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/,
+          relevance: 0
+        }
+      ]
+    };
+  });
+
+  // Apply syntax highlighting to code examples
+  document.querySelectorAll('.code-style pre code').forEach((block) => {
+    block.classList.add('language-pseudo');
+    hljs.highlightElement(block);
+  });
+</script>
+  
 </body>
 </html>
