@@ -76,7 +76,6 @@ body.light-mode {
   max-height: 100vh;
   overflow: hidden;
   z-index: -1;
-  width: 100%;
 }
 
 .full-width {
