@@ -68,25 +68,22 @@ body.light-mode {
   --footer-bg: #f7f7f7;
 }
 
-
-/* Hero Image */
 .hero-image {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: auto;
+  max-height: 100vh;
   overflow: hidden;
+  z-index: -1;
   width: 100%;
-  text-align: right;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
 }
 
 .full-width {
-  width: 100%;
-  display: inline-block;
-  margin: 0;
+  height: auto;
+  display: block;
 }
 
-/* Benefits Section */
 .benefits {
   background-color: var(--bg-color);
   padding: 10px 10px;
