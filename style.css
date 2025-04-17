@@ -241,7 +241,7 @@ body.light-mode {
 }
 
 .version-content {
-  height: 220px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; 
@@ -266,12 +266,15 @@ body.light-mode {
   box-shadow: none;
 }
 
+.versions-container .version-card .code-style pre {
+  padding-bottom: 20px;  /* Match top padding */
+}
+
 .code-style code {
   white-space: pre-wrap;
 }
 
 .code-style pre code {
-  font-family: 'Fira Code', monospace;
   white-space: pre-wrap;
   background: transparent !important;
 }

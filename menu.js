@@ -292,3 +292,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Initialize syntax highlighting for code examples on the home page
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.code-style pre code').forEach((block) => {
+    hljs.highlightElement(block, { language: 'pseudo' });
+  });
+});
