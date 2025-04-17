@@ -69,20 +69,17 @@ body.light-mode {
 }
 
 .hero-image {
-  position: fixed; 
-  top: 0;
-  right: 0; 
-  height: auto;
-  width: auto;
-  max-width: none;
+  position: relative; 
+  width: 100%;
+  z-index: 1; 
   overflow: hidden;
+  margin-bottom: 20px; 
 }
 
 .full-width {
+  width: 100%;
   height: auto;
-  width: auto;
-  object-fit: cover;
-  object-position: right top;
+  display: block;
 }
 
 .benefits {
