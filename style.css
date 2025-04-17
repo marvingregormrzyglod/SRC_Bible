@@ -69,18 +69,20 @@ body.light-mode {
 }
 
 .hero-image {
-  position: absolute;
+  position: fixed; 
   top: 0;
-  right: 0;
+  right: 0; 
   height: auto;
-  max-height: 100vh;
+  width: auto;
+  max-width: none;
   overflow: hidden;
-  z-index: -1;
 }
 
 .full-width {
   height: auto;
-  display: block;
+  width: auto;
+  object-fit: cover;
+  object-position: right top;
 }
 
 .benefits {
@@ -258,9 +260,8 @@ body.light-mode {
   font-style: italic;
 }
 
-/* CTA Section */
 .cta {
-  background-color: #06c;
+  background-color: transparent;
   padding: 60px 20px;
   text-align: center;
   margin-top: 40px;
@@ -270,12 +271,13 @@ body.light-mode {
 .cta-container {
   max-width: 700px;
   margin: 0 auto;
-  background: transparent;
+  background: #06c;
   border-radius: 24px;
   padding: 40px 30px;
   box-shadow: 0 12px 24px var(--apple-card-shadow);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .cta h2 {
