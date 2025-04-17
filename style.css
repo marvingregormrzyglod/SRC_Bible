@@ -172,8 +172,8 @@ body.light-mode {
 }
 
 .read-now-text {
-  font-size: 1.5rem; /* Match "Experience the Difference" text */
-  color: var(--text-secondary);
+  font-size: 1.5rem; 
+  color: var(--text-primary);
   margin-bottom: 25px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
