@@ -11,15 +11,37 @@
 </head>
 <body>
   <header>
-    <div class="hero">
+    <div class="hero reader-hero">
+      <div class="logo-container">
+        <div class="logo-icon">SRC</div>
+      </div>
       <h1>SRC Bible Reader</h1>
-      <p>Scripture reimagined as elegant code</p>
+      <p>Experience scripture as elegant, beautiful code</p>
     </div>
   </header>
 
+  <div class="reading-progress-container">
+      <div id="reading-progress-bar"></div>
+    </div>
+    <div id="app" class="markdown-section"></div>
+  
+    <div class="content-actions">
+    <button class="action-button" id="copy-button">
+      Copy Text
+    </button>
+    <button class="action-button" id="share-button">
+      Share
+    </button>
+    <button class="action-button" id="font-size-button">
+      Aa
+    </button>
+  </div>
+  
+
   <div class="search-container">
+    <div class="search-icon">🔍</div>
     <input type="text" id="search-bar" placeholder="Search (e.g., Genesis 1, John 3:16)" list="book-suggestions">
-    <button id="search-button">🔍</button>
+    <button id="search-button">Search</button>
   </div>
   <datalist id="book-suggestions">
     <option>Genesis</option>
@@ -90,12 +112,14 @@
     <option>Revelation</option>
   </datalist>
   
-  <div class="nav-controls">
-    <button id="prev-chapter">◀</button>
+<div class="nav-controls">
+  <button id="prev-chapter" class="nav-button"><span class="nav-icon">◀</span> Previous</button>
+  <div class="selectors-container">
     <select id="book-select"></select>
     <select id="chapter-select"></select>
-    <button id="next-chapter">▶</button>
   </div>
+  <button id="next-chapter" class="nav-button">Next <span class="nav-icon">▶</span></button>
+</div>
   
   <div id="app" class="markdown-section"></div>
   
