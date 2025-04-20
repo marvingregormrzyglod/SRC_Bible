@@ -611,7 +611,7 @@ header {
 }
 
 .search-container {
-  background: var(--card-bg-start);
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 10px;
   margin-bottom: 20px;
@@ -620,17 +620,20 @@ header {
   box-sizing: border-box;
   display: flex;
   gap: 10px;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  border: 1px solid var(--border-light);
 }
 
 #search-bar {
   flex: 1;
   padding: 10px;
-  border: 1px solid var(--apple-border);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
-  background: var(--bg-color);
+  background: var(--neutral-lightest);
   color: var(--text-primary);
   font-size: 16px;
   outline: none;
+  font-family: 'Inter', sans-serif;
 }
 
 #search-bar::placeholder {
@@ -646,13 +649,28 @@ datalist {
   border-radius: 8px;
   padding: 0 15px;
   cursor: pointer;
-  background: var(--link-color);
+  background: var(--primary-medium);
   color: white;
   transition: background 0.2s ease;
 }
 
 #search-button:hover {
-  background: #0055b3;
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+#app {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  text-align: left;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-light);
+  width: 80%;
+  max-width: 800px;
+  min-height: 400px;
 }
 
 .nav-controls {
@@ -663,37 +681,42 @@ datalist {
   margin: 15px 0;
   width: 80%;
   max-width: 800px;
-  background: var(--card-bg-start);
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 10px;
   box-sizing: border-box;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  border: 1px solid var(--border-light);
 }
 
 #book-select, #chapter-select {
-  background: var(--card-bg-start);
+  background: var(--neutral-lightest);
   color: var(--text-primary);
-  border: 1px solid var(--apple-border);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 1em;
   cursor: pointer;
   flex: 1;
   max-width: 220px;
+  font-family: 'Inter', sans-serif;
 }
 
 #prev-chapter, #next-chapter {
-  background: var(--link-color);
+  background: var(--primary-medium);
   color: white;
   transition: background 0.2s ease;
-  border: 1px solid var(--card-border);
+  border: none;
   border-radius: 8px;
   padding: 8px 12px;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
 }
 
 #prev-chapter:hover, #next-chapter:hover {
-  background: #0055b3;
+  background: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 .container {
@@ -718,14 +741,14 @@ datalist {
 }
 
 .markdown-section {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.8;
   color: var(--text-primary);
 }
 
 .markdown-section h1, .markdown-section h2, .markdown-section h3 {
-  font-family: 'Lora', serif;
-  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
