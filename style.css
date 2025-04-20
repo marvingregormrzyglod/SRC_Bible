@@ -168,7 +168,7 @@ body.light-mode {
   max-width: 800px;
   margin: 60px auto;
   backdrop-filter: blur(10px);
-  border: 1px solid var(--apple-border);
+  border: 2px solid var(--link-color);
 }
 
 .read-now-text {
