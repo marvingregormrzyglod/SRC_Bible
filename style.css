@@ -259,6 +259,74 @@ body.light-mode {
   margin: 0;
 }
 
+.no-coding-needed {
+  background: rgba(230, 169, 66, 0.1);
+  border-left: 4px solid var(--accent-gold);
+  padding: 15px 20px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-radius: 0 8px 8px 0;
+}
+
+.no-coding-needed p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.reading-guide {
+  margin: 40px auto 0;
+  max-width: 800px;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+}
+
+.reading-guide h3 {
+  margin-top: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+}
+
+.reading-guide ul {
+  padding-left: 20px;
+  margin: 20px 0;
+}
+
+.reading-guide li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.reading-guide strong {
+  color: var(--accent-amber);
+}
+
+.intro-message {
+  background: rgba(63, 92, 119, 0.08);
+  border-radius: 12px;
+  padding: 25px;
+  margin: 0 auto 50px;
+  max-width: 900px;
+  text-align: left;
+}
+
+.intro-message p {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.intro-message strong {
+  color: var(--primary-dark);
+  border-bottom: 2px solid var(--accent-gold);
+  padding-bottom: 2px;
+}
+
+
 /* Style for the Read Now button */
 .read-now-container {
   background: var(--card-bg-start);
