@@ -189,14 +189,27 @@
     
     <p>Each copy will be a collector's item—blending timeless wisdom with a striking, code-inspired design. Printed copies aren't available yet, but you can secure your spot today.</p>
     
-    <form class="signup-form">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Notify Me</button>
-    </form>
+    <div id="signup-container">
+      <form id="signup-form" class="signup-form">
+        <input type="email" id="email-input" placeholder="Your email address" required>
+        <button type="submit" id="submit-btn">Notify Me</button>
+      </form>
+    </div>
+    
+    <div id="thank-you-message" class="thank-you-message hidden">
+      <p>Thanks! We have reserved your spot for a physical copy!</p>
+      <div class="checkmark-container">
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+    </div>
     
     <p class="small">Don't miss your chance to hold this one-of-a-kind edition in your hands.</p>
   </div>
 </section>
+
   
   <footer>
     <p>Provided by The Salty Friends | Developed by <a href="https://marvingregormrzyglod.github.io/">Marvin Gregor Mrzyglod</a></p>
