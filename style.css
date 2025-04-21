@@ -396,9 +396,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
-  margin: 0 auto;
-  max-width: 1500px;
+  gap: 10px;
+  margin: 20;
+  max-width: 800px;
   width: 100%;
 }
 
@@ -451,7 +451,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
   flex: 1;
   min-width: 280px;
-  max-width: 500px;
+  max-width: 1200px;
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
   transition: all 0.3s ease;
