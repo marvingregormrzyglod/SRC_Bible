@@ -188,6 +188,14 @@ body.light-mode {
   margin-top: 10px;
 }
 
+.benefits-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin: 50px auto;
+  max-width: 1100px;
+}
+
 .benefits-list {
   flex: 1;
   max-width: 40%;
@@ -263,9 +271,10 @@ body.light-mode {
   background: rgba(230, 169, 66, 0.1);
   border-left: 4px solid var(--accent-gold);
   padding: 15px 20px;
-  margin: 30px auto;
+  margin: 40px auto;
   max-width: 800px;
   border-radius: 0 8px 8px 0;
+  text-align: left;
 }
 
 .no-coding-needed p {
@@ -275,12 +284,13 @@ body.light-mode {
 }
 
 .reading-guide {
-  margin: 40px auto 0;
+  margin: 40px auto;
   max-width: 800px;
   background: var(--card-bg);
-  padding: 25px;
+  padding: 25px 30px;
   border-radius: 16px;
   box-shadow: 0 8px 20px var(--shadow-subtle);
+  text-align: left;
 }
 
 .reading-guide h3 {
@@ -288,6 +298,8 @@ body.light-mode {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .reading-guide ul {
@@ -302,6 +314,27 @@ body.light-mode {
 
 .reading-guide strong {
   color: var(--accent-amber);
+}
+
+.reading-steps {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.reading-steps:before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: var(--accent-amber);
+  font-size: 1.2rem;
+}
+
+.reading-steps strong {
+  color: var(--accent-amber);
+  font-weight: 600;
 }
 
 .intro-message {
@@ -383,7 +416,8 @@ body.light-mode {
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-  margin-top: 40px;
+  margin: 40px auto;
+  max-width: 1000px;
 }
 
 .version-card {
@@ -614,10 +648,13 @@ body.light-mode {
   .benefits-grid {
     grid-template-columns: 1fr;
   }
+
+  .benefits-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
   
   .versions-container {
     flex-direction: column;
-    align-items: center;
   }
   
   .version-card {
