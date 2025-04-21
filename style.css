@@ -429,9 +429,21 @@ body.light-mode {
   width: 100%;
 }
 
+.version-content.code-style {
+  font-size: clamp(0.7rem, 2vw, 1.05rem);
+  transition: font-size 0.3s ease;
+}
+
 .version-content.code-style pre {
-  overflow-x: hidden;
+  white-space: pre !important; /* Preserve formatting */
+  overflow-x: auto; /* Allow horizontal scrolling only if necessary */
   max-width: 100%;
+}
+
+.version-content.code-style pre code {
+  display: block;
+  font-family: 'Fira Code', monospace;
+  line-height: 1.5;
 }
 
 .version-card {
@@ -461,7 +473,7 @@ body.light-mode {
 }
 
 .version-content {
-  min-height: 200px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; 
