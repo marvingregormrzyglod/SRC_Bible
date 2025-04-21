@@ -420,13 +420,27 @@ body.light-mode {
   max-width: 1000px;
 }
 
+/* Dynamic code scaling */
+.dynamic-code {
+  white-space: nowrap !important;
+  font-size: clamp(0.6rem, 2vw, 1.05rem) !important;
+  transition: font-size 0.3s ease;
+  display: inline-block;
+  width: 100%;
+}
+
+.version-content.code-style pre {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .version-card {
   border-radius: 20px;
   padding: 28px;
   box-shadow: 0 10px 30px var(--shadow-medium);
   text-align: left;
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
   max-width: 500px;
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
