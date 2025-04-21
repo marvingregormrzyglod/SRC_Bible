@@ -363,6 +363,89 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
 
+
+
+
+
+
+
+
+
+
+  
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('signup-form');
+  const signupContainer = document.getElementById('signup-container');
+  const thankYouMessage = document.getElementById('thank-you-message');
+  
+  // Replace this URL with your Google Apps Script Web App URL
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzWwP-kjM_0JAd_kSCXfqoAAgU8lbrMY3T1LWxmW424iS99zZXhMlMdFR5xNobcomlM/exec';
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email-input').value;
+    const submitBtn = document.getElementById('submit-btn');
+    
+    // Disable the button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    // Prepare form data
+    const formData = new FormData();
+    formData.append('email', email);
+    
+    // Send the data to Google Apps Script
+    fetch(scriptURL, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Hide the form
+        signupContainer.classList.add('hidden');
+        
+        // Show thank you message
+        thankYouMessage.classList.remove('hidden');
+        
+        // Save to localStorage to persist the thank you message on page refresh
+        localStorage.setItem('biblePreauthEmail', email);
+        localStorage.setItem('biblePreauthSubmitted', 'true');
+      } else {
+        alert('There was an error submitting your email. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('There was an error submitting your email. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Notify Me';
+    });
+  });
+  
+  // Check if the user has already submitted their email
+  if (localStorage.getItem('biblePreauthSubmitted') === 'true') {
+    signupContainer.classList.add('hidden');
+    thankYouMessage.classList.remove('hidden');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
 
 
