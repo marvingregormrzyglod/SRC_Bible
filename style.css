@@ -422,29 +422,33 @@ body.light-mode {
 
 /* Dynamic code scaling */
 .dynamic-code {
-  white-space: nowrap !important;
-  font-size: clamp(0.6rem, 2vw, 1.05rem) !important;
+  white-space: pre-wrap !important;
+  font-size: clamp(0.5rem, 2vw, 1.05rem) !important;
   transition: font-size 0.3s ease;
   display: inline-block;
   width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 .version-content.code-style {
-  font-size: clamp(0.7rem, 2vw, 1.05rem);
+  font-size: clamp(0.6rem, 2vw, 1.05rem);
   transition: font-size 0.3s ease;
   overflow: hidden; /* Remove scrollbars */
   min-width: 0; /* Reset any minimum width */
-  width: auto; /* Let it take natural width */
+  width: 100%; /* Let it take natural width */
   max-width: 100%; /* But don't overflow parent */
 }
 
 .version-content.code-style pre {
-  white-space: pre; /* Preserve exact spacing */
-  overflow: visible; /* Don't add scrollbars */
+  white-space: pre-wrap; /* Preserve exact spacing */
+  overflow: hidden; /* Don't add scrollbars */
   background: #2f1e12;
   margin: 0;
   padding: 16px;
   border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .version-content.code-style pre code {
@@ -452,8 +456,10 @@ body.light-mode {
   font-family: 'Fira Code', monospace;
   font-size: 1rem; /* Base font size */
   line-height: 1.5;
-  white-space: pre; /* Preserve formatting */
+  white-space: pre-wrap; /* Preserve formatting */
   overflow: visible;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .version-card {
