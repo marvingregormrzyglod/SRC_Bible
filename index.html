@@ -17,8 +17,8 @@
 
   <section class="benefits">
   <div class="benefits-container">
-    <h2>Scripture Reimagined for Clarity</h2>
-    <p class="subtitle">The SRC Bible presents God's Word with a structure that helps you see connections, patterns, and meaning more clearly. You don't need to be a programmer to appreciate it!</p>
+    <h2>Scripture Reimagined as Code</h2>
+    <p class="subtitle">The SRC Bible presents God's Word with a structure that helps you see connections, patterns, and meaning more clearly.</p>
 
     <div class="intro-message">
       <p>"But I'm not a programmer..." We hear this often, but the truth is: <strong>you don't need to understand code to read the SRC Bible.</strong> If you can follow a recipe or read a bulleted list, you can read and benefit from this format. The structure simply helps organize information in a way that makes relationships clearer and helps you see scripture from a fresh perspective.</p>
@@ -174,7 +174,7 @@
   
 
   <div class="read-now-container">
-  <p class="read-now-text">Click here to read the SRC Bible online in your browser:</p>
+  <p class="read-now-text">Use the <strong>Official Online Reader</strong> for the SRC Bible for free in your browser:</p>
   <a href="reader.html" class="read-now-button">Read SRC Bible Now</a>
   </div>
   
@@ -189,14 +189,27 @@
     
     <p>Each copy will be a collector's item—blending timeless wisdom with a striking, code-inspired design. Printed copies aren't available yet, but you can secure your spot today.</p>
     
-    <form class="signup-form">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Notify Me</button>
-    </form>
+    <div id="signup-container">
+      <form id="signup-form" class="signup-form">
+        <input type="email" id="email-input" placeholder="Your email address" required>
+        <button type="submit" id="submit-btn">Notify Me</button>
+      </form>
+    </div>
+    
+    <div id="thank-you-message" class="thank-you-message hidden">
+      <p>Thanks! We have reserved your spot for a physical copy!</p>
+      <div class="checkmark-container">
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+    </div>
     
     <p class="small">Don't miss your chance to hold this one-of-a-kind edition in your hands.</p>
   </div>
 </section>
+
   
   <footer>
     <p>Provided by The Salty Friends | Developed by <a href="https://marvingregormrzyglod.github.io/">Marvin Gregor Mrzyglod</a></p>
@@ -349,6 +362,89 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 
+
+
+
+
+
+
+
+
+
+
+  
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('signup-form');
+  const signupContainer = document.getElementById('signup-container');
+  const thankYouMessage = document.getElementById('thank-you-message');
+  
+  // Replace this URL with your Google Apps Script Web App URL
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzWwP-kjM_0JAd_kSCXfqoAAgU8lbrMY3T1LWxmW424iS99zZXhMlMdFR5xNobcomlM/exec';
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email-input').value;
+    const submitBtn = document.getElementById('submit-btn');
+    
+    // Disable the button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    // Prepare form data
+    const formData = new FormData();
+    formData.append('email', email);
+    
+    // Send the data to Google Apps Script
+    fetch(scriptURL, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Hide the form
+        signupContainer.classList.add('hidden');
+        
+        // Show thank you message
+        thankYouMessage.classList.remove('hidden');
+        
+        // Save to localStorage to persist the thank you message on page refresh
+        localStorage.setItem('biblePreauthEmail', email);
+        localStorage.setItem('biblePreauthSubmitted', 'true');
+      } else {
+        alert('There was an error submitting your email. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('There was an error submitting your email. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Notify Me';
+    });
+  });
+  
+  // Check if the user has already submitted their email
+  if (localStorage.getItem('biblePreauthSubmitted') === 'true') {
+    signupContainer.classList.add('hidden');
+    thankYouMessage.classList.remove('hidden');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   
 
