@@ -415,10 +415,11 @@ h1, h2, h3, h4, h5, h6 {
 .version-content.code-style {
   font-size: clamp(0.6rem, 2vw, 1.05rem);
   transition: font-size 0.3s ease;
-  overflow: hidden; /* Remove scrollbars */
-  min-width: 0; /* Reset any minimum width */
-  width: 100%; /* Let it take natural width */
-  max-width: 100%; /* But don't overflow parent */
+  overflow: hidden; 
+  min-width: 0; 
+  width: 100%; 
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .version-content.code-style pre {
@@ -431,17 +432,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   box-sizing: border-box;
   max-height: 100%;
+  max-width: 100%;
 }
 
 .version-content.code-style pre code {
   display: block;
   font-family: 'Fira Code', monospace;
-  font-size: 1rem; /* Base font size */
+  font-size: 1rem; 
   line-height: 1.5;
-  white-space: pre-wrap; /* Preserve formatting */
+  white-space: pre-wrap; 
   overflow: visible;
   width: 100%;
   box-sizing: border-box;
+  word-break: break-word;
 }
 
 .version-card {
