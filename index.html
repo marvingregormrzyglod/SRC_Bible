@@ -297,7 +297,80 @@
     block.classList.add('language-pseudo');
     hljs.highlightElement(block);
   });
+
+
+
+
+
+
+  /**
+ * Dynamic Font Scaling for SRC Bible Code
+ * This script automatically adjusts the font size of code elements
+ * to ensure they fit completely within their containers.
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to scale the font size of the code element
+  function scaleFontSize() {
+    const codeElement = document.querySelector('.dynamic-code');
+    const container = codeElement.closest('.version-content');
+    
+    if (!codeElement || !container) return;
+    
+    // Get the original container dimensions
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+    
+    // Reset font size to a starting point to get accurate measurements
+    codeElement.style.fontSize = '1rem';
+    
+    // Check if content overflows container
+    const isOverflowing = 
+      codeElement.scrollWidth > containerWidth || 
+      codeElement.scrollHeight > containerHeight;
+    
+    if (isOverflowing) {
+      // Start with a relatively large font size reduction for efficiency
+      let fontSize = 0.95;
+      codeElement.style.fontSize = `${fontSize}rem`;
+      
+      // Gradually reduce font size until it fits
+      while ((codeElement.scrollWidth > containerWidth || 
+              codeElement.scrollHeight > containerHeight) && 
+              fontSize > 0.5) {
+        fontSize -= 0.05;
+        codeElement.style.fontSize = `${fontSize}rem`;
+      }
+    }
+  }
+  
+  // Initial scaling when page loads
+  scaleFontSize();
+  
+  // Re-scale when window is resized
+  window.addEventListener('resize', scaleFontSize);
+  
+  // Also trigger after syntax highlighting runs
+  setTimeout(scaleFontSize, 100);
+});
+  
+
+  
+
+
+  
+
+
+  
 </script>
+
+
+  
+
+  
+
+
+  
   
 </body>
 </html>
