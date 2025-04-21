@@ -126,23 +126,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
-/* Light mode class that will be toggled when user switches */
-body.light-mode {
-  --bg-color: var(--apple-bg);
-  --card-bg-start: var(--apple-card-bg);
-  --card-bg-end: var(--apple-card-bg);
-  --text-primary: var(--apple-text-primary);
-  --text-secondary: var(--apple-text-secondary);
-  --link-color: var(--apple-accent);
-  --card-border: #e0e0e0;
-  --shadow: rgba(0, 0, 0, 0.15);
-  --shadow-hover: rgba(0, 0, 0, 0.1);
-  --hint-color: #666;
-  --icon-color: #333;
-  --footer-bg: #f7f7f7;
-}
-
 .hero-image {
   position: relative; 
   width: 100%;
@@ -761,22 +744,6 @@ header {
   margin: 10px 0 0;
 }
 
-#dark-mode-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  font-size: 1.5em;
-  z-index: 2;
-  transition: transform 0.2s ease;
-  /* Update the default icon to sun since we're in dark mode by default */
-  content: "☀️";
-}
-
-#dark-mode-toggle:active {
-  transform: scale(0.9);
-}
-
 .search-container, .nav-controls {
   backdrop-filter: blur(10px);
   border: 1px solid var(--apple-border);
@@ -903,39 +870,6 @@ datalist {
   border: 1px solid var(--border-light);
   padding: 12px 20px;
   transition: all 0.3s ease;
-}
-
-.content-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  padding: 10px 20px;
-  background: var(--card-bg);
-  border-radius: 30px;
-  box-shadow: 0 4px 10px var(--shadow-subtle);
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-  border: 1px solid var(--border-light);
-}
-
-.action-button {
-  background: transparent;
-  border: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--text-secondary);
-  padding: 8px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.action-button:hover {
-  background: var(--neutral-lightest);
-  color: var(--primary-dark);
 }
 
 .selectors-container {
@@ -1089,25 +1023,6 @@ header .hero p {
   font-size: 1.3rem;
   margin-top: 5px;
   color: var(--text-secondary);
-}
-
-.reading-progress-container {
-  width: 80%;
-  max-width: 800px;
-  height: 4px;
-  background: var(--border-light);
-  border-radius: 2px;
-  margin-bottom: -2px;
-  position: relative;
-  z-index: 10;
-  overflow: hidden;
-}
-
-#reading-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent-amber), var(--accent-gold));
-  width: 0%;
-  transition: width 0.3s ease;
 }
 
 html {
@@ -1266,8 +1181,4 @@ a:hover {
     font-size: 0.8rem;
   }
   
-  #dark-mode-toggle {
-    right: 10px;
-    top: 10px;
-  }
 }
