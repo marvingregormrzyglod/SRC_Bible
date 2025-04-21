@@ -432,18 +432,28 @@ body.light-mode {
 .version-content.code-style {
   font-size: clamp(0.7rem, 2vw, 1.05rem);
   transition: font-size 0.3s ease;
+  overflow: hidden; /* Remove scrollbars */
+  min-width: 0; /* Reset any minimum width */
+  width: auto; /* Let it take natural width */
+  max-width: 100%; /* But don't overflow parent */
 }
 
 .version-content.code-style pre {
-  white-space: pre !important; /* Preserve formatting */
-  overflow-x: auto; /* Allow horizontal scrolling only if necessary */
-  max-width: 100%;
+  white-space: pre; /* Preserve exact spacing */
+  overflow: visible; /* Don't add scrollbars */
+  background: #2f1e12;
+  margin: 0;
+  padding: 16px;
+  border-radius: 12px;
 }
 
 .version-content.code-style pre code {
   display: block;
   font-family: 'Fira Code', monospace;
+  font-size: 1rem; /* Base font size */
   line-height: 1.5;
+  white-space: pre; /* Preserve formatting */
+  overflow: visible;
 }
 
 .version-card {
@@ -457,6 +467,7 @@ body.light-mode {
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .version-card:hover {
@@ -473,7 +484,7 @@ body.light-mode {
 }
 
 .version-content {
-  min-height: 240px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; 
@@ -481,6 +492,7 @@ body.light-mode {
   border-radius: 12px;
   background: var(--bg-color);
   position: relative;
+  width: 100%;
 }
 
 /* Additional style to make sure code formatting in the comparison is consistent */
@@ -507,7 +519,7 @@ body.light-mode {
 }
 
 .code-style pre code {
-  white-space: pre-wrap;
+  white-space: pre-wrap !important;
   background: transparent !important;
 }
 
@@ -530,6 +542,11 @@ body.light-mode {
 .code-style pre .hljs-variable,
 .code-style pre .hljs-property { color: #00b7eb !important; } /* Blue for variables/properties */
 .code-style pre .hljs-punctuation { color: #d1b899 !important; } /* Beige for punctuation */
+
+.hljs {
+  white-space: pre-wrap !important;
+  overflow-x: visible !important;
+}
 
 .cta {
   background-color: transparent;
@@ -681,6 +698,10 @@ body.light-mode {
   
   .versions-container {
     flex-direction: column;
+  }
+  
+  .version-content.code-style pre code {
+    font-size: 0.9rem;
   }
   
   .version-card {
@@ -1233,6 +1254,10 @@ a:hover {
   .hero h1 {
     font-size: 2em;
     padding: 0 30px;
+  }
+
+  .version-content.code-style pre code {
+    font-size: 0.8rem;
   }
   
   #dark-mode-toggle {
