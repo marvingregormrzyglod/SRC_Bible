@@ -308,5 +308,3 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('reading-progress-bar').style.width = scrolled + '%';
   });
 });
-
-
