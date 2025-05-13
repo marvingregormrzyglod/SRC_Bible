@@ -173,7 +173,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
-  max-width: 80%;
+  max-width: 90%;
 }
 
 .bottom-image-text {
@@ -888,6 +888,7 @@ a:hover {
 .search-container {
   background: var(--card-bg);
   border-radius: 12px;
+  margin-top: 20px;
   margin-bottom: 20px;
   width: 80%;
   max-width: 800px;
@@ -1121,7 +1122,7 @@ datalist {
 }
 
 .reader-hero {
-  padding: 40px 20px;
+  padding: 60px 20px 40px 20px;
   position: relative;
 }
 
@@ -1201,6 +1202,8 @@ html {
   box-shadow: 0 10px 25px rgba(42, 59, 76, 0.15);
   position: relative;
   overflow: hidden;
+  white-space: pre-wrap; 
+  overflow-x: auto; 
 }
 
 .markdown-section pre::before {
@@ -1228,6 +1231,7 @@ html {
   padding-top: 10px;
   font-size: 1.05rem;
   line-height: 1.7;
+  white-space: pre-wrap !important;
 }
 
 /* Syntax Highlighting Rules */
@@ -1447,5 +1451,5 @@ a:hover {
 .hero p {
   font-size: 1.2em;
   color: var(--text-secondary);
-  margin: 10px 0 0;
+  margin: 10px 0 20px;
 }
