@@ -810,3 +810,268 @@ a:hover {
     --base-font-size: 18px;
   }
 }
+
+
+//
+// Now follows all the Reader.html styles
+//
+
+/* Search container and controls */
+.search-container {
+  background: var(--card-bg);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 800px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  border: 1px solid var(--border-light);
+  
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px var(--shadow-medium);
+}
+
+.search-icon {
+  color: var(--text-tertiary);
+  font-size: 18px;
+}
+
+#search-bar {
+  border-radius: 8px;
+  color: var(--text-primary);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  background: transparent;
+  padding: 12px 0;
+  font-size: 16px;
+  flex: 1;
+}
+
+#search-bar::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.7;
+}
+
+datalist {
+  display: none; /* Hidden but functional */
+}
+
+#search-button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s ease;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%);
+  box-shadow: 0 4px 10px rgba(63, 92, 119, 0.25);
+}
+
+#search-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.search-container input:focus {
+  box-shadow: 0 0 0 2px rgba(126, 156, 191, 0.2);
+}
+
+#book-select:focus, #chapter-select:focus {
+  box-shadow: 0 0 0 2px rgba(126, 156, 191, 0.2);
+  outline: none;
+}
+
+#search-button:active {
+  transform: scale(0.97);
+}
+
+.nav-button:active {
+  transform: scale(0.97);
+}
+
+/* Navigation controls */
+.nav-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  width: 80%;
+  max-width: 800px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  border: 1px solid var(--border-light);
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.selectors-container {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+}
+
+.selectors-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background-color: var(--border-light);
+  transform: translate(-50%, -50%);
+}
+
+#book-select, #chapter-select {
+  border-radius: 8px;
+  flex: 1;
+  max-width: 220px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: var(--text-primary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233F5C77' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 30px;
+}
+
+#prev-chapter, #next-chapter {
+  background: var(--primary-medium);
+  color: white;
+  transition: background 0.2s ease;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+#prev-chapter:hover, #next-chapter:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--primary-medium);
+  border: 1px solid var(--primary-light);
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: var(--primary-light);
+  color: white;
+  border-color: transparent;
+}
+
+.nav-icon {
+  font-size: 12px;
+}
+
+/* App container */
+#app {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+  text-align: left;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-light);
+  width: 80%;
+  max-width: 800px;
+  min-height: 400px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Reader hero section */
+.reader-hero {
+  padding: 40px 20px;
+  position: relative;
+}
+
+.logo-container {
+  margin-bottom: 15px;
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%);
+  color: white;
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(63, 92, 119, 0.3);
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.2em;
+  padding: 20px;
+}
+
+/* Responsive adjustments for reader-specific elements */
+@media (max-width: 768px) {
+  .search-container, .nav-controls {
+    width: 90%;
+  }
+
+  #book-select, #chapter-select {
+    font-size: 0.9em;
+    padding: 6px 10px;
+  }
+
+  #prev-chapter, #next-chapter {
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-controls {
+    max-width: 600px;
+  }
+}
