@@ -40,7 +40,7 @@
 }
 
 body {
-  background-color: #263238;
+  background-color: white;
   color: var(--text-primary);
   padding: 0;
   margin: 0;
@@ -65,13 +65,12 @@ html {
 }
 
 .reader-hero {
-  background: var(--card-bg);
   width: 80%;
   max-width: 800px;
   margin: 20px auto;
-  padding: 20px;
-  border-radius: 12px;
   text-align: center;
+  background: transparent; /* Remove boxed background */
+  padding: 0; /* Remove padding */
 }
 
 .reader-hero h1 {
@@ -81,10 +80,17 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.reader-hero p {
+  font-size: 1.2em;
+  color: var(--text-secondary);
+  margin: 10px 0 20px;
+  white-space: nowrap; /* Prevent line breaks */
 }
 
 .search-container, .nav-controls {
-  background: var(--card-bg);
   width: 80%;
   max-width: 800px;
   margin: 0 auto;
@@ -92,6 +98,7 @@ html {
   border-radius: 12px;
   box-shadow: 0 8px 20px var(--shadow-subtle);
   transition: all 0.3s ease;
+  background: transparent; /* Inherit from body */
 }
 
 .search-container {
@@ -214,7 +221,7 @@ html {
 }
 
 #app {
-  background: #263238;
+  background-color: #263238;
   padding: 30px;
   width: 80%;
   max-width: 800px;
@@ -328,6 +335,10 @@ a:hover {
 
   #prev-chapter, #next-chapter {
     padding: 6px 10px;
+  }
+
+  .reader-hero h1, .reader-hero p {
+    white-space: normal; /* Allow line breaks on smaller screens */
   }
 }
 
