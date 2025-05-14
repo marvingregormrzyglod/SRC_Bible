@@ -64,31 +64,42 @@ html {
   font-size: var(--base-font-size);
 }
 
-.search-container, .nav-controls {
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-light);
-  box-shadow: 0 4px 12px var(--shadow-subtle);
-}
-
-.search-container {
+.reader-hero {
   background: var(--card-bg);
-  border-radius: 12px;
-  margin-top: 20px;
-  margin-bottom: 20px;
   width: 80%;
   max-width: 800px;
-  box-sizing: border-box;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.reader-hero h1 {
+  font-size: 2.6rem;
+  margin: 10px 0;
+  background: linear-gradient(135deg, var(--primary-dark) 20%, var(--accent-amber) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.search-container, .nav-controls {
+  background: var(--card-bg);
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  border-radius: 12px;
   box-shadow: 0 8px 20px var(--shadow-subtle);
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   transition: all 0.3s ease;
 }
 
-.search-container:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px var(--shadow-medium);
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .search-icon {
@@ -128,28 +139,11 @@ html {
 }
 
 #search-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--primary-dark) 20%, var(--accent-amber) 80%);
 }
 
 #search-button:active {
   transform: scale(0.97);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#app {
-  background: #263238;
-  padding: 30px;
-  margin-bottom: 20px;
-  text-align: left;
-  width: 80%;
-  max-width: 800px;
-  min-height: 400px;
-  animation: fadeIn 0.6s ease-out;
 }
 
 .nav-controls {
@@ -157,15 +151,7 @@ html {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  margin: 15px 0;
-  width: 80%;
-  max-width: 800px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  box-shadow: 0 8px 20px var(--shadow-subtle);
-  transition: all 0.3s ease;
+  margin-bottom: 20px; /* Add space below navigation controls */
 }
 
 .selectors-container {
@@ -224,8 +210,22 @@ html {
 }
 
 #prev-chapter:hover, #next-chapter:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--primary-dark) 20%, var(--accent-amber) 80%);
+}
+
+#app {
+  background: #263238;
+  padding: 30px;
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 400px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .markdown-section {
@@ -268,7 +268,7 @@ html {
 }
 
 /* Syntax Highlighting Rules */
-.markdown-section pre .hljs-comment { color: #61854b !important; }
+.markdown-section pre .hljs-comment { color: #ff5370 !important; }
 .markdown-section pre .hljs-keyword { color: #89ddff !important; }
 .markdown-section pre .hljs-punctuation { color: #89ddff !important; }
 .markdown-section pre .hljs-title { color: #00b7eb !important; }
@@ -317,7 +317,7 @@ a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  header, .search-container, footer, .nav-controls {
+  .reader-hero, .search-container, .nav-controls, #app, footer {
     width: 90%;
   }
 
