@@ -40,7 +40,7 @@
 }
 
 body {
-  background-color: var(--bg-color);
+  background-color: #263238;
   color: var(--text-primary);
   padding: 0;
   margin: 0;
@@ -142,14 +142,10 @@ html {
 }
 
 #app {
-  background: var(--card-bg);
-  border-radius: 16px;
+  background: #263238;
   padding: 30px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 20px var(--shadow-subtle);
   text-align: left;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-light);
   width: 80%;
   max-width: 800px;
   min-height: 400px;
@@ -232,44 +228,12 @@ html {
   transform: translateY(-2px);
 }
 
-.reader-hero {
-  padding: 60px 20px 40px 20px;
-  position: relative;
-}
-
-.logo-container {
-  margin-bottom: 15px;
-}
-
-.logo-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%);
-  color: white;
-  font-family: 'Fira Code', monospace;
-  font-weight: 700;
-  font-size: 18px;
-  box-shadow: 0 4px 15px rgba(63, 92, 119, 0.3);
-}
-
 .markdown-section {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.8;
-  color: var(--text-primary);
-  font-size: 1rem;
-}
-
-.markdown-section h1, .markdown-section h2, .markdown-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  color: var(--text-primary);
+  color: #f5e8d3;
 }
 
 .markdown-section h1 {
+  color: white;
   font-size: 2.2em;
   margin-bottom: 0.8em;
 }
@@ -284,63 +248,41 @@ html {
 }
 
 .markdown-section pre {
-  background: #2f1e12;
+  background: transparent;
   color: #f5e8d3;
   font-family: 'Fira Code', monospace;
   margin: 30px 0;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 10px 25px rgba(42, 59, 76, 0.15);
+  padding: 0;
+  box-shadow: none;
   position: relative;
-  overflow: hidden;
   white-space: pre-wrap;
-  overflow-x: auto;
-}
-
-.markdown-section pre::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 32px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 16px 16px 0 0;
-}
-
-.markdown-section pre::after {
-  content: '●';
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 14px;
-  color: #ff5f56;
+  overflow-x: visible;
+  width: 100%;
 }
 
 .markdown-section pre code {
   background: transparent !important;
-  padding-top: 10px;
   font-size: 1.05rem;
   line-height: 1.7;
   white-space: pre-wrap !important;
 }
 
 /* Syntax Highlighting Rules */
-.markdown-section pre .hljs-keyword { color: #ff4040 !important; }
+.markdown-section pre .hljs-comment { color: #61854b !important; }
+.markdown-section pre .hljs-keyword { color: #89ddff !important; }
+.markdown-section pre .hljs-punctuation { color: #89ddff !important; }
 .markdown-section pre .hljs-title { color: #00b7eb !important; }
 .markdown-section pre .hljs-object { color: #00b7eb !important; }
 .markdown-section pre .hljs-dot { color: #00b7eb !important; }
 .markdown-section pre .hljs-method-name { color: #f5e8d3 !important; }
-.markdown-section pre .hljs-comment { color: #a68b6b !important; }
 .markdown-section pre .hljs-string { color: #ffd700 !important; }
 .markdown-section pre .hljs-literal { color: #ffd700 !important; }
 .markdown-section pre .hljs-number { color: #ffd700 !important; }
 .markdown-section pre .hljs-operator { color: #f5e8d3 !important; }
-.markdown-section pre .hljs-punctuation { color: #d1b899 !important; }
 
 .loading {
   text-align: center;
-  color: var(--text-secondary);
+  color: #f5e8d3;
   font-size: 1.2em;
   padding: 20px;
 }
