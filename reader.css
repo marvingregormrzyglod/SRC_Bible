@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   /* Premium color palette */
   --primary-dark: #2A3B4C;    /* Rich dark blue */
@@ -219,6 +223,11 @@ html {
 
 #prev-chapter:hover, #next-chapter:hover {
   background: linear-gradient(135deg, var(--primary-dark) 20%, var(--accent-amber) 80%);
+}
+
+.content-wrapper {
+  background-color: #263238;
+  width: 100%;
 }
 
 #app {
