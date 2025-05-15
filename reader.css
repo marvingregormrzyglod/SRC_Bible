@@ -96,9 +96,10 @@ html {
   margin: 0 auto;
   padding: 12px 20px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px var(--shadow-subtle);
+  box-shadow: 0 10px 24px var(--shadow-medium);
   transition: all 0.3s ease;
   background: transparent; /* Inherit from body */
+  border: 1px solid var(--border-light);
 }
 
 .search-container {
@@ -223,7 +224,7 @@ html {
 #app {
   background-color: #263238;
   padding: 30px;
-  width: 80%;
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
   min-height: 400px;
