@@ -277,6 +277,9 @@ html {
   box-shadow: none;
   position: relative;
   white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%; /* Ensure it doesn't exceed container width */
   overflow-x: visible;
   width: 100%;
 }
@@ -285,7 +288,9 @@ html {
   background: transparent !important;
   font-size: 1.05rem;
   line-height: 1.7;
-  white-space: pre-wrap !important;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Syntax Highlighting Rules */
@@ -361,7 +366,7 @@ a:hover {
   }
 
   .markdown-section pre code {
-    font-size: 0.9rem; /* Smaller font for mobile readability */
+    font-size: 0.8rem; /* Smaller font size for mobile */
     word-wrap: break-word; /* Wrap long words */
   }
 }
