@@ -95,6 +95,17 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
 }
 
+.code-style pre code {
+  background: transparent !important; /* Match reader.css */
+  font-size: 1.05rem;
+  line-height: 1.7;
+  white-space: pre-wrap !important;
+}
+
+.code-style {
+  color: #f5e8d3; /* Match reader.css text color */
+}
+
 .read-now-button {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -499,22 +510,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .code-style pre {
-  margin: 0;
-  border-radius: 0;
+  background: transparent; /* Match reader.css */
+  color: #f5e8d3;
+  font-family: 'Fira Code', monospace;
   padding: 0;
-  background: transparent;
   box-shadow: none;
+  border-radius: 0;
+  position: relative;
+  white-space: pre-wrap;
+  overflow-x: visible;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 90%; 
 }
 
-.code-style pre .hljs-keyword, 
-.code-style pre .hljs-comment { color: #a68b6b !important; }
-.code-style pre .hljs-built_in,
-.code-style pre .hljs-function { color: #ff4040 !important; }
-.code-style pre .hljs-string,
-.code-style pre .hljs-params { color: #ffd700 !important; }
-.code-style pre .hljs-variable,
-.code-style pre .hljs-property { color: #00b7eb !important; }
-.code-style pre .hljs-punctuation { color: #d1b899 !important; }
+/* Syntax Highlighting Rules from reader.css */
+.code-style pre .hljs-comment { color: #ff5370 !important; }
+.code-style pre .hljs-keyword { color: #89ddff !important; }
+.code-style pre .hljs-punctuation { color: #89ddff !important; }
+.code-style pre .hljs-title { color: #00b7eb !important; }
+.code-style pre .hljs-object { color: #00b7eb !important; }
+.code-style pre .hljs-dot { color: #00b7eb !important; }
+.code-style pre .hljs-method-name { color: #f5e8d3 !important; }
+.code-style pre .hljs-string { color: #ffd700 !important; }
+.code-style pre .hljs-literal { color: #ffd700 !important; }
+.code-style pre .hljs-number { color: #ffd700 !important; }
+.code-style pre .hljs-operator { color: #f5e8d3 !important; }
 
 .versions-container .version-card .code-style pre {
   padding-bottom: 20px;
@@ -802,6 +823,17 @@ a:hover {
   .benefit-card {
     padding: 20px;
   }
+
+  .subtitle {
+    font-size: 1.2rem; /* Smaller font size for mobile */
+    max-width: 90%; /* Wider container to reduce line breaks */
+    margin: 0 auto; /* Center the container */
+  }
+
+  .code-style pre {
+    max-width: 100%; /* Full width on mobile for consistency */
+  }
+  
 }
 
 @media (max-width: 480px) {
