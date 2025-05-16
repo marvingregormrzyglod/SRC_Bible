@@ -741,6 +741,11 @@ footer p {
   margin: 0;
 }
 
+footer a {
+  padding: 10px;
+  display: inline-block;
+}
+
 a {
   color: var(--link-color);
   text-decoration: none;
@@ -792,6 +797,63 @@ a:hover {
   
   .cta-container {
     padding: 30px 20px;
+  }
+  
+  .benefit-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --base-font-size: 14px;
+  }
+  
+  .benefits h2, .cta h2 {
+    font-size: 1.8rem;
+  }
+  
+  .intro-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .intro-container p {
+    font-size: 1rem;
+  }
+  
+  .middle-image-text {
+    font-size: 1.2rem;
+    max-width: 95%;
+  }
+  
+  .bottom-image-text {
+    font-size: 1.4rem;
+    max-width: 60%;
+  }
+  
+  .cta-container {
+    padding: 20px 15px;
+  }
+  
+  .intro-container {
+    padding: 20px 15px;
+  }
+  
+  .benefits-container {
+    padding: 0 15px;
+  }
+  
+  .benefit-card {
+    padding: 15px;
+  }
+  
+  .signup-form input {
+    width: 100%;
+    min-width: 0;
+  }
+  
+  .signup-form button {
+    width: 100%;
   }
 }
 
