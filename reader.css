@@ -354,6 +354,16 @@ a:hover {
   .reader-hero h1, .reader-hero p {
     white-space: normal; /* Allow line breaks on smaller screens */
   }
+
+  .markdown-section pre {
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+  }
+
+  .markdown-section pre code {
+    font-size: 0.9rem; /* Smaller font for mobile readability */
+    word-wrap: break-word; /* Wrap long words */
+  }
 }
 
 @media (min-width: 769px) {
