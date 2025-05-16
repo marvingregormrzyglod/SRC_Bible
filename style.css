@@ -825,15 +825,23 @@ a:hover {
   }
 
   .subtitle {
-    font-size: 1.2rem; /* Smaller font size for mobile */
+    font-size: 1rem; /* Smaller font size for mobile */
+    width: 100%; /* Full width of the container */
+    padding: 0 10px; /* Prevent text from touching screen edges */
     max-width: 90%; /* Wider container to reduce line breaks */
     margin: 0 auto; /* Center the container */
   }
 
   .code-style pre {
-    max-width: 100%; /* Full width on mobile for consistency */
+    max-width: 100%; /* Ensure it doesn't exceed container width */
   }
   
+  .code-style pre code {
+    font-size: 0.8rem; /* Smaller font size for mobile */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 @media (max-width: 480px) {
