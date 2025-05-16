@@ -441,7 +441,7 @@ h1, h2, h3, h4, h5, h6 {
 .version-content.code-style pre {
   white-space: pre-wrap;
   overflow: hidden;
-  background: #2f1e12;
+  background: #263238;
   margin: 0;
   padding: 16px;
   border-radius: 12px;
@@ -504,7 +504,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .version-card .code-style {
-  background: #2f1e12;
+  background: #263238;
   color: #f5e8d3;
   font-family: 'Fira Code', monospace;
 }
