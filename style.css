@@ -789,6 +789,13 @@ a:hover {
   .intro-container p {
     font-size: 1.2rem;
   }
+
+  .intro-message {
+    padding: 25px 10px; /* Reduces horizontal padding to 10px */
+  }
+  .intro-message p {
+    font-size: 1rem; /* Reduces to 16px */
+  }
   
   .middle-image-text {
     font-size: 1.4rem;
