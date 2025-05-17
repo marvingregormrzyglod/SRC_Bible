@@ -806,6 +806,7 @@ a:hover {
   
   .versions-container {
     flex-direction: column;
+    align-items: center;
   }
   
   .version-content.code-style pre code {

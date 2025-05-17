@@ -366,8 +366,19 @@ a:hover {
   }
 
   .markdown-section pre code {
-    font-size: 0.8rem; /* Smaller font size for mobile */
+    font-size: 0.7rem; /* Smaller font size for mobile */
     word-wrap: break-word; /* Wrap long words */
+  }
+
+  #search-button {
+    margin-left: -5px; /* Added to shift left */
+  }
+
+  #prev-chapter, #next-chapter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Added for arrow above text */
   }
 }
 
