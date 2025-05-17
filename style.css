@@ -137,6 +137,16 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+.text-wrapper {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .intro-section {
   background-color: #643228;
   padding: 40px 20px;
@@ -171,16 +181,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .middle-image-text {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: #2D2D34;
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
-  max-width: 90%;
+  padding: 0 10px; /* Optional: slight padding */
 }
 
 .bottom-image-text {
@@ -799,7 +805,7 @@ a:hover {
   
   .middle-image-text {
     font-size: 1.4rem;
-    max-width: 90%;
+    padding: 0 5px;
   }
   
   .bottom-image-text {
@@ -879,7 +885,7 @@ a:hover {
   
   .middle-image-text {
     font-size: 1.2rem;
-    max-width: 95%;
+    padding: 0 5px;
   }
   
   .bottom-image-text {
