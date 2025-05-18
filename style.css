@@ -776,25 +776,33 @@ a:hover {
   .benefits-grid-2x2 {
     grid-template-columns: 1fr;
   }
+
+
   
+
   .versions-container {
-    flex-direction: column;
-    align-items: center;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  .version-content {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Center and offset */
+    padding: 0 20px; /* 20px padding from edges */
+  }
+  .version-content.code-style pre {
+    padding: 8px; /* Close to left border */
+    margin: 0;
+    text-align: left;
   }
   
   .version-content.code-style pre code {
     font-size: 0.9rem;
   }
 
-  .version-content.code-style pre {
-    padding: 10px; /* Reduces padding to bring text closer to the left border */
-  }
 
-  .version-content {
-    width: calc(100% - 40px); /* Leaves 20px on each side */
-    margin: 0 auto; /* Centers the box horizontally */
-    padding: 10px; /* Reduces padding inside the box */
-  }
+
   
   .text-wrapper {
   top: 5%;
