@@ -366,12 +366,12 @@ a:hover {
   }
 
   .markdown-section pre code {
-    font-size: 0.7rem; /* Smaller font size for mobile */
+    font-size: 0.4rem; /* Smaller font size for mobile */
     word-wrap: break-word; /* Wrap long words */
   }
 
   #search-button {
-    margin-left: -5px; /* Added to shift left */
+    margin-left: -25px; /* Added to shift left */
   }
 
   #prev-chapter, #next-chapter {
