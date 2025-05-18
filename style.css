@@ -139,9 +139,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-wrapper {
   position: absolute;
-  top: 20%;
-  left: 25%;
-  right: 25%;
+  top: 15%;
+  left: 15%;
+  right: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -186,7 +186,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2.6rem;
   font-weight: 600;
   text-align: center;
-  padding: 0 10px; /* Optional: slight padding */
 }
 
 .bottom-image-text {
