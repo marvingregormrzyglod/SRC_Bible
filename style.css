@@ -797,7 +797,7 @@ a:hover {
     background: #263238; /* Match the box’s background */
   }
   .version-content.code-style pre code {
-    font-size: 1.2rem;
+    font-size: 4rem;
     margin: 0;          /* Remove margins on code element */
     padding: 0;         /* Remove padding to align text closely */
     display: block;     /* Ensure block behavior */
@@ -805,6 +805,16 @@ a:hover {
     text-indent: 0;     /* Prevent indentation */
   }
 
+  .code-style pre {
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+  }
+  
+  .code-style pre code {
+    font-size: 20rem; /* Smaller font size for mobile */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 
 
   
@@ -828,17 +838,6 @@ a:hover {
     padding: 0 10px; /* Prevent text from touching screen edges */
     max-width: 90%; /* Wider container to reduce line breaks */
     margin: 0 auto; /* Center the container */
-  }
-
-  .code-style pre {
-    max-width: 100%; /* Ensure it doesn't exceed container width */
-  }
-  
-  .code-style pre code {
-    font-size: 1.2rem; /* Smaller font size for mobile */
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
   }
 }
 
