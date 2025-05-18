@@ -140,8 +140,8 @@ h1, h2, h3, h4, h5, h6 {
 .text-wrapper {
   position: absolute;
   top: 25%;
-  left: 0;
-  right: 0;
+  left: 25%;
+  right: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -470,12 +470,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .version-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   padding: 28px;
   box-shadow: 0 10px 30px var(--shadow-medium);
   text-align: left;
   flex: 1;
-  min-width: 280px;
+  min-width: 260px;
   max-width: 1200px;
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
@@ -829,6 +832,12 @@ a:hover {
   .version-card {
     width: 100%;
   }
+
+  .text-wrapper {
+  top: 5%;
+  left: 25%;
+  right: 25%;
+  }
   
   .cta-container {
     padding: 30px 20px;
@@ -886,6 +895,12 @@ a:hover {
   .middle-image-text {
     font-size: 1.2rem;
     padding: 0 5px;
+  }
+
+  .text-wrapper {
+  top: 5%;
+  left: 15%;
+  right: 15%;
   }
   
   .bottom-image-text {
