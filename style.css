@@ -441,9 +441,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 16px;
   border-radius: 12px;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   max-height: 100%;
-  max-width: 100%;
+  text-align: left; /* Added to ensure left alignment */
 }
 
 .version-content.code-style pre code {
