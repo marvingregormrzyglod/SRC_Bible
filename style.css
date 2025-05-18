@@ -797,7 +797,7 @@ a:hover {
     background: #263238; /* Match the box’s background */
   }
   .version-content.code-style pre code {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     margin: 0;          /* Remove margins on code element */
     padding: 0;         /* Remove padding to align text closely */
     display: block;     /* Ensure block behavior */
@@ -835,7 +835,7 @@ a:hover {
   }
   
   .code-style pre code {
-    font-size: 0.8rem; /* Smaller font size for mobile */
+    font-size: 1.2rem; /* Smaller font size for mobile */
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
