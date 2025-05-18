@@ -463,33 +463,6 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
-.version-card {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px var(--shadow-medium);
-  position: relative;
-  z-index: 1;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-light);
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-.version-card:hover {
-  box-shadow: 0 15px 40px var(--shadow-medium);
-  transform: translateY(-5px);
-}
-
-.version-card h3 {
-  font-size: 1.3rem;
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: var(--text-primary);
-  text-align: center;
-}
-
 .version-content {
   min-height: 220px;
   display: flex;
@@ -500,12 +473,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-color);
   position: relative;
   width: 100%;
-}
-
-.version-card .code-style {
-  background: #263238;
-  color: #f5e8d3;
-  font-family: 'Fira Code', monospace;
 }
 
 .code-style pre {
@@ -536,7 +503,7 @@ h1, h2, h3, h4, h5, h6 {
 .code-style pre .hljs-number { color: #ffd700 !important; }
 .code-style pre .hljs-operator { color: #f5e8d3 !important; }
 
-.versions-container .version-card .code-style pre {
+.versions-container .code-style pre {
   padding-bottom: 20px;
 }
 
