@@ -785,11 +785,17 @@ a:hover {
   .version-content.code-style pre code {
     font-size: 0.9rem;
   }
-  
-  .version-card {
-    width: 100%;
+
+  .version-content.code-style pre {
+    padding: 10px; /* Reduces padding to bring text closer to the left border */
   }
 
+  .version-content {
+    width: calc(100% - 40px); /* Leaves 20px on each side */
+    margin: 0 auto; /* Centers the box horizontally */
+    padding: 10px; /* Reduces padding inside the box */
+  }
+  
   .text-wrapper {
   top: 5%;
   left: 10%;
