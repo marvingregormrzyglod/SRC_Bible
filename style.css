@@ -435,6 +435,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .version-content.code-style pre {
   white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
   overflow: hidden;
   background: #263238;
   margin: 0;
@@ -453,10 +456,11 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   line-height: 1.5;
   white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   overflow: visible;
   width: 100%;
   box-sizing: border-box;
-  word-break: break-word;
 }
 
 .version-card {
@@ -470,6 +474,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .version-card:hover {
