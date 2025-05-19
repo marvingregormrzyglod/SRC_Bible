@@ -115,21 +115,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .code-style pre code {
-  font-family: 'Fira Code', monospace;
-  font-weight: 500;
-  font-size: var(--fluid-base);
-  line-height: 1.6;
-}
-
-.code-style pre code {
-  background: transparent !important; /* Match reader.css */
-  font-size: var(--fluid-lg);
-  line-height: 1.7;
   white-space: pre-wrap !important;
+  text-align: left !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  left: 0 !important;
 }
 
 .code-style {
-  color: #f5e8d3; /* Match reader.css text color */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  text-align: left !important;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  padding: var(--fluid-space-4);
 }
 
 .read-now-button {
@@ -460,15 +463,13 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 20px rgba(194, 112, 61, 0.3);
 }
 
-/* Fix for John 3:16 text alignment */
-.version-content.code-style {
-  font-size: var(--fluid-base);
-  transition: font-size 0.3s ease;
-  overflow: hidden;
-  min-width: 0;
+code-style pre {
+  text-align: left;
+  background: #263238;
+  margin: 0;
+  padding: 16px;
+  border-radius: 12px;
   width: 100%;
-  max-width: 900px; /* Added max-width for centering on desktop */
-  margin: 0 auto; /* Center the container on desktop */
   box-sizing: border-box;
 }
 
@@ -476,43 +477,11 @@ h1, h2, h3, h4, h5, h6 {
   white-space: pre-wrap !important;
   font-size: var(--fluid-base) !important;
   transition: font-size 0.3s ease;
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-  text-align: left; /* Ensure text is left aligned */
-}
-
-.version-content.code-style pre {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  box-sizing: border-box;
-  overflow: hidden;
-  background: #263238;
-  margin: 0;
-  padding: 16px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  max-height: 100%;
-  text-align: left; /* Ensure text is left aligned */
-}
-
-.version-content.code-style pre code {
   display: block;
-  font-family: 'Fira Code', monospace;
-  font-size: var(--fluid-base);
-  line-height: 1.5;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  overflow: visible;
   width: 100%;
   box-sizing: border-box;
-  text-align: left; /* Ensure text is left aligned */
-  padding-left: 0; /* Ensure no left padding pushes content in */
+  overflow-wrap: break-word;
+  text-align: left;
 }
 
 .version-content {
@@ -525,21 +494,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-color);
   position: relative;
   width: 100%;
-}
-
-.code-style pre {
-  background: transparent; /* Match reader.css */
-  color: #f5e8d3;
-  font-family: 'Fira Code', monospace;
-  padding: 0;
-  box-shadow: none;
-  border-radius: 0;
-  position: relative;
-  white-space: pre-wrap;
-  overflow-x: visible;
-  width: 100%;
-  margin: 0 auto;
-  max-width: 90%; 
 }
 
 /* Syntax Highlighting Rules from reader.css */
@@ -555,17 +509,8 @@ h1, h2, h3, h4, h5, h6 {
 .code-style pre .hljs-number { color: #ffd700 !important; }
 .code-style pre .hljs-operator { color: #f5e8d3 !important; }
 
-.versions-container .code-style pre {
-  padding-bottom: 20px;
-}
-
 .code-style code {
   white-space: pre-wrap;
-}
-
-.code-style pre code {
-  white-space: pre-wrap !important;
-  background: transparent !important;
 }
 
 .cta {
@@ -818,36 +763,6 @@ a:hover {
     box-sizing: border-box;
     padding: 10px;
   }
-  
-  .version-content.code-style pre {
-    padding: 16px; /* More consistent padding */
-    text-align: left;
-    margin: 0;
-    background: #263238;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .version-content.code-style pre code {
-    margin: 0;
-    padding: 0;
-    display: block;
-    white-space: pre-wrap;
-    text-indent: 0;
-    text-align: left;
-  }
-
-  .code-style pre {
-    max-width: 100%;
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .dynamic-code {
-    padding-left: 0;
-    margin-left: 0;
-    text-align: left;
-  }
 
   .text-wrapper {
     top: 5%;
@@ -858,6 +773,28 @@ a:hover {
   .signup-form input, .signup-form button {
     width: 100%;
     min-width: 0;
+  }
+
+  .version-content.code-style {
+    padding: 10px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  .version-content.code-style pre {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+    text-align: left;
+  }
+  
+  .dynamic-code {
+    padding-left: 0;
+    margin-left: 0;
+    text-align: left;
+    left: 0;
+    position: relative;
   }
 }
 
