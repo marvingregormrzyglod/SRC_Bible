@@ -37,6 +37,24 @@
 
   /* Font scaling */
   --base-font-size: 16px;
+  
+  /* Add these fluid typography variables */
+  --fluid-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --fluid-base: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --fluid-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --fluid-xl: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --fluid-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --fluid-3xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  --fluid-4xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.25rem);
+  --fluid-5xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+  
+  /* Fluid spacing */
+  --fluid-space-1: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --fluid-space-2: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --fluid-space-4: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --fluid-space-8: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --fluid-space-16: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --fluid-space-32: clamp(4rem, 3.2rem + 4vw, 6rem);
 }
 
 body {
@@ -61,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .benefits h2, .cta h2 {
-  font-size: 2.8rem;
+  font-size: var(--fluid-4xl);
   margin-bottom: 0.8em;
   font-weight: 700;
 }
@@ -69,15 +87,15 @@ h1, h2, h3, h4, h5, h6 {
 .subtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: 1.4rem;
+  font-size: var(--fluid-xl);
   line-height: 1.5;
   margin-bottom: 50px;
 }
 
 .benefit-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  margin: 0 0 12px 0;
+  font-size: var(--fluid-2xl);
+  margin: 0 0 var(--fluid-space-2) 0;
   letter-spacing: -0.01em;
 }
 
@@ -85,19 +103,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: var(--fluid-base);
 }
 
 .code-style pre code {
   font-family: 'Fira Code', monospace;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: var(--fluid-base);
   line-height: 1.6;
 }
 
 .code-style pre code {
   background: transparent !important; /* Match reader.css */
-  font-size: 1.05rem;
+  font-size: var(--fluid-lg);
   line-height: 1.7;
   white-space: pre-wrap !important;
 }
@@ -115,11 +133,11 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   border: none;
   border-radius: 12px;
-  padding: 16px 36px;
-  font-size: 1.2rem;
+  padding: var(--fluid-space-4) var(--fluid-space-8);
+  font-size: var(--fluid-xl);
   cursor: pointer;
   text-decoration: none;
-  margin: 40px auto;
+  margin: var(--fluid-space-8) auto;
   transition: all 0.3s ease;
   box-shadow: 0 6px 12px rgba(194, 112, 61, 0.2);
 }
@@ -149,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .intro-section {
   background-color: #643228;
-  padding: 40px 20px;
+  padding: clamp(30px, 5vw, 60px) clamp(15px, 3vw, 30px);
   text-align: center;
   width: 100%;
 }
@@ -161,13 +179,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro-container h2 {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
+  font-size: var(--fluid-4xl);
+  margin-bottom: var(--fluid-space-8);
   color: white;
 }
 
 .intro-container p {
-  font-size: 1.4rem;
+  font-size: var(--fluid-xl);
   line-height: 1.5;
   color: white;
 }
@@ -183,7 +201,7 @@ h1, h2, h3, h4, h5, h6 {
 .middle-image-text {
   color: #2D2D34;
   font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
+  font-size: var(--fluid-3xl);
   font-weight: 600;
   text-align: center;
 }
@@ -195,7 +213,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-50%, -50%);
   color: white;
   font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
+  font-size: var(--fluid-3xl);
   font-weight: 600;
   text-align: center;
   max-width: 40%;
@@ -203,13 +221,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .benefits {
   background-color: var(--bg-color);
-  padding: 40px 20px;
+  padding: var(--fluid-space-8) var(--fluid-space-4);
   text-align: center;
 }
 
 .benefits-grid-section {
   background-color: #88603d;
-  padding: 60px 0;
+  padding: var(--fluid-space-16) 0;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -251,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-start;
   background: var(--card-bg);
   border-radius: 16px;
-  padding: 24px;
+  padding: var(--fluid-space-4) var(--fluid-space-4);
   margin-bottom: 20px;
   box-shadow: 0 8px 20px var(--shadow-subtle);
   text-align: left;
@@ -296,15 +314,15 @@ h1, h2, h3, h4, h5, h6 {
 .intro-message {
   background: rgba(63, 92, 119, 0.08);
   border-radius: 12px;
-  padding: 25px;
-  margin: 40px auto;
+  padding: var(--fluid-space-4);
+  margin: var(--fluid-space-8) auto;
   max-width: 900px;
   text-align: left;
 }
 
 .intro-message p {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: var(--fluid-lg);
   line-height: 1.7;
   color: var(--text-primary);
 }
@@ -316,10 +334,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .reading-guide {
-  margin: 40px auto;
-  max-width: 800px;
+  margin: var(--fluid-space-8) auto;
+  max-width: clamp(300px, 80vw, 800px);
   background: var(--card-bg);
-  padding: 25px 30px;
+  padding: var(--fluid-space-4);
   border-radius: 16px;
   box-shadow: 0 8px 20px var(--shadow-subtle);
   text-align: left;
@@ -342,15 +360,15 @@ h1, h2, h3, h4, h5, h6 {
 .reading-guide h3 {
   margin-top: 0;
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: var(--fluid-2xl);
   color: #F5F5F8;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--fluid-space-4);
 }
 
 .reading-guide p {
-  margin: 12px 0;
-  font-size: 1.05rem;
+  margin: var(--fluid-space-2) 0;
+  font-size: var(--fluid-lg);
   color: #F5F5F8;
 }
 
@@ -362,8 +380,8 @@ h1, h2, h3, h4, h5, h6 {
 .reading-steps {
   position: relative;
   padding-left: 24px;
-  margin: 12px 0;
-  font-size: 1.05rem;
+  margin: var(--fluid-space-2) 0;
+  font-size: var(--fluid-lg);
   line-height: 1.5;
   color: #F5F5F8;
 }
@@ -383,14 +401,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .read-now-section {
   background-color: #405a50;
-  padding: 60px 20px;
+  padding: var(--fluid-space-16) var(--fluid-space-4);
   width: 100%;
 }
 
 .read-now-container {
   background: var(--card-bg);
   border-radius: 18px;
-  padding: 30px;
+  padding: var(--fluid-space-8);
   box-shadow: 0 8px 16px var(--shadow-medium);
   text-align: center;
   max-width: 800px;
@@ -402,9 +420,9 @@ h1, h2, h3, h4, h5, h6 {
 .read-now-text {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 2.8rem;
+  font-size: var(--fluid-4xl);
   color: var(--text-primary);
-  margin-bottom: 25px;
+  margin-bottom: var(--fluid-space-8);
 }
 
 .read-now-button:hover {
@@ -415,7 +433,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .dynamic-code {
   white-space: pre-wrap !important;
-  font-size: clamp(0.5rem, 2vw, 1.05rem) !important;
+  font-size: var(--fluid-base) !important;
   transition: font-size 0.3s ease;
   display: inline-block;
   width: 100%;
@@ -424,7 +442,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .version-content.code-style {
-  font-size: clamp(0.6rem, 2vw, 1.05rem);
+  font-size: var(--fluid-base);
   transition: font-size 0.3s ease;
   overflow: hidden;
   min-width: 0;
@@ -453,7 +471,7 @@ h1, h2, h3, h4, h5, h6 {
 .version-content.code-style pre code {
   display: block;
   font-family: 'Fira Code', monospace;
-  font-size: 1rem;
+  font-size: var(--fluid-base);
   line-height: 1.5;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -468,7 +486,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 20px;
+  padding: var(--fluid-space-4);
   border-radius: 12px;
   background: var(--bg-color);
   position: relative;
@@ -518,18 +536,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta {
   background-color: transparent;
-  padding: 60px 20px;
+  padding: var(--fluid-space-16) var(--fluid-space-4);
   text-align: center;
   margin-top: 40px;
   color: white;
 }
 
 .cta-container {
-  max-width: 700px;
+  max-width: clamp(300px, 80vw, 700px);
   margin: 0 auto;
   background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%);
   border-radius: 24px;
-  padding: 45px 40px;
+  padding: clamp(25px, 5vw, 45px) clamp(20px, 4vw, 40px);
   box-shadow: 0 15px 30px var(--shadow-strong);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -537,13 +555,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta h2 {
+  font-size: var(--fluid-4xl);
   color: white;
 }
 
 .cta p {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 25px;
+  font-size: var(--fluid-lg);
+  margin-bottom: var(--fluid-space-4);
   line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .cta .small {
@@ -562,16 +582,16 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin: 40px 0;
+  margin: var(--fluid-space-8) 0;
 }
 
 .signup-form input {
   flex: 1;
   min-width: 200px;
-  padding: 15px;
+  padding: var(--fluid-space-4);
   border-radius: 8px;
   border: 1px solid var(--border-light);
-  font-size: 1rem;
+  font-size: var(--fluid-base);
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -581,8 +601,8 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   border: none;
   border-radius: 12px;
-  padding: 16px 30px;
-  font-size: 1rem;
+  padding: var(--fluid-space-4);
+  font-size: var(--fluid-base);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -631,7 +651,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .thank-you-message {
   text-align: center;
-  margin: 40px 0;
+  margin: var(--fluid-space-8) 0;
   animation: fadeIn 0.5s ease-in;
 }
 
@@ -705,16 +725,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .small {
-  font-size: 0.9rem;
+  font-size: var(--fluid-sm);
   color: var(--text-secondary);
 }
 
 footer {
-  padding: 20px;
+  padding: var(--fluid-space-4);
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--shadow-hover);
-  margin-top: 40px;
+  margin-top: var(--fluid-space-8);
   width: 80%;
   max-width: 800px;
   background: var(--card-bg);
@@ -724,7 +744,7 @@ footer {
 
 footer p {
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: var(--fluid-sm);
   margin: 0;
 }
 
@@ -742,60 +762,31 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments - keeping layout media queries but removing font-size ones */
 @media (max-width: 768px) {
-  .benefits h2, .cta h2 {
-    font-size: 2rem;
-  }
-  
-  .intro-container h2 {
-    font-size: 2rem;
-  }
-  
-  .intro-container p {
-    font-size: 1.2rem;
-  }
-
-  .intro-message {
-    padding: 25px 10px; /* Reduces horizontal padding to 10px */
-  }
-  .intro-message p {
-    font-size: 1rem; /* Reduces to 16px */
-  }
-  
-  .middle-image-text {
-    font-size: 1.2rem;
-    padding: 0 5px;
-  }
-  
-  .bottom-image-text {
-    font-size: 1.6rem;
-    max-width: 50%;
-  }
-  
   .benefits-grid-2x2 {
     grid-template-columns: 1fr;
   }
-
-
-  
 
   .versions-container {
     padding: 0;
     margin: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
   }
+  
   .version-content {
     width: 100vw; /* Full viewport width */
     margin-left: calc(-50vw + 50%); /* Center and offset */
     padding: 0 20px; /* 20px padding from edges */
   }
+  
   .version-content.code-style pre {
     padding: 8px; /* Close to left border */
     text-align: left;
     margin: 0;          /* Remove default margins */
-    background: #263238; /* Match the box’s background */
+    background: #263238; /* Match the box's background */
   }
+  
   .version-content.code-style pre code {
     margin: 0;          /* Remove margins on code element */
     padding: 0;         /* Remove padding to align text closely */
@@ -807,117 +798,24 @@ a:hover {
   .code-style pre {
     max-width: 100%; /* Ensure it doesn't exceed container width */
   }
-  
-  .code-style pre code {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
 
-  .dynamic-code {
-    font-size: 1.2rem !important;
-  }
-
-
-  
   .text-wrapper {
-  top: 5%;
-  left: 10%;
-  right: 10%;
-  }
-  
-  .cta-container {
-    padding: 30px 20px;
-  }
-  
-  .benefit-card {
-    padding: 20px;
+    top: 5%;
+    left: 10%;
+    right: 10%;
   }
 
-  .subtitle {
-    font-size: 1rem; /* Smaller font size for mobile */
-    width: 100%; /* Full width of the container */
-    padding: 0 10px; /* Prevent text from touching screen edges */
-    max-width: 90%; /* Wider container to reduce line breaks */
-    margin: 0 auto; /* Center the container */
+  .signup-form input, .signup-form button {
+    width: 100%;
+    min-width: 0;
   }
 }
 
 @media (max-width: 480px) {
-  :root {
-    --base-font-size: 14px;
-  }
-  
-  .benefits h2, .cta h2 {
-    font-size: 1.8rem;
-  }
-  
-  .intro-container h2 {
-    font-size: 1.8rem;
-  }
-  
-  .intro-container p {
-    font-size: 1rem;
-  }
-
-  .intro-message {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .intro-message p {
-    font-size: 1rem; /* 16px */
-  }
-  
-  .middle-image-text {
-    font-size: 1rem;
-    padding: 0 5px;
-  }
-
   .text-wrapper {
-  top: 5%;
-  left: 5%;
-  right: 5%;
-  }
-  
-  .bottom-image-text {
-    font-size: 1.4rem;
-    max-width: 60%;
-  }
-  
-  .cta-container {
-    padding: 20px 15px;
-  }
-  
-  .intro-container {
-    padding: 20px 15px;
-  }
-  
-  .benefits-container {
-    padding: 0 15px;
-  }
-  
-  .benefit-card {
-    padding: 15px;
-  }
-  
-  .signup-form input {
-    width: 100%;
-    min-width: 0;
-  }
-  
-  .signup-form button {
-    width: 100%;
+    top: 5%;
+    left: 5%;
+    right: 5%;
   }
 }
 
-@media (min-width: 768px) {
-  :root {
-    --base-font-size: 17px;
-  }
-}
-
-@media (min-width: 1200px) {
-  :root {
-    --base-font-size: 18px;
-  }
-}
