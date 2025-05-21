@@ -477,162 +477,44 @@ a:hover {
 /*                            READ NOW SECTION                                */
 /* -------------------------------------------------------------------------- */
 
-
 .read-now-section {
-  background: linear-gradient(135deg, #405a50 0%, #2b3c36 100%);
+  background-color: #405a50;
   padding: var(--fluid-space-16) var(--fluid-space-4);
   width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Add abstract geometric background shapes */
-.read-now-section::before {
-  content: '';
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 30%;
-  height: 60%;
-  background: rgba(230, 169, 66, 0.05);
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  z-index: 0;
-}
-
-.read-now-section::after {
-  content: '';
-  position: absolute;
-  bottom: -10%;
-  left: -5%;
-  width: 25%;
-  height: 50%;
-  background: rgba(126, 156, 191, 0.05);
-  border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
-  z-index: 0;
 }
 
 .read-now-container {
   background: var(--card-bg);
   border-radius: 18px;
   padding: var(--fluid-space-8);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px var(--shadow-medium);
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
   backdrop-filter: blur(10px);
-  border: 2px solid var(--primary-medium);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
+  border: 2px solid var(--link-color);
 }
 
-/* SVG icon styling */
-.read-now-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--fluid-space-4);
-  position: relative;
-}
-
-.read-now-icon svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
-
-/* More compelling headline */
-.read-now-headline {
+.read-now-text {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: var(--fluid-3xl);
-  color: var(--primary-dark);
-  margin-bottom: var(--fluid-space-4);
+  font-size: var(--fluid-4xl);
+  color: var(--text-primary);
+  margin-bottom: var(--fluid-space-8);
   position: relative;
   display: inline-block;
   padding-bottom: 8px;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-red);
+  text-decoration-thickness: 3px;
+  animation: pulse 2s infinite;
 }
 
-/* Add elegant underline */
-.read-now-headline::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 25%;
-  right: 25%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
-}
-
-/* Engaging subtext */
-.read-now-subtext {
-  font-size: var(--fluid-lg);
-  color: var(--text-secondary);
-  margin-bottom: var(--fluid-space-8);
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-}
-
-/* Code preview styling */
-.read-now-preview {
-  background: var(--code-bg);
-  border-radius: 12px;
-  padding: var(--fluid-space-4);
-  margin: var(--fluid-space-8) auto;
-  max-width: 90%;
-  text-align: left;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.preview-label {
-  color: var(--neutral-light);
-  font-size: var(--fluid-sm);
-  margin-bottom: var(--fluid-space-2);
-  font-family: 'Inter', sans-serif;
-}
-
-.preview-code {
-  max-height: 180px;
-  overflow-y: auto;
-  padding-right: var(--fluid-space-2);
-}
-
-.preview-code code {
-  font-family: 'Fira Code', monospace;
-  font-size: var(--fluid-sm);
-  color: var(--code-text);
-  white-space: pre;
-  display: block;
-  line-height: 1.5;
-}
-
-/* Add code highlighting */
-.preview-code code {
-  color: var(--code-text);
-}
-.preview-code code::selection {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Syntax highlighting in preview */
-.preview-code .comment { color: var(--code-comment); }
-.preview-code .action { color: var(--code-function); }
-.preview-code .object { color: var(--code-object); }
-.preview-code .string { color: var(--code-string); }
-.preview-code .punctuation { color: var(--code-punctuation); }
-
-/* Enhanced CTA button */
 .read-now-button {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+  display: inline-block;
   background: linear-gradient(135deg, var(--accent-amber) 0%, var(--accent-gold) 100%);
   color: white;
   border: none;
@@ -641,122 +523,16 @@ a:hover {
   font-size: var(--fluid-xl);
   cursor: pointer;
   text-decoration: none;
-  margin: var(--fluid-space-4) auto;
+  margin: var(--fluid-space-8) auto;
   transition: all 0.3s ease;
   box-shadow: 0 6px 12px rgba(194, 112, 61, 0.2);
-  position: relative;
-  overflow: hidden;
-  min-width: 250px;
-  z-index: 1;
-}
-
-/* Add button shine effect */
-.read-now-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    transparent 100%
-  );
-  transition: left 0.7s ease;
-  z-index: -1;
 }
 
 .read-now-button:hover {
   background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-amber) 100%);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(194, 112, 61, 0.3);
-  text-decoration: none;
 }
-
-.read-now-button:hover::before {
-  left: 100%;
-}
-
-.button-text {
-  position: relative;
-  z-index: 2;
-}
-
-.button-icon {
-  font-size: 1.2em;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.3s ease;
-}
-
-.read-now-button:hover .button-icon {
-  transform: translateX(4px);
-}
-
-/* Social proof styling */
-.read-now-testimonial {
-  margin-top: var(--fluid-space-8);
-  padding: var(--fluid-space-4);
-  border-radius: 12px;
-  background: rgba(245, 245, 248, 0.5);
-  border: 1px solid var(--border-light);
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.testimonial-stars {
-  color: var(--accent-gold);
-  font-size: var(--fluid-xl);
-  margin-bottom: var(--fluid-space-2);
-  letter-spacing: 2px;
-}
-
-.testimonial-text {
-  font-style: italic;
-  color: var(--text-secondary);
-  font-size: var(--fluid-base);
-  margin-bottom: var(--fluid-space-2);
-  position: relative;
-}
-
-.testimonial-text::before,
-.testimonial-text::after {
-  content: '"';
-  color: var(--accent-gold);
-  font-size: 1.2em;
-  font-weight: 700;
-}
-
-.testimonial-author {
-  font-size: var(--fluid-sm);
-  color: var(--text-tertiary);
-  margin: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .read-now-container {
-    padding: var(--fluid-space-4);
-  }
-  
-  .read-now-preview {
-    max-width: 100%;
-  }
-  
-  .read-now-button {
-    width: 100%;
-  }
-  
-  .read-now-testimonial {
-    max-width: 100%;
-  }
-}
-
-
-
 
 /* -------------------------------------------------------------------------- */
 /*                            CTA SECTION                                     */
