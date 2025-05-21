@@ -372,8 +372,12 @@ a:hover {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   /* Container width adjustments */
-  .reader-hero, .search-container, .nav-controls, #app, footer {
+  .reader-hero, .search-container, .nav-controls, footer {
     width: 90%;
+  }
+
+  #app {
+    width: 100%;
   }
   
   /* Layout changes for selectors */
