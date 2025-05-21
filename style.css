@@ -303,7 +303,7 @@ a:hover {
 /* -------------------------------------------------------------------------- */
 
 .reading-guide {
-  margin: var(--fluid-space-8) auto;
+  margin: var(--fluid-space-8) auto var(--fluid-space-16) auto;
   max-width: clamp(300px, 80vw, 800px);
   background: var(--card-bg);
   padding: var(--fluid-space-4);
