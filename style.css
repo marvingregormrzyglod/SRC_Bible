@@ -214,40 +214,37 @@ a:hover {
 }
 
 .intro-message {
-  background: linear-gradient(135deg, rgba(63, 92, 119, 0.15) 0%, rgba(63, 92, 119, 0.08) 100%);
-  border-radius: 16px;
-  padding: var(--fluid-space-8);
+  background: rgba(63, 92, 119, 0.08);
+  border-radius: 12px;
+  padding: var(--fluid-space-4);
   margin: var(--fluid-space-16) auto;
   max-width: 900px;
   text-align: left;
-  border-left: 4px solid var(--primary-medium);
-  box-shadow: 0 8px 16px var(--shadow-subtle);
 }
 
 .intro-message p {
   margin: 0;
-  font-size: var(--fluid-xl);
+  font-size: var(--fluid-lg);
   line-height: 1.7;
   color: var(--text-primary);
-  font-weight: 400;
 }
 
 .intro-message strong {
   color: var(--primary-dark);
-  background: linear-gradient(to bottom, transparent 70%, var(--accent-gold) 70%, var(--accent-gold) 90%, transparent 90%);
-  padding: 0 4px;
-  font-weight: 600;
+  border-bottom: 2px solid var(--accent-gold);
+  padding-bottom: 2px;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                            CODE DISPLAY STYLES                             */
 /* -------------------------------------------------------------------------- */
 
+/* Code styling and syntax highlighting */
 .version-content.code-style {
   text-align: left !important;
-  border-radius: 16px !important;  
+  border-radius: 12px !important;  
   overflow: hidden;
-  background: linear-gradient(145deg, var(--code-bg) 0%, #343942 100%) !important;
+  background: var(--code-bg) !important;
   min-height: 220px;
   display: flex;
   flex-direction: column;
@@ -256,38 +253,17 @@ a:hover {
   position: relative;
   width: 100%;
   max-width: 900px;
-  margin: var(--fluid-space-16) auto;
-  box-shadow: 0 15px 30px rgba(42, 59, 76, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.07);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.version-content.code-style::before {
-  content: "// SRC Bible Format";
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  color: rgba(255, 255, 255, 0.3);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.8rem;
+  margin: var(--fluid-space-8) auto;
 }
 
 .code-style pre {
   text-align: left !important;
-  background: transparent !important;
+  background: var(--code-bg) !important;
   margin: 0 !important;
-  padding: 25px 16px 16px;
+  padding: 16px;
   border-radius: 12px !important;
   width: 100% !important;
   box-sizing: border-box;
-}
-
-.dynamic-code {
-  font-family: 'Fira Code', monospace !important;
-  font-size: var(--fluid-lg) !important;
-  font-weight: 500;
-  transition: font-size 0.3s ease;
-  overflow-wrap: break-word;
-  line-height: 1.7;
 }
 
 .code-style pre code, .dynamic-code {
@@ -327,104 +303,69 @@ a:hover {
 /* -------------------------------------------------------------------------- */
 
 .reading-guide {
-  margin: var(--fluid-space-16) auto;
+  margin: var(--fluid-space-8) auto var(--fluid-space-16) auto;
   max-width: clamp(300px, 80vw, 800px);
-  background: linear-gradient(135deg, #3F5C77 0%, #2A3B4C 100%);
-  padding: var(--fluid-space-8);
+  background: var(--card-bg);
+  padding: var(--fluid-space-4);
   border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(42, 59, 76, 0.3);
+  box-shadow: 0 8px 20px var(--shadow-subtle);
   text-align: left;
   position: relative;
   z-index: 1;
-  overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .reading-guide::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.03) 2px,
-    transparent 2px,
-    transparent 8px
-  );
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #435663;
   z-index: -1;
-  animation: subtle-shift 60s linear infinite;
-}
-
-@keyframes subtle-shift {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 20px);
-  }
+  border-radius: 16px;
 }
 
 .reading-guide h3 {
   margin-top: 0;
   font-family: 'Playfair Display', serif;
-  font-size: var(--fluid-3xl);
+  font-size: var(--fluid-2xl);
   color: #F5F5F8;
-  margin-bottom: var(--fluid-space-8);
-  position: relative;
-  display: inline-block;
-}
-
-.reading-guide h3::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 80px;
-  height: 3px;
-  background: var(--accent-gold);
+  text-align: center;
+  margin-bottom: var(--fluid-space-4);
 }
 
 .reading-guide p {
-  margin: var(--fluid-space-4) 0;
+  margin: var(--fluid-space-2) 0;
   font-size: var(--fluid-lg);
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 300;
+  color: #F5F5F8;
+}
+
+.reading-guide strong {
+  color: #E6A942;
+  font-weight: 600;
 }
 
 .reading-steps {
   position: relative;
-  padding-left: 32px;
-  margin: var(--fluid-space-4) 0;
+  padding-left: 24px;
+  margin: var(--fluid-space-2) 0;
   font-size: var(--fluid-lg);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  color: #F5F5F8;
 }
 
 .reading-steps:before {
-  content: "";
+  content: "•";
   position: absolute;
-  left: 0;
-  top: 12px;
-  width: 18px;
-  height: 18px;
-  background: var(--accent-gold);
-  border-radius: 50%;
-  transform: scale(0.4);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 0 2px rgba(230, 169, 66, 0.3);
-}
-
-.reading-steps:hover:before {
-  transform: scale(0.6);
+  left: 8px;
+  color: #E6A942;
+  font-size: 1.2rem;
 }
 
 .reading-steps strong {
-  color: var(--accent-gold);
+  color: #E6A942;
   font-weight: 600;
-  letter-spacing: 0.02em;
 }
 
 /* -------------------------------------------------------------------------- */
