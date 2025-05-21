@@ -755,24 +755,7 @@ a:hover {
   }
 }
 
-/* Add code highlighting syntax to preview code */
-document.addEventListener('DOMContentLoaded', function() {
-  const previewCode = document.querySelector('.preview-code code');
-  if (previewCode) {
-    const html = previewCode.innerHTML;
-    // Style comments
-    let styledHtml = html.replace(/(\/\/ ===.*?)(\n)/g, '<span class="comment">$1</span>$2');
-    // Style object names
-    styledHtml = styledHtml.replace(/(\w+)\.promise/g, '<span class="object">$1</span>.promise');
-    // Style function names
-    styledHtml = styledHtml.replace(/\.(\w+)/g, '.<span class="action">$1</span>');
-    // Style strings 
-    styledHtml = styledHtml.replace(/"([^"]*)"/g, '"<span class="string">$1</span>"');
-    // Style punctuation
-    styledHtml = styledHtml.replace(/({|}|\(|\)|,|:)/g, '<span class="punctuation">$1</span>');
-    
-    previewCode.innerHTML = styledHtml;
-  }
+
 
 
 /* -------------------------------------------------------------------------- */
