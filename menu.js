@@ -187,32 +187,33 @@ async function loadScripture(book, chapter) {
 }
 
 function addLineNumbers() {
-  document.querySelectorAll('.markdown-section pre code').forEach(codeBlock => {
-    if (codeBlock.querySelector('.line-numbers')) return; // Skip if already processed
+  document.querySelectorAll('pre code').forEach(codeBlock => {
+    const pre = codeBlock.parentElement;
     
-    const lines = codeBlock.textContent.split('\n');
-    const lineCount = lines.length;
+    // Skip if already processed
+    if (pre.querySelector('.line-numbers')) return;
+    
+    const codeText = codeBlock.textContent || codeBlock.innerText;
+    const lines = codeText.split('\n');
+    
+    // Remove empty last line if it exists
+    if (lines[lines.length - 1] === '') {
+      lines.pop();
+    }
     
     // Create line numbers container
     const lineNumbers = document.createElement('div');
     lineNumbers.className = 'line-numbers';
     
     // Generate line numbers
-    for (let i = 1; i <= lineCount; i++) {
+    for (let i = 1; i <= lines.length; i++) {
       const lineSpan = document.createElement('span');
-      lineSpan.textContent = i;
+      lineSpan.textContent = i.toString();
       lineNumbers.appendChild(lineSpan);
     }
     
-    // Wrap code content
-    const codeContent = document.createElement('span');
-    codeContent.className = 'code-content';
-    codeContent.innerHTML = codeBlock.innerHTML;
-    
-    // Clear and rebuild
-    codeBlock.innerHTML = '';
-    codeBlock.appendChild(lineNumbers);
-    codeBlock.appendChild(codeContent);
+    // Insert line numbers at the beginning of pre
+    pre.insertBefore(lineNumbers, codeBlock);
   });
 }
 
