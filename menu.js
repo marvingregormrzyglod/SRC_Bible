@@ -173,11 +173,12 @@ async function loadScripture(book, chapter) {
     const markdown = await response.text();
     const html = marked.parse(markdown);
     appDiv.innerHTML = html;
+
+    addLineNumbers();
     
     document.querySelectorAll('pre').forEach(block => {
       hljs.highlightElement(block, { language: 'pseudo' });
     });
-    addLineNumbers();
   } catch (error) {
     console.error('Error loading content:', error);
     document.getElementById('app').innerHTML = '<div class="error">Error loading content</div>';
@@ -187,33 +188,10 @@ async function loadScripture(book, chapter) {
 }
 
 function addLineNumbers() {
-  document.querySelectorAll('pre code').forEach(codeBlock => {
-    const pre = codeBlock.parentElement;
-    
-    // Skip if already processed
-    if (pre.querySelector('.line-numbers')) return;
-    
-    const codeText = codeBlock.textContent || codeBlock.innerText;
-    const lines = codeText.split('\n');
-    
-    // Remove empty last line if it exists
-    if (lines[lines.length - 1] === '') {
-      lines.pop();
-    }
-    
-    // Create line numbers container
-    const lineNumbers = document.createElement('div');
-    lineNumbers.className = 'line-numbers';
-    
-    // Generate line numbers
-    for (let i = 1; i <= lines.length; i++) {
-      const lineSpan = document.createElement('span');
-      lineSpan.textContent = i.toString();
-      lineNumbers.appendChild(lineSpan);
-    }
-    
-    // Insert line numbers at the beginning of pre
-    pre.insertBefore(lineNumbers, codeBlock);
+  document.querySelectorAll('.markdown-section pre code').forEach((codeBlock) => {
+    const lines = codeBlock.innerHTML.split('\n');
+    const wrappedLines = lines.map((line, index) => `<span class="code-line">${line}</span>`).join('\n');
+    codeBlock.innerHTML = wrappedLines;
   });
 }
 
@@ -330,7 +308,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.code-style pre code').forEach((block) => {
     hljs.highlightElement(block, { language: 'pseudo' });
   });
-  addLineNumbers();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
