@@ -217,7 +217,7 @@ a:hover {
   background: rgba(63, 92, 119, 0.08);
   border-radius: 12px;
   padding: var(--fluid-space-4);
-  margin: var(--fluid-space-16) auto;
+  margin: var(--fluid-space-32) auto;
   max-width: 900px;
   text-align: left;
 }
@@ -250,10 +250,10 @@ a:hover {
   flex-direction: column;
   justify-content: flex-start;
   padding: var(--fluid-space-4);
+  margin: var(--fluid-space-32) auto;
   position: relative;
   width: 100%;
   max-width: 900px;
-  margin: var(--fluid-space-8) auto;
 }
 
 .code-style pre {
@@ -303,10 +303,10 @@ a:hover {
 /* -------------------------------------------------------------------------- */
 
 .reading-guide {
-  margin: var(--fluid-space-8) auto var(--fluid-space-16) auto;
+  padding: var(--fluid-space-4);
+  margin: var(--fluid-space-32) auto;
   max-width: clamp(300px, 80vw, 800px);
   background: var(--card-bg);
-  padding: var(--fluid-space-4);
   border-radius: 16px;
   box-shadow: 0 8px 20px var(--shadow-subtle);
   text-align: left;
