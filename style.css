@@ -527,6 +527,7 @@ a:hover {
   overflow: hidden;
   margin-left: var(--fluid-space-1);
   margin-right: var(--fluid-space-1);
+  margin: 0 auto;
 }
 
 /* Add decorative corner accents */
