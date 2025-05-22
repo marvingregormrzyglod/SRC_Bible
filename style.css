@@ -525,9 +525,8 @@ a:hover {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  margin-left: var(--fluid-space-1);
-  margin-right: var(--fluid-space-1);
-  margin: 0 auto;
+  margin-left: var(--fluid-space-1) auto;
+  margin-right: var(--fluid-space-1) auto;
 }
 
 /* Add decorative corner accents */
