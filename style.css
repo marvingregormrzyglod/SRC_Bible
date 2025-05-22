@@ -429,8 +429,8 @@ a:hover {
   border: 1px solid var(--border-light);
   position: relative;
   overflow: hidden;
-  margin-left: var(--fluid-space-32);
-  margin-right: var(--fluid-space-32);
+  margin-left: var(--fluid-space-1);
+  margin-right: var(--fluid-space-1);
 }
 
 .benefit-card:hover {
