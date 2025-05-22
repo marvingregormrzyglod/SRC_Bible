@@ -173,6 +173,8 @@ async function loadScripture(book, chapter) {
     const markdown = await response.text();
     const html = marked.parse(markdown);
     appDiv.innerHTML = html;
+
+    addLineNumbers();
     
     document.querySelectorAll('pre').forEach(block => {
       hljs.highlightElement(block, { language: 'pseudo' });
@@ -183,6 +185,14 @@ async function loadScripture(book, chapter) {
   } finally {
     isNavigating = false;
   }
+}
+
+function addLineNumbers() {
+  document.querySelectorAll('.markdown-section pre code').forEach((codeBlock) => {
+    const lines = codeBlock.innerHTML.split('\n');
+    const wrappedLines = lines.map((line, index) => `<span class="code-line">${line}</span>`).join('\n');
+    codeBlock.innerHTML = wrappedLines;
+  });
 }
 
 document.getElementById('book-select').addEventListener('change', (e) => {
