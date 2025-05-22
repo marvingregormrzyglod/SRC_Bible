@@ -443,3 +443,38 @@ a:hover {
     max-width: 600px;
   }
 }
+
+
+
+
+
+
+
+
+.markdown-section pre {
+  position: relative;
+  padding-left: 3em; /* Space for line numbers */
+}
+
+.markdown-section pre code {
+  display: block;
+  counter-reset: line;
+}
+
+.markdown-section pre code .code-line {
+  display: block;
+  padding-left: 1em;
+  position: relative;
+}
+
+.markdown-section pre code .code-line::before {
+  content: counter(line);
+  counter-increment: line;
+  position: absolute;
+  left: -3em;
+  width: 2.5em;
+  text-align: right;
+  color: #9999A6; /* Matches --neutral-light for consistency */
+  padding-right: 0.5em;
+  border-right: 1px solid #555561; /* Matches --neutral-medium for a subtle line */
+}
