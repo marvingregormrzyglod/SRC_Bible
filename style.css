@@ -219,6 +219,8 @@ a:hover {
   padding: var(--fluid-space-4);
   margin-top: var(--fluid-space-32);
   margin-bottom: var(--fluid-space-1);
+  margin-left: var(--fluid-space-1);
+  margin-right: var(--fluid-space-1);
   max-width: 900px;
   text-align: left;
 }
@@ -253,6 +255,8 @@ a:hover {
   padding: var(--fluid-space-4);
   margin-top: var(--fluid-space-32);
   margin-bottom: var(--fluid-space-1);
+  margin-left: var(--fluid-space-1);
+  margin-right: var(--fluid-space-1);
   position: relative;
   width: 100%;
   max-width: 900px;
@@ -308,6 +312,8 @@ a:hover {
   padding: var(--fluid-space-4);
   margin-top: var(--fluid-space-32);
   margin-bottom: var(--fluid-space-32);
+  margin-left: var(--fluid-space-1);
+  margin-right: var(--fluid-space-1);
   max-width: clamp(300px, 80vw, 800px);
   background: var(--card-bg);
   border-radius: 16px;
@@ -423,6 +429,8 @@ a:hover {
   border: 1px solid var(--border-light);
   position: relative;
   overflow: hidden;
+  margin-left: var(--fluid-space-32);
+  margin-right: var(--fluid-space-32);
 }
 
 .benefit-card:hover {
@@ -518,6 +526,8 @@ a:hover {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  margin-left: var(--fluid-space-1);
+  margin-right: var(--fluid-space-1);
 }
 
 /* Add decorative corner accents */
