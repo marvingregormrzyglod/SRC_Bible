@@ -177,12 +177,43 @@ async function loadScripture(book, chapter) {
     document.querySelectorAll('pre').forEach(block => {
       hljs.highlightElement(block, { language: 'pseudo' });
     });
+    addLineNumbers();
   } catch (error) {
     console.error('Error loading content:', error);
     document.getElementById('app').innerHTML = '<div class="error">Error loading content</div>';
   } finally {
     isNavigating = false;
   }
+}
+
+function addLineNumbers() {
+  document.querySelectorAll('.markdown-section pre code').forEach(codeBlock => {
+    if (codeBlock.querySelector('.line-numbers')) return; // Skip if already processed
+    
+    const lines = codeBlock.textContent.split('\n');
+    const lineCount = lines.length;
+    
+    // Create line numbers container
+    const lineNumbers = document.createElement('div');
+    lineNumbers.className = 'line-numbers';
+    
+    // Generate line numbers
+    for (let i = 1; i <= lineCount; i++) {
+      const lineSpan = document.createElement('span');
+      lineSpan.textContent = i;
+      lineNumbers.appendChild(lineSpan);
+    }
+    
+    // Wrap code content
+    const codeContent = document.createElement('span');
+    codeContent.className = 'code-content';
+    codeContent.innerHTML = codeBlock.innerHTML;
+    
+    // Clear and rebuild
+    codeBlock.innerHTML = '';
+    codeBlock.appendChild(lineNumbers);
+    codeBlock.appendChild(codeContent);
+  });
 }
 
 document.getElementById('book-select').addEventListener('change', (e) => {
@@ -298,6 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.code-style pre code').forEach((block) => {
     hljs.highlightElement(block, { language: 'pseudo' });
   });
+  addLineNumbers();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
