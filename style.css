@@ -145,7 +145,7 @@ a:hover {
 
 .text-wrapper {
   position: absolute;
-  top: 18%;
+  top: clamp(8%, 5% + 4vw, 18%);
   left: 15%;
   right: 15%;
   display: flex;
@@ -954,7 +954,7 @@ footer a {
 
   /* Text positioning */
   .text-wrapper {
-    top: 5%;
+    top: clamp(5%, 4% + 3vw, 12%);
     left: 10%;
     right: 10%;
   }
@@ -992,7 +992,7 @@ footer a {
 @media (max-width: 480px) {
   /* Extra small screen adjustments */
   .text-wrapper {
-    top: 5%;
+    top: clamp(5%, 3% + 2vw, 8%);
     left: 5%;
     right: 5%;
   }
