@@ -217,7 +217,8 @@ a:hover {
   background: rgba(63, 92, 119, 0.08);
   border-radius: 12px;
   padding: var(--fluid-space-4);
-  margin: var(--fluid-space-32) auto;
+  margin-top: var(--fluid-space-32);
+  margin-bottom: var(--fluid-space-1);
   max-width: 900px;
   text-align: left;
 }
@@ -250,7 +251,8 @@ a:hover {
   flex-direction: column;
   justify-content: flex-start;
   padding: var(--fluid-space-4);
-  margin: var(--fluid-space-32) auto;
+  margin-top: var(--fluid-space-32);
+  margin-bottom: var(--fluid-space-1);
   position: relative;
   width: 100%;
   max-width: 900px;
@@ -304,7 +306,7 @@ a:hover {
 
 .reading-guide {
   padding: var(--fluid-space-4);
-  margin: var(--fluid-space-32) auto;
+  margin: var(--fluid-space-32);
   max-width: clamp(300px, 80vw, 800px);
   background: var(--card-bg);
   border-radius: 16px;
