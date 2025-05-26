@@ -92,12 +92,18 @@
   </datalist>
   
 <div class="nav-controls">
-  <button id="prev-chapter" class="nav-button"><span class="nav-icon">◀</span> Previous</button>
+  <button id="prev-chapter" class="nav-button">
+    <span class="nav-text">Previous</span>
+    <span class="nav-icon">◀</span>
+  </button>
   <div class="selectors-container">
     <select id="book-select"></select>
     <select id="chapter-select"></select>
   </div>
-  <button id="next-chapter" class="nav-button">Next <span class="nav-icon">▶</span></button>
+  <button id="next-chapter" class="nav-button">
+    <span class="nav-text">Next</span>
+    <span class="nav-icon">▶</span>
+  </button>
 </div>
 
   <div class="content-wrapper">
@@ -112,6 +118,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="menu.js"></script>
   <script>
+    // Update placeholder text for mobile
+    function updatePlaceholderForMobile() {
+      const searchBar = document.getElementById('search-bar');
+      const isMobile = window.innerWidth <= 768;
+      
+      if (isMobile) {
+        searchBar.placeholder = "Search (e.g., Genesis 1)";
+      } else {
+        searchBar.placeholder = "Search (e.g., Genesis 1, John 3:16)";
+      }
+    }
+
+    // Call on load and resize
+    updatePlaceholderForMobile();
+    window.addEventListener('resize', updatePlaceholderForMobile);
+
     // Register custom Highlight.js language for pseudo-code with new rules
     hljs.registerLanguage('pseudo', function(hljs) {
       return {
