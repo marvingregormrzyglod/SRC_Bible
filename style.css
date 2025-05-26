@@ -157,14 +157,14 @@ a:hover {
 }
 
 .hero-title-top {
-  font-size: var(--fluid-2xl);
+  font-size: var(--fluid-3xl);
   font-weight: 400;
   display: block;
   margin-bottom: var(--fluid-space-1);
 }
 
 .hero-title-bottom {
-  font-size: var(--fluid-4xl);
+  font-size: var(--fluid-5xl);
   font-weight: 600;
   display: block;
 }
@@ -240,13 +240,16 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
   
-  .hero-image .full-width {
+  .hero-image img {
     width: auto !important;
-    height: auto;
-    max-width: none;
-    min-width: 50vw; /* Ensures image is never cut off by more than 50% */
+    max-width: none !important;
+    height: auto !important;
+    min-width: 50vw;
+    object-fit: none;
   }
 }
 
