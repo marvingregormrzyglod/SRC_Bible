@@ -243,10 +243,10 @@ a:hover {
   }
   
   .hero-image .full-width {
-    width: auto;
+    width: auto !important;
     height: auto;
     max-width: none;
-    min-width: 50%; /* Ensures image is never cut off by more than 50% */
+    min-width: 50vw; /* Ensures image is never cut off by more than 50% */
   }
 }
 
