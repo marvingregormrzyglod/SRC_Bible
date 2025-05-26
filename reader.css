@@ -55,6 +55,11 @@
   --loose-line-height: 1.8; 
 }
 
+html {
+  font-size: var(--base-font-size);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 body {
   background-color: white;
   color: var(--text-primary);
@@ -68,6 +73,8 @@ body {
   font-weight: 400;
   font-size: var(--body-font-size);
   line-height: var(--normal-line-height);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensure body takes full width */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,11 +94,6 @@ h2 {
 
 h3 {
   font-size: var(--h3-font-size);
-}
-
-
-html {
-  font-size: var(--base-font-size);
 }
 
 .reader-hero {
@@ -250,6 +252,10 @@ html {
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 #prev-chapter:hover, #next-chapter:hover {
@@ -374,6 +380,12 @@ a:hover {
 
   #app {
     width: 100%;
+    margin-right: 0; /* Remove right margin on mobile */
+  }
+  
+  .nav-controls {
+    gap: 8px; /* Reduce gap between navigation elements */
+    padding: 8px 16px; /* Reduce padding to prevent overflow */
   }
   
   .selectors-container {
@@ -403,15 +415,28 @@ a:hover {
     padding: 10px 30px 10px 12px;
   }
   
-  /* Button size adjustments */
+  /* Button size adjustments - hide text, show only arrows */
   #prev-chapter, #next-chapter {
-    padding: 10px 12px; /* Match the select padding */
+    padding: 10px 8px; /* Reduce padding for smaller buttons */
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 80px; /* Ensure both buttons are the same width */
+    min-width: 36px; /* Smaller width for arrow-only buttons */
+    width: 36px; /* Fixed width */
     height: 40px; /* Match the height of the selects */
     font-size: var(--small-font-size);
+  }
+  
+  /* Hide text on mobile, show only arrows */
+  #prev-chapter .nav-text,
+  #next-chapter .nav-text {
+    display: none;
+  }
+  
+  #prev-chapter .nav-icon,
+  #next-chapter .nav-icon {
+    display: block;
+    font-size: 16px;
   }
   
   /* Content adjustments */
@@ -447,9 +472,20 @@ a:hover {
   }
 }
 
-/* Larger screens */
+/* Larger screens - ensure text is visible */
 @media (min-width: 769px) {
   .nav-controls {
     max-width: 600px;
+  }
+  
+  /* Ensure text is visible on larger screens */
+  #prev-chapter .nav-text,
+  #next-chapter .nav-text {
+    display: block;
+  }
+  
+  #prev-chapter .nav-icon,
+  #next-chapter .nav-icon {
+    display: block;
   }
 }
