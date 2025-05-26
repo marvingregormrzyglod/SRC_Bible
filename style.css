@@ -3,6 +3,12 @@
 /* -------------------------------------------------------------------------- */
 
 :root {
+
+  /* Hero Section Colors */
+  --hero-bg: #001e37;
+  --hero-text: #F5F5F8;
+  --hero-line: #F5F5F8;
+  
   /* Color Palette */
   --primary-dark: #2A3B4C;    /* Rich dark blue */
   --primary-medium: #3F5C77;  /* Medium slate blue */
@@ -126,6 +132,59 @@ a:hover {
   color: var(--text-secondary);
 }
 
+
+/* -------------------------------------------------------------------------- */
+/*                              HERO SECTION                                 */
+/* -------------------------------------------------------------------------- */
+
+.hero-section {
+  background-color: var(--hero-bg);
+  width: 100%;
+  padding: var(--fluid-space-8) var(--fluid-space-4) var(--fluid-space-4) var(--fluid-space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--hero-text);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-title-top {
+  font-size: var(--fluid-2xl);
+  font-weight: 400;
+  display: block;
+  margin-bottom: var(--fluid-space-1);
+}
+
+.hero-title-bottom {
+  font-size: var(--fluid-4xl);
+  font-weight: 600;
+  display: block;
+}
+
+.hero-title-bottom .bold-letters {
+  font-weight: 700;
+}
+
+.hero-underline {
+  width: 100%;
+  max-width: 400px;
+  height: 3px;
+  background-color: var(--hero-line);
+  margin: var(--fluid-space-4) auto 0 auto;
+  border-radius: 2px;
+}
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                           HERO & IMAGE SECTIONS                            */
 /* -------------------------------------------------------------------------- */
@@ -175,6 +234,21 @@ a:hover {
   text-align: center;
   max-width: 40%;
 }
+
+/* Mobile-specific hero image behavior */
+@media (max-width: 768px) {
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-image .full-width {
+    width: auto;
+    height: auto;
+    max-width: none;
+    min-width: 50%; /* Ensures image is never cut off by more than 50% */
+  }
 
 /* -------------------------------------------------------------------------- */
 /*                            INTRO SECTION                                   */
