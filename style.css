@@ -242,14 +242,16 @@ a:hover {
     align-items: center;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
+    overflow: hidden;
   }
   
   .hero-image img {
-    width: auto !important;
-    max-width: 142.86vw !important; /* This limits crop to 30% (100/0.7 = 142.86) */
+    width: 100vw !important;
     height: auto !important;
-    min-width: 100vw; /* Changed from 75vw to ensure it fills viewport */
-    object-fit: cover; /* Changed from none to cover for better scaling */
+    max-width: none !important;
+    transform: scale(1.43); /* Scale to show 70% of image (1/0.7 = 1.43) */
+    transform-origin: center center;
+    object-fit: cover;
   }
 }
 
