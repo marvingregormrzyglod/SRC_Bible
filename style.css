@@ -246,10 +246,10 @@ a:hover {
   
   .hero-image img {
     width: auto !important;
-    max-width: none !important;
+    max-width: 142.86vw !important; /* This limits crop to 30% (100/0.7 = 142.86) */
     height: auto !important;
-    min-width: 50vw;
-    object-fit: none;
+    min-width: 100vw; /* Changed from 75vw to ensure it fills viewport */
+    object-fit: cover; /* Changed from none to cover for better scaling */
   }
 }
 
