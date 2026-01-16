@@ -3,51 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The SRC Bible presents scripture as beautifully structured code to reveal patterns, clarity, and meaning.">
   <title>SRC Bible</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
-<body>
-
+<body class="home-page">
   <section class="hero-section">
-  <h1 class="hero-title">
-    <span class="hero-title-top">Scripture Reimagined</span>
-    <span class="hero-title-bottom">as Code</span>
-  </h1>
-  <div class="hero-underline"></div>
-</section>
-
-<div class="hero-image">
-  <img src="topofpage.jpeg" alt="SRC Bible Concept" class="full-width">
-</div>
-
-  <section class="intro-section">
-    <div class="intro-container">
-      <h2>Rediscover the Bible with fresh eyes</h2>
-      <p>The SRC Bible presents God's Word in a <span class="highlight-code">programming code style</span>, which helps you see connections, patterns, and meaning more clearly.</p>    </div>
+    <div class="page-container hero-content">
+      <h1 class="hero-title">
+        <span class="hero-title-top">Scripture Reimagined</span>
+        <span class="hero-title-bottom">as Code</span>
+      </h1>
+      <div class="hero-underline"></div>
+      <p class="hero-subtitle">Explore 31,102 verses translated into a code-inspired structure that highlights logic, flow, and meaning.</p>
+      <div class="hero-actions">
+        <a href="reader.html" class="button button-primary">Read Online</a>
+        <a href="#reserve" class="button button-secondary">Reserve Print</a>
+      </div>
+    </div>
   </section>
 
+  <div class="hero-image">
+    <img
+      src="topofpage.jpeg"
+      srcset="topofpage-1280.jpeg 1280w, topofpage.jpeg 1920w"
+      sizes="100vw"
+      alt="SRC Bible Concept"
+      class="full-width"
+      width="1920"
+      height="1279"
+      decoding="async"
+      fetchpriority="high"
+    >
+  </div>
+
+  <section class="intro-section">
+    <div class="page-container intro-container">
+      <h2>Rediscover the Bible with fresh eyes</h2>
+      <p>The SRC Bible presents God's Word in a <span class="highlight-code">programming code style</span>, which helps you see connections, patterns, and meaning more clearly.</p>
+    </div>
+  </section>
 
   <div class="middle-image">
-    <img src="middleofpage.jpg" alt="Middle Page Image" class="full-width">
+    <img
+      src="middleofpage.jpg"
+      srcset="middleofpage-2000.jpg 2000w, middleofpage.jpg 4117w"
+      sizes="100vw"
+      alt="Middle Page Image"
+      class="full-width"
+      width="4117"
+      height="2750"
+      loading="lazy"
+      decoding="async"
+    >
     <div class="text-wrapper">
-      <div class="middle-image-text">For Tech-savvy Christians who love dissecting scripture with analytical precision.</div>
+      <div class="middle-image-text">
+        <span class="image-caption">For Tech-savvy Christians who love dissecting scripture with analytical precision.</span>
+      </div>
     </div>
   </div>
-  
 
-
-
-       <div class="intro-message">
+  <section class="intro-message-section">
+    <div class="page-container">
+      <div class="intro-message">
         <p>"But I'm not a programmer..." We hear this often, but the truth is: <strong>you don't need to understand code to read the SRC Bible.</strong> If you can follow a recipe or read a bulleted list, you can read and benefit from the SRC Bible. The structure simply helps organize scripture in a way that makes relationships clearer and gives you a fresh perspective.</p>
       </div>
-      
+    </div>
+  </section>
 
-<div class="version-content code-style">
-<pre><code class="dynamic-code">// === John 3:16
+  <section class="code-sample-section">
+    <div class="page-container">
+      <div class="version-content code-style">
+        <pre><code class="dynamic-code language-pseudo">// === John 3:16
   god.action({
     motivation: "loved_the_world",
     gift: "gave_His_only_Son",
@@ -56,30 +87,43 @@
     outcome: "not_perish_but_have_eternal_life"
   }
 });</code></pre>
-</div>
-
-
-   
-
-    <div class="reading-guide">
-      <h3>How to Read SRC Format</h3>
-      <p>Think of it like a recipe with clear ingredients and steps:</p>
-      <p class="reading-steps"><strong>god.action</strong> tells you who is performing an action</p>
-      <p class="reading-steps"><strong>motivation:</strong> explains why God took this action</p>
-      <p class="reading-steps"><strong>gift:</strong> shows what God gave</p>
-      <p class="reading-steps"><strong>purpose:</strong> reveals the intended outcome</p>
-      <p>The structure makes relationships clearer and helps you see patterns you might miss in traditional text.</p>
+      </div>
     </div>
+  </section>
 
-
+  <section class="reading-guide-section">
+    <div class="page-container">
+      <div class="reading-guide">
+        <h3>How to Read SRC Format</h3>
+        <p>Think of it like a recipe with clear ingredients and steps:</p>
+        <p class="reading-steps"><strong>god.action</strong> tells you who is performing an action</p>
+        <p class="reading-steps"><strong>motivation:</strong> explains why God took this action</p>
+        <p class="reading-steps"><strong>gift:</strong> shows what God gave</p>
+        <p class="reading-steps"><strong>purpose:</strong> reveals the intended outcome</p>
+        <p>The structure makes relationships clearer and helps you see patterns you might miss in traditional text.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="bottom-image">
-    <img src="bottomofpage.jpg" alt="Bottom Page Image" class="full-width">
-    <div class="bottom-image-text">See God in a totally new way</div>
+    <img
+      src="bottomofpage.jpg"
+      srcset="bottomofpage-2400.jpg 2400w, bottomofpage.jpg 5184w"
+      sizes="100vw"
+      alt="Bottom Page Image"
+      class="full-width"
+      width="5184"
+      height="3456"
+      loading="lazy"
+      decoding="async"
+    >
+    <div class="bottom-image-text">
+      <span class="image-caption">See God in a totally new way</span>
+    </div>
   </div>
 
   <section class="benefits benefits-grid-section">
-    <div class="benefits-container">
+    <div class="page-container benefits-container">
       <div class="benefits-grid-2x2">
         <div class="benefit-card">
           <div class="benefit-icon">
@@ -101,7 +145,7 @@
           <h3>Clarity Through Structure</h3>
           <p>Well-written code is intuitive and easy to navigate. Similarly, this Bible organizes scripture with a logical flow and precision that makes complex ideas more approachable.</p>
         </div>
-        
+
         <div class="benefit-card">
           <div class="benefit-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
@@ -122,7 +166,7 @@
           <h3>Memorization That Clicks</h3>
           <p>You'll appreciate how this Bible's structure aids retention. Verses become like familiar patterns in your mind—easier to internalize, reflect on, and carry with you.</p>
         </div>
-        
+
         <div class="benefit-card">
           <div class="benefit-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
@@ -140,7 +184,7 @@
           <h3>Visually Satisfying</h3>
           <p>There's beauty in clean, structured text—and this Bible delivers that same aesthetic. The layout isn't just functional; it's pleasing to the eye.</p>
         </div>
-        
+
         <div class="benefit-card">
           <div class="benefit-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
@@ -162,223 +206,67 @@
   </section>
 
   <section class="read-now-section">
-    <div class="read-now-container">
-      <p class="read-now-text">Experience the Bible Like Never Before</p>
-      <p class="read-now-subtitle">Dive into our interactive reader with verse-by-verse code structure that reveals scripture's inner workings in a way your analytical mind will appreciate.</p>
-      <a href="reader.html" class="read-now-button">Read SRC Bible Now</a>
+    <div class="page-container">
+      <div class="read-now-container">
+        <p class="read-now-text">Experience the Bible Like Never Before</p>
+        <p class="read-now-subtitle">Dive into our interactive reader with verse-by-verse code structure that reveals scripture's inner workings in a way your analytical mind will appreciate.</p>
+        <a href="reader.html" class="button button-primary read-now-button">Read SRC Bible Now</a>
+      </div>
     </div>
   </section>
 
-  <section class="cta">
-    <div class="cta-container">
-      <h2>Reserve Your Copy</h2>
-      <p>Be among the first to own an exclusive first edition print. We're preparing a print limited to 500 copies of this unique Bible, crafted as elegant code for tech-savvy believers.</p>
-      
-      <img src="couch.jpg" alt="Bible on couch" class="couch-image">
-      
-      <p>Each copy will be a collector's item, blending timeless wisdom with a striking, code-inspired design. Printed copies aren't available yet, but you can secure your spot today.</p>
-      
-      <div id="signup-container">
-        <form id="signup-form" class="signup-form">
-          <input type="email" id="email-input" placeholder="Your email address" required>
-          <button type="submit" id="submit-btn">Notify Me</button>
-        </form>
-      </div>
-      
-      <div id="thank-you-message" class="thank-you-message hidden">
-        <p>Thanks! We have reserved your spot for a physical copy!</p>
-        <div class="checkmark-container">
-          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
-            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-          </svg>
+  <section class="cta" id="reserve">
+    <div class="page-container">
+      <div class="cta-container">
+        <h2>Reserve Your Copy</h2>
+        <p>Be among the first to own an exclusive first edition print. We're preparing a print limited to 500 copies of this unique Bible, crafted as elegant code for tech-savvy believers.</p>
+
+        <img
+          src="couch.jpg"
+          srcset="couch-1600.jpg 1600w, couch.jpg 6000w"
+          sizes="(max-width: 768px) 90vw, 700px"
+          alt="Bible on couch"
+          class="couch-image"
+          width="6000"
+          height="4000"
+          loading="lazy"
+          decoding="async"
+        >
+
+        <p>Each copy will be a collector's item, blending timeless wisdom with a striking, code-inspired design. Printed copies aren't available yet, but you can secure your spot today.</p>
+
+        <div id="signup-container">
+          <form id="signup-form" class="signup-form">
+            <label class="visually-hidden" for="email-input">Email address</label>
+            <input type="email" id="email-input" placeholder="Your email address" required autocomplete="email" inputmode="email">
+            <button type="submit" id="submit-btn" class="button button-dark">Notify Me</button>
+          </form>
+          <p id="signup-error" class="form-message error hidden" role="alert"></p>
         </div>
+
+        <div id="thank-you-message" class="thank-you-message hidden" role="status" aria-live="polite">
+          <p>Thanks! We have reserved your spot for a physical copy!</p>
+          <div class="checkmark-container">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+              <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="small">Don't miss your chance to hold this one-of-a-kind edition in your hands.</p>
       </div>
-      
-      <p class="small">Don't miss your chance to hold this one-of-a-kind edition in your hands.</p>
     </div>
   </section>
 
   <footer>
-    <p>Copyright All Rights Reserved | Provided by The Salty Friends</p>
-    <p>hello@srcbible.com</p>
+    <div class="page-container footer-content">
+      <p>Copyright All Rights Reserved | Provided by The Salty Friends</p>
+      <p><a href="mailto:hello@srcbible.com">hello@srcbible.com</a></p>
+    </div>
   </footer>
 
-<script src="menu.js"></script>
-<script>
-  // Register custom Highlight.js language for pseudo-code
-  hljs.registerLanguage('pseudo', function(hljs) {
-    return {
-      name: 'PseudoScripture',
-      keywords: {
-        keyword: 'function return if else for while let true false future',
-        literal: 'true false'
-      },
-      contains: [
-        hljs.COMMENT('//', '$', {
-          className: 'comment',
-          relevance: 0
-        }),
-        {
-          className: 'keyword',
-          begin: /\bfunction\b/
-        },
-        {
-          className: 'function-title',
-          begin: /\bfunction\s+/,
-          end: /(?=\()/,
-          contains: [{
-            className: 'title',
-            begin: /[a-zA-Z_][a-zA-Z0-9_]*/
-          }]
-        },
-        {
-          className: 'property-access',
-          begin: /\b([a-zA-Z_][a-zA-Z0-9_]*)(\.)/,
-          relevance: 0,
-          contains: [
-            {
-              className: 'object',
-              begin: /\b[a-zA-Z_][a-zA-Z0-9_]*/
-            },
-            {
-              className: 'dot',
-              begin: /\./
-            }
-          ]
-        },
-        {
-          className: 'method-call',
-          begin: /\.([a-zA-Z_][a-zA-Z0-9_]*)/,
-          relevance: 0,
-          contains: [
-            {
-              className: 'method-name',
-              begin: /[a-zA-Z_][a-zA-Z0-9_]*/
-            }
-          ]
-        },
-        {
-          className: 'string',
-          begin: '"',
-          end: '"',
-          contains: [{
-            begin: '\\\\"'
-          }]
-        },
-        {
-          className: 'number',
-          begin: /\b\d+(\.\d+)?\b/
-        },
-        {
-          className: 'operator',
-          begin: /(==|=|!|!=|<=|>=|<|>|\+|-|\*|\/|%)/
-        },
-        {
-          className: 'punctuation',
-          begin: /[\(\)\{\}\[\]\.,;]/
-        },
-        {
-          className: 'variable',
-          begin: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*(?:=|\.|$))/,
-          relevance: 0
-        }
-      ]
-    };
-  });
-
-  // Apply syntax highlighting to code examples
-  document.querySelectorAll('.code-style pre code').forEach((block) => {
-    block.classList.add('language-pseudo');
-    hljs.highlightElement(block);
-  });
-
-  /**
-   * Dynamic Font Scaling for SRC Bible Code
-   */
-  document.addEventListener('DOMContentLoaded', function() {
-    function scaleFontSize() {
-      const codeElement = document.querySelector('.dynamic-code');
-      const container = codeElement.closest('.version-content');
-      
-      if (!codeElement || !container) return;
-      
-      const containerWidth = container.clientWidth;
-      const containerHeight = container.clientHeight;
-      
-      codeElement.style.fontSize = '1rem';
-      
-      const isOverflowing = 
-        codeElement.scrollWidth > containerWidth || 
-        codeElement.scrollHeight > containerHeight;
-      
-      if (isOverflowing) {
-        let fontSize = 0.95;
-        codeElement.style.fontSize = `${fontSize}rem`;
-        
-        while ((codeElement.scrollWidth > containerWidth || 
-                codeElement.scrollHeight > containerHeight) && 
-                fontSize > 0.5) {
-          fontSize -= 0.05;
-          codeElement.style.fontSize = `${fontSize}rem`;
-        }
-      }
-    }
-    
-    scaleFontSize();
-    window.addEventListener('resize', scaleFontSize);
-    setTimeout(scaleFontSize, 100);
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('signup-form');
-    const signupContainer = document.getElementById('signup-container');
-    const thankYouMessage = document.getElementById('thank-you-message');
-    
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzWwP-kjM_0JAd_kSCXfqoAAgU8lbrMY3T1LWxmW424iS99zZXhMlMdFR5xNobcomlM/exec';
-    
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const email = document.getElementById('email-input').value;
-      const submitBtn = document.getElementById('submit-btn');
-      
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-      
-      const formData = new FormData();
-      formData.append('email', email);
-      
-      fetch(scriptURL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          signupContainer.classList.add('hidden');
-          thankYouMessage.classList.remove('hidden');
-          localStorage.setItem('biblePreauthEmail', email);
-          localStorage.setItem('biblePreauthSubmitted', 'true');
-        } else {
-          alert('There was an error submitting your email. Please try again.');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Notify Me';
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('There was an error submitting your email. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Notify Me';
-      });
-    });
-    
-    if (localStorage.getItem('biblePreauthSubmitted') === 'true') {
-      signupContainer.classList.add('hidden');
-      thankYouMessage.classList.remove('hidden');
-    }
-  });
-</script>
+  <script src="shared.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>
