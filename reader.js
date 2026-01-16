@@ -88,10 +88,6 @@
       searchBar: document.getElementById('search-bar'),
       searchButton: document.getElementById('search-button'),
       searchFeedback: document.getElementById('search-feedback'),
-      currentLocation: document.getElementById('current-location'),
-      resumeBanner: document.getElementById('resume-banner'),
-      resumeText: document.getElementById('resume-text'),
-      resumeButton: document.getElementById('resume-button'),
       progressBar: document.getElementById('reading-progress-bar')
     };
 
@@ -100,8 +96,6 @@
     let currentBook = 'genesis';
     let currentChapter = 1;
     let isNavigating = false;
-
-    const STORAGE_KEY = 'srcBibleLastLocation';
 
     function updatePlaceholderForMobile() {
       const isMobile = window.innerWidth <= 768;
@@ -132,12 +126,6 @@
         if (i === currentChapter) option.selected = true;
         elements.chapterSelect.appendChild(option);
       }
-    }
-
-    function updateLocationLabel() {
-      if (!elements.currentLocation) return;
-      const displayName = bookDisplayNames[currentBook] || currentBook;
-      elements.currentLocation.textContent = `Currently reading: ${displayName} ${currentChapter}`;
     }
 
     function updateSearchFeedback(message, tone) {
@@ -191,48 +179,6 @@
       elements.app.innerHTML = '<div class="error">Error loading content. Please try again.</div>';
     }
 
-    function saveLastLocation() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
-          book: currentBook,
-          chapter: currentChapter
-        }));
-      } catch (error) {
-        // Ignore storage errors
-      }
-    }
-
-    function getLastLocation() {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        return stored ? JSON.parse(stored) : null;
-      } catch (error) {
-        return null;
-      }
-    }
-
-    function updateResumeBanner() {
-      if (!elements.resumeBanner || !elements.resumeText || !elements.resumeButton) return;
-      const last = getLastLocation();
-
-      if (!last || !books[last.book]) {
-        elements.resumeBanner.hidden = true;
-        return;
-      }
-
-      const isSame = last.book === currentBook && Number(last.chapter) === Number(currentChapter);
-      if (isSame) {
-        elements.resumeBanner.hidden = true;
-        return;
-      }
-
-      elements.resumeText.textContent = `Resume ${bookDisplayNames[last.book] || last.book} ${last.chapter}`;
-      elements.resumeBanner.hidden = false;
-      elements.resumeButton.onclick = () => {
-        loadScripture(last.book, Number(last.chapter) || 1);
-      };
-    }
-
     async function loadScripture(book, chapter) {
       if (!books[book] || isNavigating) return;
       isNavigating = true;
@@ -245,7 +191,6 @@
 
       elements.bookSelect.value = book;
       updateChapterSelect();
-      updateLocationLabel();
       updateSearchFeedback('', '');
 
       const newHash = `#/scripture/${book}/${safeChapter.toString().padStart(2, '0')}`;
@@ -268,8 +213,6 @@
           });
         }
 
-        saveLastLocation();
-        updateResumeBanner();
       } catch (error) {
         renderError();
       } finally {
@@ -331,8 +274,7 @@
 
     populateBookSelect();
     updateChapterSelect();
-    updateLocationLabel();
-    updateResumeBanner();
+    updateSearchFeedback('', '');
 
     loadScripture(currentBook, currentChapter);
     updateReadingProgress();

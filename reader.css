@@ -245,40 +245,6 @@ h3 {
   display: none;
 }
 
-.resume-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  background: rgba(63, 92, 119, 0.08);
-  border: 1px solid var(--border-light);
-  margin-bottom: 16px;
-}
-
-.resume-button {
-  background: var(--primary-dark);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 8px 14px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.resume-button:hover {
-  transform: translateY(-1px);
-}
-
-.current-location {
-  margin-top: 12px;
-  text-align: center;
-  font-size: var(--small-font-size);
-  color: var(--text-tertiary);
-}
 
 .search-icon {
   color: var(--text-tertiary);
@@ -327,8 +293,7 @@ h3 {
 
 #search-button:focus-visible,
 #prev-chapter:focus-visible,
-#next-chapter:focus-visible,
-.resume-button:focus-visible {
+#next-chapter:focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
@@ -338,7 +303,7 @@ h3 {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px; /* Add space below navigation controls */
+  margin: 0 auto 20px; /* Center the full control bar */
 }
 
 body.is-loading .nav-controls,
@@ -574,15 +539,6 @@ a:hover {
     gap: 8px; /* Reduce gap between navigation elements */
     padding: 8px 16px; /* Reduce padding to prevent overflow */
   }
-
-  .resume-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .resume-button {
-    width: 100%;
-  }
   
   .selectors-container {
     flex-direction: row;
@@ -665,10 +621,6 @@ a:hover {
 
 /* Larger screens - ensure text is visible */
 @media (min-width: 769px) {
-  .nav-controls {
-    max-width: 600px;
-  }
-  
   /* Ensure text is visible on larger screens */
   #prev-chapter .nav-text,
   #next-chapter .nav-text {
