@@ -281,6 +281,20 @@ a:hover {
   margin: var(--fluid-space-2) 0 0;
 }
 
+.hero-meta {
+  color: rgba(245, 245, 248, 0.7);
+  font-size: var(--fluid-base);
+  margin: var(--fluid-space-1) 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-note {
+  color: rgba(245, 245, 248, 0.9);
+  font-size: var(--fluid-base);
+  margin: var(--fluid-space-1) 0 0;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -396,21 +410,66 @@ a:hover {
 }
 
 .intro-container {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   color: white;
 }
 
 .intro-container h2 {
   font-size: var(--fluid-4xl);
-  margin-bottom: var(--fluid-space-8);
+  margin-bottom: var(--fluid-space-4);
   color: white;
 }
 
-.intro-container p {
-  font-size: var(--fluid-xl);
-  line-height: 1.5;
+.intro-eyebrow {
+  font-size: var(--fluid-sm);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--fluid-space-2);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: var(--fluid-space-8);
+  text-align: left;
+}
+
+.intro-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: var(--fluid-space-4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.intro-card h3 {
+  font-size: var(--fluid-2xl);
   color: white;
+  margin-top: 0;
+  margin-bottom: var(--fluid-space-2);
+}
+
+.intro-card p,
+.intro-card li {
+  font-size: var(--fluid-base);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.intro-card li + li {
+  margin-top: var(--fluid-space-1);
+}
+
+.intro-card ul {
+  margin: var(--fluid-space-2) 0 0;
+  padding-left: 20px;
+}
+
+.intro-card p {
+  margin: 0;
 }
 
 .highlight-code {
@@ -425,7 +484,7 @@ a:hover {
   background: rgba(63, 92, 119, 0.08);
   border-radius: 12px;
   padding: var(--fluid-space-4);
-  margin: var(--fluid-space-16) auto var(--fluid-space-8);
+  margin: var(--fluid-space-8) auto var(--fluid-space-8);
   max-width: 900px;
   text-align: left;
 }
@@ -962,6 +1021,12 @@ a:hover {
   font-size: var(--fluid-sm);
 }
 
+.form-note {
+  margin: -4px 0 var(--fluid-space-2);
+  font-size: var(--fluid-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .form-message.error {
   color: #ffd1c9;
 }
@@ -1127,6 +1192,10 @@ footer a {
 @media (max-width: 768px) {
   /* Layout adjustments */
   .benefits-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-grid {
     grid-template-columns: 1fr;
   }
 
